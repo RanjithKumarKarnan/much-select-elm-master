@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<body>
+<script type="module">
+  import { runTests } from "@web/test-runner-mocha";
+  import { expect } from "@esm-bundle/chai";
+  import { html, fixture, oneEvent } from "@open-wc/testing";
+
+  import MuchSelect from "../../dist/much-select-debug.js";
+
+  if (!customElements.get("much-select")) {
+    // Putting guard rails around this because browsers do not like
+    //  having the same custom element defined more than once.
+    window.customElements.define("much-select", MuchSelect);
+  }
+
+  runTests(() => {
+    describe("Slots", () => {
+      describe("select-input", () => {
+        it("should be able to handle options with commas in them.", async () => {
+          const el = /** @type {MuchSelect} */ await fixture(
+            html`<much-select
+              class="pa-2"
+              id="much-subscriber.applied_tag"
+              data-slug="subscriber.applied_tag"
+              multi-select=""
+              placeholder="type or select..."
+              size="large"
+              selected-value="%5B%5D"
+              selected-value-encoding="json"
+              style=""
+            >
+              <select slot="select-input">
+                <option value="a tag for david">a tag for david</option>
+                <option value="a tag for mike">a tag for mike</option>
+                <option value="an un-sanitized, tag to break things">
+                  an un-sanitized, tag to break things
+                </option>
+                <option value="tag 1">tag 1</option>
+                <option value="tag 2">tag 2</option>
+                <option value="tag 4">tag 4</option>
+                <option value="tom's tag">tom's tag</option>
+              </select>
+              <input
+                type="hidden"
+                name="webhook_builder[filter_values][subscriber.applied_tag][]"
+                slot="hidden-value-input"
+                value=""
+              />
+              <div slot="loading-indicator">
+                <loading-orb style="margin-right: 5px;"></loading-orb>
+              </div>
+            </much-select>`
+          );
+
+          const allOptions = await el.getAllOptions();
+
+          expect(allOptions).to.have.length(7);
+        });
+      });
+
+      it("should not pick up options if the slot is not specified.", async () => {
+        const el = /** @type {MuchSelect} */ await fixture(
+          html`<much-select>
+            <select>
+              <option value="should not work">never no never</option>
+            </select>
+          </much-select>`
+        );
+
+        const allOptions = await el.getAllOptions();
+
+        expect(allOptions).to.have.length(0);
+      });
+
+      it("should add the options if we add the select-input slot later", async () => {
+        const el = /** @type {MuchSelect} */ await fixture(
+          html`<much-select></much-select>`
+        );
+
+        const allInitialOptions = await el.getAllOptions();
+
+        expect(allInitialOptions).to.have.length(0);
+
+        const selectEl = await fixture(`<select slot="select-input">
+                <option value="a tag for david">a tag for david</option>
+                <option value="a tag for mike">a tag for mike</option>
+                <option value="an un-sanitized, tag to break things">
+                  an un-sanitized, tag to break things
+                </option>
+                <option value="tag 1">tag 1</option>
+                <option value="tag 2">tag 2</option>
+                <option value="tag 4">tag 4</option>
+                <option value="tom's tag">tom's tag</option>
+              </select>`);
+        el.appendChild(selectEl);
+        await oneEvent(el, "optionsUpdated");
+        const allOptions = await el.getAllOptions();
+
+        expect(allOptions).to.have.length(7);
+      });
+    });
+  });
+</script>
+</body>
+</html>

@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<body>
+<script type="module">
+  import { runTests } from "@web/test-runner-mocha";
+  import { expect } from "@esm-bundle/chai";
+  import { html, fixture, nextFrame, waitUntil } from "@open-wc/testing";
+
+  import MuchSelect from "../../dist/much-select-debug.js";
+
+  if (!customElements.get("much-select")) {
+    // Putting guard rails around this because browsers do not like
+    //  having the same custom element defined more than once.
+    window.customElements.define("much-select", MuchSelect);
+  }
+
+  runTests(() => {
+    describe("Attributes", () => {
+      describe("selected-value-encoding", () => {
+        it("the default value should be comma", async () => {
+          const el = /** @type {MuchSelect} */ await fixture(
+            html`<much-select></much-select>`
+          );
+          expect(await el.selectedValueEncoding).to.equal("comma");
+        });
+
+        it("should be able to change it to json", async () => {
+          const el = /** @type {MuchSelect} */ await fixture(
+            html`<much-select></much-select>`
+          );
+          el.setAttribute("selected-value-encoding", "json");
+          await nextFrame();
+          expect(await el.selectedValueEncoding).to.equal("json");
+        });
+
+        it("changing the selected value encoding should change the selected value (to json)", async () => {
+          const el = /** @type {MuchSelect} */ await fixture(
+            html`<much-select multi-select selected-value="ho,hum"></much-select>`
+          );
+          el.setAttribute("selected-value-encoding", "json");
+
+          await nextFrame();
+
+          expect(await el.rawSelectedValue).to.equal(
+            "%5B%22ho%22%2C%22hum%22%5D"
+          );
+          expect(await el.selectedValue).to.eql(["ho", "hum"]);
+        });
+
+        it("changing the selected value encoding should change the selected value (to comma)", async () => {
+          const el = /** @type {MuchSelect} */ await fixture(
+            html`<much-select multi-select selected-value="ho,hum"></much-select>`
+          );
+          el.setAttribute("selected-value-encoding", "json");
+
+          await waitUntil(
+            async () => (await el.selectedValueEncoding) === "json",
+            "Multi select did to switch over to json selected value encoding."
+          );
+
+          await nextFrame();
+
+          el.setAttribute("selected-value-encoding", "comma");
+
+          await waitUntil(
+            async () => (await el.selectedValueEncoding) === "comma",
+            "Multi select did to switch over to comma selected value encoding."
+          );
+
+          await nextFrame();
+
+          expect(await el.rawSelectedValue).to.equal("ho,hum");
+          expect(await el.selectedValue).to.eql(["ho", "hum"]);
+        });
+
+        it("should support an empty string with a json selected value encoding", async () => {
+          const el = /** @type {MuchSelect} */ await fixture(
+            html`<much-select
+              multi-select
+              selected-value=""
+              selected-value-encoding="json"
+            ></much-select>`
+          );
+
+          el.errorHandler = (error) => {
+            throw error;
+          };
+
+          expect(await el.rawSelectedValue).to.equal("%5B%5D");
+          expect(await el.selectedValue).to.eql([]);
+        });
+
+        describe("with json should support values that include commas", () => {
+          it("in multi select mode", async () => {
+            const el = /** @type {MuchSelect} */ await fixture(
+              html`<much-select
+                multi-select
+                selected-value="%5B%22oh%2Cwhere%22%2C%22can%20my%20%F0%9F%99%82%20be%22%5D"
+                selected-value-encoding="json"
+              ></much-select>`
+            );
+            expect(await el.rawSelectedValue).to.equal(
+              "%5B%22oh%2Cwhere%22%2C%22can%20my%20%F0%9F%99%82%20be%22%5D"
+            );
+            expect(await el.selectedValue).to.eql(["oh,where", "can my 🙂 be"]);
+          });
+
+          it("in single select mode", async () => {
+            const el = /** @type {MuchSelect} */ await fixture(
+              html`<much-select
+                selected-value="%22buffalo,cruise%22"
+                selected-value-encoding="json"
+              ></much-select>`
+            );
+            expect(await el.rawSelectedValue).to.equal("%22buffalo%2Ccruise%22");
+            expect(await el.selectedValue).to.eql("buffalo,cruise");
+          });
+        });
+      });
+    });
+  });
+</script>
+</body>
+</html>

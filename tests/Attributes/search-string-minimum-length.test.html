@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<body>
+<script type="module">
+  import { runTests } from "@web/test-runner-mocha";
+  import { expect } from "@esm-bundle/chai";
+  import { html, fixture, nextFrame } from "@open-wc/testing";
+
+  import MuchSelect from "../../dist/much-select-debug.js";
+
+  if (!customElements.get("much-select")) {
+    // Putting guard rails around this because browsers do not like
+    //  having the same custom element defined more than once.
+    window.customElements.define("much-select", MuchSelect);
+  }
+
+  runTests(() => {
+    describe("Attributes", () => {
+      describe("search-string-minimum-length", () => {
+        it("the default value should be 2", async () => {
+          const el = /** @type {MuchSelect} */ await fixture(
+            html`<much-select></much-select>`
+          );
+          expect(await el.searchStringMinimumLength).to.equal(2);
+        });
+
+        it("is empty the search string minimum should be set to 0", async () => {
+          const el = /** @type {MuchSelect} */ await fixture(
+            html`<much-select></much-select>`
+          );
+          el.setAttribute("search-string-minimum-length", "");
+          await nextFrame();
+          expect(await el.searchStringMinimumLength).to.equal(0);
+        });
+
+        it("setting the attribute to a positive number should change the value", async () => {
+          const el = /** @type {MuchSelect} */ await fixture(
+            html`<much-select></much-select>`
+          );
+
+          el.setAttribute("search-string-minimum-length", "5");
+          await nextFrame();
+          expect(await el.searchStringMinimumLength).to.equal(5);
+        });
+
+        it("setting the attribute initially sets the minimum search string length", async () => {
+          const el = /** @type {MuchSelect} */ await fixture(
+            html`<much-select search-string-minimum-length="10"></much-select>`
+          );
+
+          expect(await el.searchStringMinimumLength).to.equal(10);
+        });
+      });
+    });
+});
+</script>
+</body>
+</html>

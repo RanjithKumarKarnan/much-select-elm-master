@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<body>
+<script type="module">
+  import { runTests } from "@web/test-runner-mocha";
+  import { expect } from "@esm-bundle/chai";
+  import { html, fixture, nextFrame } from "@open-wc/testing";
+
+  import MuchSelect from "../../dist/much-select-debug.js";
+
+  if (!customElements.get("much-select")) {
+    // Putting guard rails around this because browsers do not like
+    //  having the same custom element defined more than once.
+    window.customElements.define("much-select", MuchSelect);
+  }
+
+  runTests(() => {
+    describe("Attributes", () => {
+      describe("selected-option-goes-to-top", () => {
+        it("the default value should be false", async () => {
+          const el = /** @type {MuchSelect} */ await fixture(
+            html`<much-select></much-select>`
+          );
+          expect(await el.selectedItemStaysInPlace).to.be.true;
+        });
+
+        it("should be set on init", async () => {
+          const el = /** @type {MuchSelect} */ await fixture(
+            html`<much-select selected-option-goes-to-top></much-select>`
+          );
+          expect(await el.selectedItemStaysInPlace).to.be.false;
+        });
+
+        it("should be set on by the attribute", async () => {
+          const el = /** @type {MuchSelect} */ await fixture(
+            html`<much-select></much-select>`
+          );
+
+          el.setAttribute("selected-option-goes-to-top", "");
+          expect(await el.selectedItemStaysInPlace).to.be.false;
+        });
+
+        it("should be set off by removing the attribute", async () => {
+          const el = /** @type {MuchSelect} */ await fixture(
+            html`<much-select selected-option-goes-to-top></much-select>`
+          );
+
+          el.removeAttribute("selected-option-goes-to-top");
+          expect(await el.selectedItemStaysInPlace).to.be.true;
+        });
+      });
+    });
+  });
+</script>
+</body>
+</html>

@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<body>
+<script type="module">
+  import { runTests } from "@web/test-runner-mocha";
+  import { expect } from "@esm-bundle/chai";
+  import { html, fixture, nextFrame } from "@open-wc/testing";
+
+  import MuchSelect from "../../dist/much-select-debug.js";
+
+  if (!customElements.get("much-select")) {
+    // Putting guard rails around this because browsers do not like
+    //  having the same custom element defined more than once.
+    window.customElements.define("much-select", MuchSelect);
+  }
+
+  runTests(() => {
+    describe("Attributes", () => {
+      describe("multi-select-single-item-removal", () => {
+        it("the default value should be false", async () => {
+          const el = /** @type {MuchSelect} */ await fixture(
+            html`<much-select></much-select>`
+          );
+          expect(await el.isInMultiSelectModeWithSingleItemRemoval).to.false;
+        });
+
+        it("having the attribute preset should set it to true but not if we are in single select mode", async () => {
+          const el = /** @type {MuchSelect} */ await fixture(
+            html`<much-select multi-select-single-item-removal></much-select>`
+          );
+          expect(await el.isInMultiSelectModeWithSingleItemRemoval).to.false;
+        });
+
+        it("having the attribute preset should set it to true if we are in multi select mode", async () => {
+          const el = /** @type {MuchSelect} */ await fixture(
+            html`<much-select
+              multi-select-single-item-removal
+              multi-select
+            ></much-select>`
+          );
+          expect(await el.isInMultiSelectModeWithSingleItemRemoval).to.true;
+        });
+
+        it("changing the property should change the value if we are in multi select mode", async () => {
+          const el = /** @type {MuchSelect} */ await fixture(
+            html`<much-select
+              multi-select-single-item-removal
+              multi-select
+            ></much-select>`
+          );
+          el.isInMultiSelectModeWithSingleItemRemoval = false;
+          await nextFrame();
+          expect(await el.isInMultiSelectModeWithSingleItemRemoval).to.false;
+
+          el.isInMultiSelectModeWithSingleItemRemoval = true;
+          await nextFrame();
+          expect(await el.isInMultiSelectModeWithSingleItemRemoval).to.true;
+        });
+      });
+    });
+  });
+</script>
+</body>
+</html>

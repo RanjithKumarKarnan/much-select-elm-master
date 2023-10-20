@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<body>
+<script type="module">
+  import { runTests } from "@web/test-runner-mocha";
+  import { expect } from "@esm-bundle/chai";
+  import { html, fixture, nextFrame, waitUntil } from "@open-wc/testing";
+
+  import MuchSelect from "../../dist/much-select-debug.js";
+
+  if (!customElements.get("much-select")) {
+    // Putting guard rails around this because browsers do not like
+    //  having the same custom element defined more than once.
+    window.customElements.define("much-select", MuchSelect);
+  }
+
+  runTests(() => {
+    describe("Attributes", () => {
+      describe("multi-select", () => {
+        it("should have a default value of false", async () => {
+          const el = /** @type {MuchSelect} */ await fixture(
+            html`<much-select></much-select>`
+          );
+          await nextFrame();
+          expect(await el.isInMultiSelectMode).is.false;
+        });
+
+        it("adding the attribute should put the much select into multi select mode", async () => {
+          const el = /** @type {MuchSelect} */ await fixture(
+            html`<much-select multi-select=""></much-select>`
+          );
+          await nextFrame();
+          expect(
+            el.shadowRoot.querySelectorAll("#value-casing.multi").length
+          ).to.equal(1);
+        });
+
+        it("adding the attribute should put the much select into multi select mode even if it's not the first attribute", async () => {
+          const el = /** @type {MuchSelect} */ await fixture(
+            html`<much-select
+              size="small"
+              class=""
+              id=""
+              selected-value="milton"
+              multi-select
+            ></much-select>`
+          );
+          await nextFrame();
+          expect(
+            el.shadowRoot.querySelectorAll("#value-casing.multi").length
+          ).to.equal(1);
+        });
+
+        it("by default should render in single select mode", async () => {
+          const el = /** @type {MuchSelect} */ await fixture(
+            html`<much-select></much-select>`
+          );
+          expect(el.shadowRoot.querySelectorAll("#value-casing.single")).is.not
+            .null;
+        });
+
+        it("when adding the multi select attribute it should render in multi select mode", async () => {
+          const el = /** @type {MuchSelect} */ await fixture(
+            html`<much-select></much-select>`
+          );
+          el.setAttribute("multi-select", "");
+
+          await waitUntil(
+            async () => (await el.isInMultiSelectMode) === true,
+            "Multi select mode did not become true."
+          );
+
+          await nextFrame();
+
+          expect(el.shadowRoot.querySelector("#value-casing.multi")).is.not.null;
+        });
+
+        it("when removing the attribute it should go into single select mode", async () => {
+          const el = /** @type {MuchSelect} */ await fixture(
+            html`<much-select multi-select></much-select>`
+          );
+          el.removeAttribute("multi-select");
+
+          await nextFrame();
+
+          expect(el.shadowRoot.querySelector("#value-casing.single")).is.not.null;
+        });
+
+        it("when removing the attribute the multiSelect property on the element should change to refelct that", async () => {
+          const el = /** @type {MuchSelect} */ await fixture(
+            html`<much-select multi-select></much-select>`
+          );
+          el.removeAttribute("multi-select");
+
+          await nextFrame();
+
+          expect(await el.isInMultiSelectMode).is.false;
+        });
+      });
+    });
+  });
+</script>
+</body>
+</html>

@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<body>
+<script type="module">
+  import { runTests } from "@web/test-runner-mocha";
+  import { expect } from "@esm-bundle/chai";
+  import { html, fixture, waitUntil } from "@open-wc/testing";
+
+  import MuchSelect from "../../dist/much-select-debug.js";
+
+  if (!customElements.get("much-select")) {
+    // Putting guard rails around this because browsers do not like
+    //  having the same custom element defined more than once.
+    window.customElements.define("much-select", MuchSelect);
+  }
+
+  runTests(() => {
+    describe("Option", () => {
+      describe("api", () => {
+        it("adding options one at a time", async () => {
+          const el = /** @type {MuchSelect} */ await fixture(
+            html`<much-select></much-select>`
+          );
+
+          // Add some options
+          el.addOption("one");
+          el.addOption("two");
+          el.addOption("three");
+
+          const options = await el.getAllOptions();
+
+          expect(options).to.have.lengthOf(3);
+        });
+
+        it("adding options with some missing fields", async () => {
+          const el = /** @type {MuchSelect} */ await fixture(
+            html`<much-select></much-select>`
+          );
+
+          // Add some options
+          el.updateOptions([
+            { value: "Bears", label: "Bears", description: "Chicago" },
+            { value: "Lions", label: "Lions", description: "Detroit" },
+            { value: "Packers", label: "Packers", description: "Green Bay" },
+            { value: "Vikings", label: "Vikings", description: "Minnesota" },
+          ]);
+
+          await waitUntil(async () => {
+            const options = await el.getAllOptions();
+            return options.length === 4;
+          }, "The list of options never got to 4.");
+        });
+      });
+    });
+  });
+</script>
+</body>
+</html>

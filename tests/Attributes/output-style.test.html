@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<body>
+<script type="module">
+  import { runTests } from "@web/test-runner-mocha";
+  import { expect } from "@esm-bundle/chai";
+  import { html, fixture, nextFrame } from "@open-wc/testing";
+
+  import MuchSelect from "../../dist/much-select-debug.js";
+
+  if (!customElements.get("much-select")) {
+    // Putting guard rails around this because browsers do not like
+    //  having the same custom element defined more than once.
+    window.customElements.define("much-select", MuchSelect);
+  }
+
+  runTests(() => {
+    describe("Attributes", () => {
+      describe("output-style", () => {
+        it("the default value should be custom-html", async () => {
+          const el = /** @type {MuchSelect} */ await fixture(
+            html`<much-select></much-select>`
+          );
+          expect(await el.outputStyle).to.equal("custom-html");
+        });
+
+        it("should support datalist on init", async () => {
+          const el = /** @type {MuchSelect} */ await fixture(
+            html`<much-select output-style="datalist"></much-select>`
+          );
+          expect(await el.outputStyle).to.equal("datalist");
+        });
+
+        it("should support changing the value through the setter", async () => {
+          const el = /** @type {MuchSelect} */ await fixture(
+            html`<much-select output-style="datalist"></much-select>`
+          );
+
+          el.outputStyle = "custom-html";
+          await nextFrame();
+          expect(await el.outputStyle).to.equal("custom-html");
+        });
+      });
+    });
+  });
+</script>
+</body>
+</html>

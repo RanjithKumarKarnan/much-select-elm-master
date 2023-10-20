@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<body>
+<script type="module">
+  import { runTests } from "@web/test-runner-mocha";
+  import { expect } from "@esm-bundle/chai";
+  import { html, fixture } from "@open-wc/testing";
+
+  import MuchSelect from "../../dist/much-select-debug.js";
+
+  if (!customElements.get("much-select")) {
+    // Putting guard rails around this because browsers do not like
+    //  having the same custom element defined more than once.
+    window.customElements.define("much-select", MuchSelect);
+  }
+
+  runTests(() => {
+    describe("Attributes", () => {
+      describe("placeholder", () => {
+        it("the default value should be custom-html", async () => {
+          const el = /** @type {MuchSelect} */ await fixture(
+            html`<much-select></much-select>`
+          );
+          expect(await el.placeholder).to.equal("");
+        });
+
+        it("you should be able to set an initial placeholder with the attribute", async () => {
+          const el = /** @type {MuchSelect} */ await fixture(
+            html`<much-select placeholder="text go here"></much-select>`
+          );
+          expect(await el.placeholder).to.equal("text go here");
+        });
+
+        it("you should be add a placeholder by setting the attribute", async () => {
+          const el = /** @type {MuchSelect} */ await fixture(
+            html`<much-select></much-select>`
+          );
+
+          el.setAttribute("placeholder", "monkey");
+
+          expect(await el.placeholder).to.equal("monkey");
+        });
+
+        it("you should be change the placeholder by setting the attribute", async () => {
+          const el = /** @type {MuchSelect} */ await fixture(
+            html`<much-select placeholder="bob"</much-select>`
+          );
+
+          el.setAttribute("placeholder", "of the month");
+
+          expect(await el.placeholder).to.equal("of the month");
+        });
+
+        it("you should be change the placeholder via the setter", async () => {
+          const el = /** @type {MuchSelect} */ await fixture(
+            html`<much-select placeholder="prison"</much-select>`
+          );
+
+          el.placeholder = "jail";
+
+          expect(await el.placeholder).to.equal("jail");
+        });
+      });
+    });
+  });
+</script>
+</body>
+</html>

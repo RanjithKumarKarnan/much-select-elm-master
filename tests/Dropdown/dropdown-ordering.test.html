@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<body>
+<script type="module">
+  import { runTests } from "@web/test-runner-mocha";
+  import { expect } from "@esm-bundle/chai";
+  import { html, fixture, nextFrame, oneEvent } from "@open-wc/testing";
+
+  import MuchSelect from "../../dist/much-select-debug.js";
+
+  if (!customElements.get("much-select")) {
+    // Putting guard rails around this because browsers do not like
+    //  having the same custom element defined more than once.
+    window.customElements.define("much-select", MuchSelect);
+  }
+
+  runTests(() => {
+    describe("Dropdown", () => {
+      describe("open", () => {
+        it("when the input filter is focused on", async () => {
+          const el = /** @type {MuchSelect} */ await fixture(
+            html`<much-select></much-select>`
+          );
+
+          // Add some options
+          el.addOption("one");
+          el.addOption("two");
+          el.addOption("three");
+
+          // Focus on the input filter so the dropdown opens.
+          el.shadowRoot.querySelector("#input-filter").focus();
+
+          await nextFrame();
+
+          // Three options in the dropdown
+          expect(
+            el.shadowRoot.querySelectorAll("#dropdown .option").length
+          ).to.equal(3);
+
+          // No options selected.
+          expect(
+            el.shadowRoot.querySelectorAll("#dropdown .option.selected").length
+          ).to.equal(0);
+        });
+      });
+      describe("ordering", () => {
+        it("selecting an option should give it a selected class", async () => {
+          const el = /** @type {MuchSelect} */ await fixture(
+            html`<much-select></much-select>`
+          );
+
+          // Add some options
+          el.addOption("one");
+          el.addOption("two");
+          el.addOption("three");
+
+          el.selectOption("one");
+
+          // Make sure we wait long enough for the update to finish.
+          await oneEvent(el, "valueChanged");
+
+          // Focus on the input filter so the dropdown opens (and renders).
+          el.shadowRoot.querySelector("#input-filter").focus();
+
+          await nextFrame();
+
+          // Now 1 option should be selected
+          expect(
+            el.shadowRoot.querySelectorAll("#dropdown .option.selected").length
+          ).to.equal(1);
+        });
+
+        it("in single select mode the selected item should stay in place", async () => {
+          const el = /** @type {MuchSelect} */ await fixture(
+            html`<much-select></much-select>`
+          );
+
+          // Add some options
+          el.addOption("one");
+          el.addOption("two");
+          el.addOption("three");
+
+          el.selectOption("two");
+          // This also helps make sure we wait long enough for the update to finish.
+          await oneEvent(el, "valueChanged");
+
+          // Focus on the input filter so the dropdown opens.
+          el.shadowRoot.querySelector("#input-filter").focus();
+
+          await oneEvent(el, "muchSelectFocused");
+
+          await nextFrame();
+
+          // Ensure the selected option is in the right spot.
+          const secondOption = el.shadowRoot.querySelector(
+            "#dropdown .option:nth-child(2)"
+          );
+
+          expect(secondOption).to.have.class("selected");
+        });
+      });
+    });
+  });
+</script>
+</body>
+</html>

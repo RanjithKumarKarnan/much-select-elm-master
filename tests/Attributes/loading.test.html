@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<body>
+<script type="module">
+  import { runTests } from "@web/test-runner-mocha";
+  import { expect } from "@esm-bundle/chai";
+  import { html, fixture, nextFrame } from "@open-wc/testing";
+
+  import MuchSelect from "../../dist/much-select-debug.js";
+
+  if (!customElements.get("much-select")) {
+    // Putting guard rails around this because browsers do not like
+    //  having the same custom element defined more than once.
+    window.customElements.define("much-select", MuchSelect);
+  }
+
+  runTests(() => {
+    describe("Attributes", () => {
+      describe("loading", () => {
+        it("the default value should be false", async () => {
+          const el = /** @type {MuchSelect} */ await fixture(
+            html`<much-select></much-select>`
+          );
+          expect(await el.loading).to.be.false;
+        });
+
+        it("setting an empty attribute should set it to true", async () => {
+          const el = /** @type {MuchSelect} */ await fixture(
+            html`<much-select loading></much-select>`
+          );
+          expect(await el.loading).to.be.true;
+        });
+
+        it("removing the attribute should set it to false", async () => {
+          const el = /** @type {MuchSelect} */ await fixture(
+            html`<much-select loading></much-select>`
+          );
+          el.removeAttribute("loading");
+          await nextFrame();
+          expect(await el.loading).to.be.false;
+        });
+
+        it("using the setter should set it to true", async () => {
+          const el = /** @type {MuchSelect} */ await fixture(
+            html`<much-select></much-select>`
+          );
+          el.loading = true;
+          await nextFrame();
+          expect(await el.loading).to.be.true;
+        });
+
+        it("setting the loading attribute to the string false should keep it false", async () => {
+          const el = /** @type {MuchSelect} */ await fixture(
+            html`<much-select loading="true"></much-select>`
+          );
+          expect(await el.loading).to.be.true;
+
+          el.setAttribute("loading", "false");
+
+          expect(await el.loading).to.be.false;
+        });
+      });
+    });
+  });
+</script>
+</body>
+</html>

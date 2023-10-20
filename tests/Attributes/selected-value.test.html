@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<body>
+<script type="module">
+  import { runTests } from "@web/test-runner-mocha";
+  import { expect } from "@esm-bundle/chai";
+  import { html, fixture, oneEvent } from "@open-wc/testing";
+
+  import MuchSelect from "../../dist/much-select-debug.js";
+
+  if (!customElements.get("much-select")) {
+    // Putting guard rails around this because browsers do not like
+    //  having the same custom element defined more than once.
+    window.customElements.define("much-select", MuchSelect);
+  }
+
+  runTests(() => {
+    describe("Attributes", () => {
+      describe("comma seperated selected-value", () => {
+        it("preserver the order of the selected values if the order of the options are the same", async () => {
+          const el = /** @type {MuchSelect} */ await fixture(html` <much-select
+            multi-select
+            selected-value="red,green"
+          >
+            <select slot="select-input">
+              <option>red</option>
+              <option>green</option>
+            </select>
+          </much-select>`);
+          expect(await el.selectedValue).to.eql(["red", "green"]);
+        });
+        it("preserver the order of the selected values even if the order of the options are different", async () => {
+          const el = /** @type {MuchSelect} */ await fixture(html` <much-select
+            multi-select
+            selected-value="red,green"
+          >
+            <select slot="select-input">
+              <option>green</option>
+              <option>red</option>
+            </select>
+          </much-select>`);
+          expect(await el.selectedValue).to.eql(["red", "green"]);
+        });
+      });
+      describe("json encoded selected-value", () => {
+        it("preserver the order of the selected values if the order of the options are the same", async () => {
+          const el = /** @type {MuchSelect} */ await fixture(html` <much-select
+            multi-select
+            selected-value-encoding="json"
+            selected-value="%5B%22red%22%2C%22green%22%5D"
+          >
+            <select slot="select-input">
+              <option>red</option>
+              <option>green</option>
+            </select>
+          </much-select>`);
+          expect(await el.selectedValue).to.eql(["red", "green"]);
+        });
+        it("preserver the order of the selected values even if the order of the options are different", async () => {
+          const el = /** @type {MuchSelect} */ await fixture(html`<much-select
+            multi-select
+            selected-value-encoding="json"
+            selected-value="%5B%22red%22%2C%22green%22%5D"
+          >
+            <select slot="select-input">
+              <option>green</option>
+              <option>red</option>
+            </select>
+          </much-select>`);
+          expect(await el.selectedValue).to.eql(["red", "green"]);
+        });
+
+        it("can decode a selected value that's a string of IDs", async () => {
+          const el = /** @type {MuchSelect} */ await fixture(html`<much-select
+            multi-select
+            selected-value-encoding="json"
+            selected-value="%5B%22211107950%22%5D"
+          >
+            <select slot="select-input"></select>
+          </much-select>`);
+
+          // The selected value should be set.
+          expect(await el.selectedValue).to.eql(["211107950"]);
+
+          // There should be 1 option, the selected value.
+          expect(await el.getAllOptions()).to.eql([
+            {
+              value: "211107950",
+              description: "",
+              descriptionClean: "",
+              group: "",
+              label: "211107950",
+              labelClean: "211107950",
+              isSelected: true,
+            },
+          ]);
+        });
+
+        it("can decode a selected value that's a string of IDs then support updating the DOM with additional option details", async () => {
+          const el = /** @type {MuchSelect} */ await fixture(html`<much-select
+            multi-select
+            selected-value-encoding="json"
+            selected-value="%5B%22211107950%22%5D"
+          >
+            <select slot="select-input"></select>
+          </much-select>`);
+
+          const selectEl = el.querySelector("select");
+
+          selectEl.innerHTML =
+            "<option value='211107950'>Hello</option><option value='5'>You</option>";
+
+          // Make sure we wait long enough for the update to finish.
+          await oneEvent(el, "optionsUpdated");
+
+          // Now there should be 2 options including the selected value, and the selected value should have a label now.
+          expect(await el.getAllOptions()).to.eql([
+            {
+              value: "211107950",
+              description: "",
+              descriptionClean: "",
+              group: "",
+              label: "Hello",
+              labelClean: "hello",
+              isSelected: true,
+            },
+            {
+              value: "5",
+              description: "",
+              descriptionClean: "",
+              group: "",
+              label: "You",
+              labelClean: "you",
+              isSelected: false,
+            },
+          ]);
+        });
+
+        it("works in multi select mode with an empty array", async () => {
+          const el = /** @type {MuchSelect} */ await fixture(html`<much-select
+            multi-select
+            selected-value-encoding="json"
+            selected-value="%5B%5D"
+          >
+          </much-select>`);
+
+          // The parsed selected value should be an empty array.
+          expect(await el.selectedValue).to.eql([]);
+        });
+
+        it("works in select mode with an empty selected value", async () => {
+          const el = /** @type {MuchSelect} */ await fixture(html`<much-select
+            selected-value-encoding="json"
+            selected-value="%22%22"
+          >
+          </much-select>`);
+
+          // The selected value should be an empty string.
+          expect(await el.selectedValue).to.equal("");
+        });
+      });
+    });
+  });
+</script>
+</body>
+</html>

@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<body>
+<script type="module">
+  import { runTests } from "@web/test-runner-mocha";
+  import { expect } from "@esm-bundle/chai";
+  import { html, fixture, nextFrame, waitUntil } from "@open-wc/testing";
+
+  import MuchSelect from "../../dist/much-select-debug.js";
+
+  if (!customElements.get("much-select")) {
+    // Putting guard rails around this because browsers do not like
+    //  having the same custom element defined more than once.
+    window.customElements.define("much-select", MuchSelect);
+  }
+
+  runTests(() => {
+    describe("Attributes", () => {
+      describe("events-only", () => {
+        it("adding the attribute should put the much-select events only mode", async () => {
+          const el = /** @type {MuchSelect} */ await fixture(
+            html`<much-select></much-select>`
+          );
+          expect(await el.eventsOnlyMode).to.be.false;
+
+          el.setAttribute("events-only", "");
+          await nextFrame();
+          expect(await el.eventsOnlyMode).to.be.true;
+
+          el.removeAttribute("events-only");
+          await nextFrame();
+          expect(await el.eventsOnlyMode).to.be.false;
+        });
+
+        it("should prevent the select-value attribute from automatically updating", async () => {
+          const el = /** @type {MuchSelect} */ await fixture(html` <much-select
+            events-only=""
+            selected-value="air"
+          >
+            <select slot="select-input">
+              <option>air</option>
+              <option>fire</option>
+              <option>water</option>
+            </select>
+          </much-select>`);
+
+          expect(await el.selectedValue).to.equal("air");
+
+          el.selectedValue = "water";
+
+          // The "internal" value should change
+          await waitUntil(async () => (await el.selectedValue) === "water");
+
+          // The light dom should still reflect the old value.
+          expect(el.getAttribute("selected-value")).to.equal("air");
+        });
+
+        it("should support setting the property directly on the element", async () => {
+          const el = /** @type {MuchSelect} */ await fixture(html` <much-select>
+            <select slot="select-input">
+              <option>air</option>
+              <option>fire</option>
+              <option>water</option>
+            </select>
+          </much-select>`);
+
+          el.eventsOnlyMode = true;
+
+          // eslint-disable-next-line no-return-await
+          await waitUntil(async () => await el.eventsOnlyMode);
+
+          el.eventsOnlyMode = false;
+
+          // eslint-disable-next-line no-return-await
+          await waitUntil(async () => !(await el.eventsOnlyMode));
+        });
+      });
+    });
+  });
+</script>
+</body>
+</html>

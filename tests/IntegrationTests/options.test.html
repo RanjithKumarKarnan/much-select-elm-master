@@ -1,0 +1,66 @@
+<html lang="en">
+<body>
+
+<script type="module">
+  import { runTests } from "@web/test-runner-mocha";
+  import { expect } from "@esm-bundle/chai";
+  import { html, fixture, nextFrame } from "@open-wc/testing";
+
+  import MuchSelect from "../../dist/much-select-debug.js";
+
+  if (!customElements.get("much-select")) {
+    // Putting guard rails around this because browsers do not like
+    //  having the same custom element defined more than once.
+    window.customElements.define("much-select", MuchSelect);
+  }
+
+  runTests(() => {
+    describe("Options", () => {
+      describe("single selection mode", () => {
+        it("creates an option if a value is set", async () => {
+          const el = /** @type {MuchSelect} */ await fixture(
+            html`<much-select selected-value="table"></much-select>`
+          );
+          expect(await el.selectedValue).to.equal("table");
+          expect(
+            el.shadowRoot.querySelector("#selected-value").innerHTML
+          ).to.equal("table");
+        });
+
+        it("creates an option if a value is set", async () => {
+          const el = /** @type {MuchSelect} */ await fixture(
+            html`<much-select selected-value=""></much-select>`
+          );
+          expect(await el.selectedValue).to.equal("");
+        });
+
+        it("the selected value should be an empty string if no attribute for selected-value is present", async () => {
+          const el = /** @type {MuchSelect} */ await fixture(
+            html`<much-select></much-select>`
+          );
+          expect(await el.selectedValue).to.equal("");
+        });
+      });
+      describe("multi selection mode", () => {
+        it("creates an option if a value is set", async () => {
+          const el = /** @type {MuchSelect} */ await fixture(
+            html`<much-select
+              multi-select=""
+              selected-value="table"
+            ></much-select>`
+          );
+          expect(await el.selectedValue).to.deep.equal(["table"]);
+
+          await nextFrame();
+
+          expect(el.shadowRoot.querySelectorAll(".value")[0].innerHTML).to.equal(
+            '<span class="value-label">table</span>'
+          );
+          expect(el.shadowRoot.querySelectorAll(".value").length).to.equal(1);
+        });
+      });
+    });
+  });
+</script>
+</body>
+</html>
