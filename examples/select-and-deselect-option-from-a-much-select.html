@@ -1,0 +1,39 @@
+<div id="select-and-deselect-option-from-a-much-select" >
+  <h3>Use <code>selectOption</code> and <code>deselectOption</code> to change the value</h3>
+  <p>Clicking on a button should remove it from the list of options.</p>
+  <button id="select-rock">Select Rock</button>
+  <button id="deselect-rock">Deselect Rock</button>
+  <button id="select-folk">Select Folk</button>
+  <button id="deselect-folk">Deselect Folk</button>
+  <much-select>
+    <select slot="select-input">
+      <option>Metal</option>
+      <option>Rock</option>
+      <option>Rap</option>
+      <option>Country</option>
+      <option>Folk</option>
+    </select>
+  </much-select>
+  <script>
+    document.querySelector("#select-rock").addEventListener("click", () => {
+      document
+        .querySelector("#select-and-deselect-option-from-a-much-select much-select")
+        .selectOption("Rock");
+    });
+    document.querySelector("#deselect-rock").addEventListener("click", () => {
+      document
+        .querySelector("#select-and-deselect-option-from-a-much-select much-select")
+        .deselectOption("Rock");
+    });
+    document.querySelector("#select-folk").addEventListener("click", () => {
+      document
+        .querySelector("#select-and-deselect-option-from-a-much-select much-select")
+        .selectOption("Folk");
+    });
+    document.querySelector("#deselect-folk").addEventListener("click", () => {
+      document
+        .querySelector("#select-and-deselect-option-from-a-much-select much-select")
+        .deselectOption("Folk");
+    });
+  </script>
+</div>

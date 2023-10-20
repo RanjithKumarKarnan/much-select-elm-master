@@ -1,0 +1,80 @@
+<div id="validation-and-transformation-slot">
+  <h3>Validation and Transformation Slot</h3>
+
+  <much-select allow-custom-options output-style="datalist">
+    <script type="application/json" slot="transformation-validation">
+      {
+        "transformers": [
+          {
+            "name": "lowercase"
+          }
+        ],
+        "validators": [
+          {
+            "name": "no-white-space",
+            "level": "error",
+            "message": "Spaces are not allow for custom fruit."
+          },
+          {
+            "name": "minimum-length",
+            "level": "silent",
+            "minimum-length": 3,
+            "message": "The minimum length is 3."
+          }
+        ]
+      }
+    </script>
+    <select slot="select-input">
+      <option>Achacha</option>
+      <option>Ackee</option>
+      <option>Aglaia teysmanniana</option>
+      <option>Asam gelugur</option>
+      <option>Asam kelubi</option>
+      <option>Bacuri</option>
+      <option>Bemange</option>
+      <option>Black apple</option>
+      <option>Blue tongue</option>
+      <option>Boquila</option>
+      <option>Burmese grape</option>
+      <option>Button mangosteen</option>
+      <option>Cacao</option>
+      <option>Charichuelo</option>
+      <option>Chocolate vine fruit</option>
+      <option>Copperleaf snowberry</option>
+      <option>Courbaril</option>
+      <option>Cupuaçu</option>
+      <option>Durian</option>
+      <option>Durio oxleyanus</option>
+      <option>Eastern teaberry</option>
+      <option>Gấc</option>
+      <option>Gamboge</option>
+      <option>Garcinia cambogia</option>
+      <option>Garcinia forbesii</option>
+      <option>Garcinia magnifolia</option>
+      <option>Garcinia pseudoguttifera</option>
+      <option>Jentik</option>
+      <option>Keluak</option>
+      <option>Kokum</option>
+      <option>Kola nut</option>
+      <option>Kundong</option>
+      <option>Lardizabala</option>
+      <option>Lemon drop mangosteen</option>
+      <option>Luóhàn guǒ</option>
+      <option>Mangosteen</option>
+      <option>Menteng</option>
+      <option>Mountain snowberry</option>
+      <option>Mundu</option>
+      <option>Pawpaw</option>
+      <option>Red salak</option>
+      <option>Salak</option>
+      <option>Santol</option>
+      <option>Small-leaved tamarind</option>
+      <option>Spanish tamarind</option>
+      <option>Toad tree fruit</option>
+      <option>Trichosanthes beccariana</option>
+      <option>Vanilla</option>
+      <option>Yantok</option>
+    </select>
+  </much-select>
+
+</div>

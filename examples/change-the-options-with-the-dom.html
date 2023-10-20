@@ -1,0 +1,24 @@
+<div>
+  <h3>Change Options With the Dom</h3>
+  <button id="change-the-dom">Click me to change the dom</button>
+  <much-select id="change-the-dom-much-select">
+    <select id="change-the-dom-select" slot="select-input">
+      <option value="1">These</option>
+      <option value="2">are</option>
+      <option value="3" data-description="initial options">the</option>
+      <option value="4" data-description="them by changing the dom">Replace</option>
+    </select>
+  </much-select>
+  <script>
+    document.getElementById("change-the-dom").addEventListener("click", () => {
+      document.getElementById("change-the-dom-much-select").innerHTML = `
+          <select id="change-the-dom-select" slot="select-input">
+            <option value="100">New</option>
+            <option value="200">options</option>
+            <option value="3" data-description="here">are</option>
+            <option value="4">Hurray!</option>
+          </select>
+        `;
+    });
+  </script>
+</div>

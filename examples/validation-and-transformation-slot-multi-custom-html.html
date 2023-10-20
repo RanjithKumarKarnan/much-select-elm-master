@@ -1,0 +1,126 @@
+<!--suppress HtmlFormInputWithoutLabel -->
+<div id="validation-and-transformation-slot-multi-custom">
+  <h3>Validation and Transformation Slot</h3>
+  <h4>For Multi Select and Custom Options.</h4>
+  <p>Custom options should be transformed and validated.</p>
+  <p>The custom values should be turned to lower case.</p>
+  <p>It should only allow custom options that have no white space and are at least 3 characters long.</p>
+  <p>
+
+  </p>
+  <much-select allow-custom-options multi-select>
+    <script type="application/json" slot="transformation-validation">
+      {
+        "transformers": [
+          {
+            "name": "lowercase"
+          }
+        ],
+        "validators": [
+          {
+            "name": "no-white-space",
+            "level": "silent",
+            "message": "Spaces are not allow for custom fruit."
+          },
+          {
+            "name": "minimum-length",
+            "level": "silent",
+            "minimum-length": 3,
+            "message": "The minimum length is 3."
+          }
+        ]
+      }
+    </script>
+    <select slot="select-input">
+      <option>African custard-apple</option>
+      <option>American beautyberry</option>
+      <option>American red raspberry</option>
+      <option>Annona aurantiaca</option>
+      <option>Annona conica</option>
+      <option>Annona coriacea</option>
+      <option>Annona cornifolia</option>
+      <option>Annona jahnii</option>
+      <option>Annona longiflora</option>
+      <option>Annona nutans</option>
+      <option>Annona paludosa</option>
+      <option>Annona stenophylla</option>
+      <option>Annonilla</option>
+      <option>Araticum-cagão</option>
+      <option>Aratincum do Para</option>
+      <option>Arctic raspberry</option>
+      <option>Armenian blackberry</option>
+      <option>Atemoya</option>
+      <option>Atherton raspberry</option>
+      <option>Balloon berry</option>
+      <option>Beach strawberry</option>
+      <option>Beach sugar apple</option>
+      <option>Biribá</option>
+      <option>Black mulberry</option>
+      <option>Black raspberry</option>
+      <option>Blackberry</option>
+      <option>Boysenberry</option>
+      <option>California blackberry</option>
+      <option>Cawesh</option>
+      <option>Cherimoya</option>
+      <option>Chinese bramble berry</option>
+      <option>Cloudberry</option>
+      <option>Creeping raspberry</option>
+      <option>Cudrang</option>
+      <option>Custard apple</option>
+      <option>Cutleaf evergreen blackberry</option>
+      <option>Delicious raspberry</option>
+      <option>Dewberry</option>
+      <option>Dwarf red blackberry</option>
+      <option>Elephant apple</option>
+      <option>Elmleaf blackberry</option>
+      <option>Emu berry</option>
+      <option>European dewberry</option>
+      <option>European red raspberry</option>
+      <option>Five-leaved bramble berry</option>
+      <option>Garden dewberry</option>
+      <option>Golden Himalayan raspberry</option>
+      <option>Gummy Bear Fruit</option>
+      <option>Hawaiian raspberry</option>
+      <option>Ilama</option>
+      <option>Japanese bramble berry</option>
+      <option>Korean blackberry</option>
+      <option>Korean raspberry</option>
+      <option>Kousa dogwood fruit</option>
+      <option>Loganberry</option>
+      <option>Marolo</option>
+      <option>Mock strawberry</option>
+      <option>Molucca bramble berry</option>
+      <option>Mora común</option>
+      <option>Mora de Castilla</option>
+      <option>Mountain raspberry</option>
+      <option>Mountain soursop</option>
+      <option>Mysore raspberry</option>
+      <option>Nepalese raspberry</option>
+      <option>Pennsylvania blackberry</option>
+      <option>Pond apple</option>
+      <option>Purple-flowered raspberry</option>
+      <option>Red mulberry</option>
+      <option>Rose hip</option>
+      <option>Roseleaf bramble berry</option>
+      <option>Salmonberry</option>
+      <option>Sawtooth blackberry</option>
+      <option>Smooth blackberry</option>
+      <option>Snow raspberry</option>
+      <option>Soncoya</option>
+      <option>Soursop</option>
+      <option>Stone bramble berry</option>
+      <option>Strawberry</option>
+      <option>Sugar-apple</option>
+      <option>Tayberry</option>
+      <option>Thimbleberry</option>
+      <option>White bark raspberry</option>
+      <option>White mulberry</option>
+      <option>White-stemmed bramble</option>
+      <option>Wild cherimoya</option>
+      <option>Wild strawberry</option>
+      <option>Wineberry</option>
+      <option>Youngberry</option>
+    </select>
+  </much-select>
+
+</div>

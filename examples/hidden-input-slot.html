@@ -1,0 +1,24 @@
+<div>
+  <h3>Hidden Input</h3>
+  <p>
+    If you want to use a much select in a traditional HTML form you can use the <code>hidden-value-input</code> slot. If you put a hidden input in that slot, it's value will mirror that of the much-select.
+  </p>
+  <p>
+    You can use your browser's developer tools to see the hidden input and watch its value change as you change the much-select's value.
+  </p>
+  <much-select>
+    <select slot="select-input">
+      <option>Alberta</option>
+      <option>British Columbia</option>
+      <option>Manitoba</option>
+      <option>New Brunswick</option>
+      <option>Newfoundland and Labrador</option>
+      <option>Nova Scotia</option>
+      <option>Ontario</option>
+      <option>Prince Edward Island</option>
+      <option>Quebec</option>
+      <option>Saskatchewan</option>
+    </select>
+    <input slot="hidden-value-input" type="hidden" name="my-special-value">
+  </much-select>
+</div>

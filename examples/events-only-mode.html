@@ -1,0 +1,18 @@
+<div id="events-only-mode">
+  <h3>Events Only Mode</h3>
+  <p>
+    The <code>events-only=""</code> attribute is a little specialized, it
+    is for when you are in a situation where something else <em>really</em>
+    wants to have full control over the DOM. Elm would an example of this. In
+    this case, we only want the <code>much-select</code> element to emmit events
+    and leave it up to "something else" to managed its attributes.
+  </p>
+  <much-select events-only="" selected-value="central">
+    <select slot="select-input">
+      <option value="Eastern">Eastern</option>
+      <option value="central">Central</option>
+      <option value="mountain">Mountain</option>
+      <option value="western">Western</option>
+    </select>
+  </much-select>
+</div>

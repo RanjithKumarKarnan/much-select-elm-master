@@ -1,0 +1,54 @@
+<div id="datalist-multi-select-selected-values-toggle-selected-values">
+  <h3>Preselected values in a Datalist with Multi Select</h3>
+  <p>Use the selected-values attribute, and have a JSON encode <code>selected-value=</code> attribute.</p>
+
+  <button class="toggle-select" data-toggle-value="The Lone Ranger">Toggle The Lone Ranger</button>
+
+  <button class="toggle-select" data-toggle-value="Vikings">Toggle Vikings</button>
+
+  <button class="toggle-select" data-toggle-value="Lord Business">Toggle Lord Business</button>
+
+  <much-select output-style="datalist" multi-select selected-value-encoding="json" selected-value="%5B%22Pirates%22%2C%22Ultra%20Agents%22%5D">
+    <select slot="select-input">
+      <option>Bionicle</option>
+      <option>Pirates</option>
+      <option>The Lone Ranger</option>
+      <option>Exo-Force</option>
+      <option>Ultra Agents</option>
+      <option>Vikings</option>
+      <option>Elves</option>
+    </select>
+  </much-select>
+
+  <script>
+    const exampleDiv = document.getElementById(
+      "datalist-multi-select-selected-values-toggle-selected-values"
+    );
+    exampleDiv.querySelectorAll(".toggle-select").forEach((button) => {
+      button.addEventListener("click", (event) => {
+        const muchSelect = exampleDiv.querySelector("much-select");
+
+        const valueToToggle = event.target.dataset.toggleValue;
+
+        muchSelect.getSelectedValues().then((selectedValues) => {
+          let newSelectedValues = selectedValues;
+
+          if (selectedValues.includes(valueToToggle)) {
+            // deselect the value
+            newSelectedValues = selectedValues.filter((v) => v !== valueToToggle);
+          } else {
+            // select the value
+            newSelectedValues = selectedValues.concat([valueToToggle]);
+          }
+
+          const selectedValueEncodedString = encodeURIComponent(
+            JSON.stringify(newSelectedValues)
+          );
+
+          muchSelect.setAttribute("selected-value", selectedValueEncodedString);
+        });
+      });
+    });
+  </script>
+
+</div>

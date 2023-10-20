@@ -1,0 +1,60 @@
+<!--suppress HtmlFormInputWithoutLabel -->
+<div id="validation-and-transformation-slot-custom-validation">
+  <h3>Custom Validation</h3>
+  <p>
+    No milk
+  </p>
+  <much-select multi-select output-style="datalist">
+    <script type="application/json" slot="transformation-validation">
+      {
+        "transformers": [],
+        "validators": [
+          {
+            "name": "custom"
+          }
+        ]
+      }
+    </script>
+    <script type="application/json" slot="custom-validation-result">
+    </script>
+    <select slot="select-input">
+      <option>African locust bean</option>
+      <option>Bilimbi</option>
+      <option>Carob</option>
+      <option>Ice-cream bean</option>
+      <option>Monkeypod</option>
+      <option>Tamarind</option>
+      <option>Zig-zag vine fruit</option>
+    </select>
+  </much-select>
+
+  <script>
+    const example = document.getElementById(
+      "validation-and-transformation-slot-custom-validation"
+    );
+    const muchSelect = example.querySelector("much-select");
+    muchSelect.addEventListener("customValidateRequest", (event) => {
+      const { stringToValidate, selectedValueIndex } = event.detail;
+      let result;
+      if (stringToValidate === "milk") {
+        result = {
+          isValid: false,
+          value: stringToValidate,
+          selectedValueIndex,
+          errorMessages: [{ errorMessage: "No milk!", level: "error" }],
+        };
+      } else {
+        result = {
+          isValid: true,
+          value: stringToValidate,
+          selectedValueIndex,
+        };
+      }
+      const customValidationResultSlot = muchSelect.querySelector(
+        "[slot='custom-validation-result']"
+      );
+      customValidationResultSlot.innerText = JSON.stringify(result);
+    });
+  </script>
+
+</div>

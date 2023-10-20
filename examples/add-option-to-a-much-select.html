@@ -1,0 +1,20 @@
+<div id="add-option-to-a-much-select" >
+  <h3>Use <code>addOption</code> to add a random value</h3>
+  <p>Click the button to add a random option. And then click it again.</p>
+  <button>Add an Option</button>
+  <much-select></much-select>
+  <script>
+    function getRandomInt(min, max) {
+      const minCeil = Math.ceil(min);
+      const maxFloor = Math.floor(max);
+      return Math.floor(Math.random() * (maxFloor - minCeil) + maxFloor); // The maximum is exclusive and the minimum is inclusive
+    }
+    document
+      .querySelector("#add-option-to-a-much-select button")
+      .addEventListener("click", () => {
+        document
+          .querySelector("#add-option-to-a-much-select much-select")
+          .addOption({ value: getRandomInt(1000, 5000) });
+      });
+  </script>
+</div>

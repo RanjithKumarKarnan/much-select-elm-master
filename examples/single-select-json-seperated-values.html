@@ -1,0 +1,29 @@
+<div id="single-select-json-seperated-values">
+  <h3>JSON Encoded Selected Values (for a Single Select)</h3>
+  <p>
+    This might be less common but you can use <code>selected-value-encoding="json"</code> in single select mode.
+  </p>
+  <p>In this case the selected value looks like <code>selected-value="%22Loach%22"</code></p>
+  <p>Which is a URL Encoded JSON string.</p>
+  <p>
+    <code>
+      "Loach"
+    </code>
+  </p>
+  <much-select selected-value-encoding="json" selected-value="%22Loach%22" allow-custom-options>
+    <select slot="select-input">
+      <option>Koi</option>
+      <option>Loach</option>
+      <option>Marlin</option>
+      <option>Notothen</option>
+    </select>
+  </much-select>
+
+  <script>
+    document
+      .querySelector("#single-select-json-seperated-values much-select")
+      .addEventListener("selected-value", (e) => {
+        console.log(e);
+      });
+  </script>
+</div>

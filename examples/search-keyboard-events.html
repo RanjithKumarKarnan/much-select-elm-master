@@ -1,0 +1,45 @@
+<div id="search-keyboard-events">
+  <h3>Search/Filter Keyboard Events</h3>
+  <much-select>
+    <select slot="select-input">
+      <option>Frodo</option>
+      <option>Sam</option>
+      <option>Merry</option>
+      <option>Pippin</option>
+    </select>
+  </much-select>
+  <p>
+    Key Press Events:
+  </p>
+  <table id="search-keyboard-events-log">
+    <thead>
+    <tr>
+      <th>Event</th>
+      <th>Details</th>
+    </tr>
+    </thead>
+    <tbody>
+    </tbody>
+  </table>
+
+  <script>
+    window.addEventListener("load", () => {
+      document
+        .querySelector("#search-keyboard-events much-select")
+        .addEventListener(
+          "inputKeyUp",
+          // eslint-disable-next-line no-undef
+          makeLogEventHandler("search-keyboard-events-log")
+        );
+    });
+    window.addEventListener("load", () => {
+      document
+        .querySelector("#search-keyboard-events much-select")
+        .addEventListener(
+          "inputKeyUpDebounced",
+          // eslint-disable-next-line no-undef
+          makeLogEventHandler("search-keyboard-events-log")
+        );
+    });
+  </script>
+</div>

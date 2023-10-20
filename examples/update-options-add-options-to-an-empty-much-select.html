@@ -1,0 +1,22 @@
+<div id="update-options-add-options-to-an-empty-much-select">
+  <h3><code>updateOptions</code></h3>
+  <p>Here we have <code>much-select</code> with no options, click the button to add some options.</p>
+  <button>Update the Options</button>
+  <much-select></much-select>
+  <script>
+    document
+      .querySelector("#update-options-add-options-to-an-empty-much-select button")
+      .addEventListener("click", () => {
+        document
+          .querySelector(
+            "#update-options-add-options-to-an-empty-much-select much-select"
+          )
+          .updateOptions([
+            { value: "Bears", label: "Bears", description: "Chicago" },
+            { value: "Lions", label: "Lions", description: "Detroit" },
+            { value: "Packers", label: "Packers", description: "Green Bay" },
+            { value: "Vikings", label: "Vikings", description: "Minnesota" },
+          ]);
+      });
+  </script>
+</div>

@@ -1,0 +1,25 @@
+<div id="add-and-remove-button-slots">
+  <h3>Add and Remove Button Slots</h3>
+  <p>For the datalist output-stype in mulit select mode there are add and remove
+    buttons next to each selected option. Those can be changed with the
+    <code>add-value-button-n</code> and <code>remove-value-button-n</code> slots.
+    <code>n</code> is the index of the selected option. Slots can only be used once
+    so this is kind of an ugly hack. You could either add a ton of slots... or
+    manage then dynamically... or well... there really should be a better solution.
+  </p>
+  <much-select output-style="datalist" multi-select>
+    <select slot="select-input">
+      <option>Monday</option>
+      <option selected>Tuesday</option>
+      <option>Wednesday</option>
+      <option>Thursday</option>
+      <option selected>Friday</option>
+      <option>Saturday</option>
+      <option>Sunday</option>
+    </select>
+    <span slot="add-value-button-0">➕</span>
+    <span slot="remove-value-button-0">🗑</span>
+    <span slot="add-value-button-1"><button>moar</button></span>
+    <span slot="remove-value-button-1"><button>less</button></span>
+  </much-select>
+</div>

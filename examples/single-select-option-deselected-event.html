@@ -1,0 +1,39 @@
+<div id="single-select-option-deselected-event">
+  <h3>Single Select - <code>optionDeselected</code> Event</h3>
+  <much-select>
+    <select slot="select-input">
+      <option value="4_99">String Beans</option>
+      <option value="5_99">Lima Beans</option>
+      <option value="1_08">White Beans</option>
+      <option value="3_92">Red Beans</option>
+    </select>
+  </much-select>
+
+  <p>
+    Events:
+  </p>
+  <table id="single-select-option-deselected-event-log">
+    <thead>
+    <tr>
+      <th>Event</th>
+      <th>Details</th>
+    </tr>
+    </thead>
+    <tbody>
+    </tbody>
+  </table>
+
+
+  <script>
+    window.addEventListener("load", () => {
+      document
+        .querySelector("#single-select-option-deselected-event much-select")
+        .addEventListener(
+          "optionDeselected",
+          // eslint-disable-next-line no-undef
+          makeLogEventHandler("single-select-option-deselected-event-log")
+        );
+    });
+  </script>
+
+</div>

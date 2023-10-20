@@ -1,0 +1,18 @@
+<div>
+  <h3>Maximum Number of Dropdown Items</h3>
+  <p>You can change the maximum number of items in the dropdown with the <code>max-dropdown-items=</code> attribute.</p>
+
+  <p>In this case it's set to 3, you can get to the remaining options by move your selection up and down with the
+    arrow keys for filtering the options. To demonstrate why you might want to use this option we also have the
+    following attributes set: <code>search-string-minimum-length="0" show-dropdown-footer=""</code>.
+  </p>
+  <much-select max-dropdown-items="3" search-string-minimum-length="0" show-dropdown-footer="">
+    <select slot="select-input">
+      <option value="1" data-description="1">一</option>
+      <option value="2" data-description="2">二</option>
+      <option value="3" data-description="3">三</option>
+      <option value="4" data-description="4">四</option>
+      <option value="5" data-description="5">五</option>
+    </select>
+  </much-select>
+</div>

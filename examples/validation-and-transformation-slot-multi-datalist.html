@@ -1,0 +1,44 @@
+<!--suppress HtmlFormInputWithoutLabel -->
+<div id="validation-and-transformation-slot">
+  <h3>Validation and Transformation Slot</h3>
+  <h4>For Multi Select with the Datalist Output Style</h4>
+
+  <p>Custom options should be transformed and validated.</p>
+  <p>The custom values should be turned to lower case.</p>
+  <p>It should only allow custom options that have no white space and are at least 3 characters long.</p>
+
+  <much-select multi-select output-style="datalist">
+    <script type="application/json" slot="transformation-validation">
+      {
+        "transformers": [
+          {
+            "name": "lowercase"
+          }
+        ],
+        "validators": [
+          {
+            "name": "no-white-space",
+            "level": "error",
+            "message": "Spaces are not allow for custom fruit."
+          },
+          {
+            "name": "minimum-length",
+            "level": "error",
+            "minimum-length": 3,
+            "message": "The minimum length is 3."
+          }
+        ]
+      }
+    </script>
+    <select slot="select-input">
+      <option>African locust bean</option>
+      <option>Bilimbi</option>
+      <option>Carob</option>
+      <option>Ice-cream bean</option>
+      <option>Monkeypod</option>
+      <option>Tamarind</option>
+      <option>Zig-zag vine fruit</option>
+    </select>
+  </much-select>
+
+</div>

@@ -1,0 +1,37 @@
+<div id="not-empty-single-select-value-changed-example">
+  <h3>Add Custom Options (or select from the existing options)</h3>
+  <p>
+    If we type in an option that matches an existing option is should <em>not</em>
+    show the option to add a custom option.
+  </p>
+  <much-select allow-custom-options>
+    <!--suppress HtmlFormInputWithoutLabel -->
+    <select slot="select-input">
+      <option>Flashlight</option>
+      <option>Lantern</option>
+      <option>Candle</option>
+    </select>
+  </much-select>
+  <p>Events:</p>
+  <table id="not-empty-single-select-custom-option-event-log">
+    <thead>
+    <tr>
+      <th>Event</th>
+      <th>Details</th>
+    </tr>
+    </thead>
+    <tbody>
+    </tbody>
+  </table>
+  <script>
+    window.addEventListener("load", () => {
+      document
+        .querySelector("#not-empty-single-select-value-changed-example much-select")
+        .addEventListener(
+          "customValueSelected",
+          // eslint-disable-next-line
+          makeLogEventHandler("not-empty-single-select-custom-option-event-log")
+        );
+    });
+  </script>
+</div>

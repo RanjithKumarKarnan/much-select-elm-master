@@ -1,0 +1,21 @@
+<div id="multi-select-json-seperated-values">
+  <h3>JSON Encoded Selected Values</h3>
+  <p>
+    In this example we've added the <code>selected-value-encoding="json"</code> attribute. This means that the <code>selected-value=</code> attribute is expected to be in JSON that has <em>also</em> been URI encoded with <code>encodeURIComponent()</code> (or something else that does the same job).
+  </p>
+  <p>In this case the selected value looks like <code>selected-value="%5B%22Hoki%22%2C%22Gibberfish%22%5D"</code></p>
+  <p>Which is a URL Encoded JSON array that is just a list of strings.</p>
+  <p>
+    <code>
+      ["Hoki","Gibberfish"]
+    </code>
+  </p>
+  <much-select multi-select="true" selected-value="%5B%22Hoki%22%2C%22Gibberfish%22%5D" selected-value-encoding="json" allow-custom-options>
+    <select slot="select-input">
+      <option>Gibberfish</option>
+      <option>Hoki</option>
+      <option>Ide</option>
+      <option>Jawfish</option>
+    </select>
+  </much-select>
+</div>

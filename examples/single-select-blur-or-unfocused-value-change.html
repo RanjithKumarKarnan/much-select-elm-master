@@ -1,0 +1,39 @@
+<div id="single-select-blur-or-unfocused-value-change">
+  <h3>Single Select - <code>blurOrUnfocusedValueChanged</code> Event</h3>
+  <much-select>
+    <select slot="select-input">
+      <option value="111">Grass Pea</option>
+      <option value="222">Velvet Bean</option>
+      <option value="333">Sword Bean</option>
+      <option value="444">Soybean</option>
+    </select>
+  </much-select>
+
+  <p>
+    Events:
+  </p>
+  <table id="single-select-blur-or-unfocused-value-change-event-log">
+    <thead>
+    <tr>
+      <th>Event</th>
+      <th>Details</th>
+    </tr>
+    </thead>
+    <tbody>
+    </tbody>
+  </table>
+
+  <script>
+    window.addEventListener("load", () => {
+      document
+        .querySelector("#single-select-blur-or-unfocused-value-change much-select")
+        .addEventListener(
+          "blurOrUnfocusedValueChanged",
+          // eslint-disable-next-line no-undef
+          makeLogEventHandler(
+            "single-select-blur-or-unfocused-value-change-event-log"
+          )
+        );
+    });
+  </script>
+</div>

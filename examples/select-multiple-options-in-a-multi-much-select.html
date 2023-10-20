@@ -1,0 +1,41 @@
+<div id="select-multiple-options-in-a-multi-much-select">
+  <h3>Use <code>selectOption</code> to select multiple values to multi select.</h3>
+  <p>Clicking on a button should add them to the selected options.</p>
+  <button id="select-basketball">Basketball</button>
+  <button id="select-baseball">Baseball</button>
+  <button id="select-football">Football</button>
+  <much-select multi-select>
+    <select slot="select-input">
+      <option>Basketball</option>
+      <option>Baseball</option>
+      <option>Football</option>
+      <option>Hockey</option>
+      <option>Soccer</option>
+    </select>
+  </much-select>
+  <script>
+    document.querySelector("#select-basketball").addEventListener("click", () => {
+      document
+        .querySelector(
+          "#select-multiple-options-in-a-multi-much-select much-select"
+        )
+        .selectOption("Basketball");
+    });
+
+    document.querySelector("#select-baseball").addEventListener("click", () => {
+      document
+        .querySelector(
+          "#select-multiple-options-in-a-multi-much-select much-select"
+        )
+        .selectOption("Baseball");
+    });
+
+    document.querySelector("#select-football").addEventListener("click", () => {
+      document
+        .querySelector(
+          "#select-multiple-options-in-a-multi-much-select much-select"
+        )
+        .selectOption("Football");
+    });
+  </script>
+</div>

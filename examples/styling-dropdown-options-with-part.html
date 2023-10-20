@@ -1,0 +1,86 @@
+<div id="styling-dropdown-options-with-part">
+
+  <h3>Styling Dropdown Options With Part</h3>
+  <p>
+    Much Selects can be styled with "external" CSS using the <code>::part</code>
+    selector. It <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/::part">
+    works a lot like CSS classes</a>, but it allows styles to "pierce"
+    the shadow DOM. The HTML in the shadow DOM has lots of <code>::part</code>
+    attributes in it to allow you to style much-select's that way if you want to.
+  </p>
+  <p>
+    In this example we're adding some styles to the dropdown options. To make them
+    a bit more interesting. We're adding some emiji's for the card suits, and
+    changing the color of the text in the dropdown.
+  </p>
+  <much-select>
+    <style>
+      #styling-dropdown-options-with-part much-select::part(dropdown-option spades)  {
+        color: black;
+      }
+
+      #styling-dropdown-options-with-part much-select::part(dropdown-option spades)::before  {
+        content: "♠️";
+        padding-right: 0.25em;
+      }
+
+      #styling-dropdown-options-with-part much-select::part(selected-value spades)::before  {
+        content: "♠️";
+        padding-left: 0.25em;
+        padding-right: 0.25em;
+      }
+
+      #styling-dropdown-options-with-part much-select::part(dropdown-option hearts)  {
+        color: red;
+      }
+
+      #styling-dropdown-options-with-part much-select::part(dropdown-option hearts)::before  {
+        content: "♥️";
+        padding-right: 0.25em;
+      }
+
+      #styling-dropdown-options-with-part much-select::part(selected-value hearts)::before  {
+        content: "♥️";
+        padding-left: 0.25em;
+        padding-right: 0.25em;
+      }
+
+      #styling-dropdown-options-with-part much-select::part(dropdown-option diamonds)  {
+        color: red;
+      }
+
+      #styling-dropdown-options-with-part much-select::part(dropdown-option diamonds)::before  {
+        content: "♦️";
+        padding-right: 0.25em;
+      }
+
+      #styling-dropdown-options-with-part much-select::part(selected-value diamonds)::before  {
+        content: "♦️";
+        padding-left: 0.25em;
+        padding-right: 0.25em;
+      }
+
+      #styling-dropdown-options-with-part much-select::part(dropdown-option clubs)  {
+        color: black;
+      }
+
+      #styling-dropdown-options-with-part much-select::part(dropdown-option clubs)::before  {
+        content: "♣️";
+        padding-right: 0.25em;
+      }
+
+      #styling-dropdown-options-with-part much-select::part(selected-value clubs)::before  {
+        content: "♣️";
+        padding-left: 0.25em;
+        padding-right: 0.25em;
+      }
+
+    </style>
+    <select slot="select-input">
+      <option>Spades</option>
+      <option>Hearts</option>
+      <option>Diamonds</option>
+      <option>Clubs</option>
+    </select>
+  </much-select>
+</div>

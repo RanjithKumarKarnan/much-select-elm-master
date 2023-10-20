@@ -1,0 +1,45 @@
+<div id="switch-between-datalist-and-custom-html">
+  <h3>Switch between datalist and custom html Output Style</h3>
+  <much-select multi-select="" selected-value="Safari,Firefox" output-style="datalist">
+    <select slot="select-input">
+      <option>Firefox</option>
+      <option>Chrome</option>
+      <option>Safari</option>
+      <option>Edge</option>
+    </select>
+  </much-select>
+
+  <button class="dom-toggle">Click me to toggle between datalist and custom-html with the DOM</button>
+
+
+  <button  class="api-toggle">Click me to toggle between datalist and custom-html with the API</button>
+
+  <script>
+    document
+      .querySelector("#switch-between-datalist-and-custom-html button.dom-toggle")
+      .addEventListener("click", () => {
+        const muchSelect = document.querySelector(
+          "#switch-between-datalist-and-custom-html much-select"
+        );
+        if (muchSelect.getAttribute("output-style") === "datalist") {
+          muchSelect.setAttribute("output-style", "custom-html");
+        } else {
+          muchSelect.setAttribute("output-style", "datalist");
+        }
+      });
+
+    document
+      .querySelector("#switch-between-datalist-and-custom-html button.api-toggle")
+      .addEventListener("click", async () => {
+        const muchSelect = document.querySelector(
+          "#switch-between-datalist-and-custom-html much-select"
+        );
+        const currentOutputStyle = await muchSelect.outputStyle;
+        if (currentOutputStyle === "datalist") {
+          muchSelect.outputStyle = "custom-html";
+        } else {
+          muchSelect.outputStyle = "datalist";
+        }
+      });
+  </script>
+</div>

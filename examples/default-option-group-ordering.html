@@ -1,0 +1,18 @@
+<div id="default-option-group-ordering">
+  <h3>Default Option Group Ordering</h3>
+  <p>If we put options in the <code>select slot="select-input"</code> with groups they should maintain their order.</p>
+  <much-select option-sorting="by-option-label">
+    <select slot="select-input">
+      <optgroup label="Minnesota">
+        <option>Minneapolis</option>
+        <option data-description="State Capital">St Paul</option>
+        <option>Duluth</option>
+      </optgroup>
+      <optgroup label="Iowa">
+        <option>Des Moines</option>
+        <option>Cedar Rapids</option>
+        <option data-description="State Capital">Iowa City</option>
+      </optgroup>
+    </select>
+  </much-select>
+</div>

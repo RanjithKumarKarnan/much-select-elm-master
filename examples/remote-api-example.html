@@ -1,0 +1,48 @@
+<div>
+  <h3>Remote API</h3>
+  <p>As you type we'll query the remote API for additional options.</p>
+  <p>This dropdown searches the <a href="https://rickandmortyapi.com/">Rick and Morty</a> API for characters from the show by name.</p>
+  <much-select></much-select>
+
+  <script>
+    (() => {
+      const muchSelect = document.querySelector("#remote-api-example much-select");
+
+      muchSelect.addEventListener("inputKeyUpDebounced", (evt) => {
+        const { searchString } = evt.detail;
+        if (searchString.length < 3) {
+          // Let's not search unless we have at least 3 characters in the search string.
+          return;
+        }
+        const url = new URL("https://rickandmortyapi.com/api/character/");
+        url.searchParams.set("name", searchString);
+        const searchRequest = new Request(url.toString());
+
+        // This could take a while, so the user knows something is going on
+        //  lets throw up the loading indicator.
+        muchSelect.loading = true;
+
+        const searchRickAndMortyCharactersByName = () => {
+          fetch(searchRequest)
+            .then((response) => {
+              if (!response.ok) {
+                throw new Error(`HTTP error! status: ${response.status}`);
+              }
+              return response.json();
+            })
+            .then((data) => {
+              data.results.forEach((result) => {
+                // noinspection JSUnresolvedVariable
+                muchSelect.addOption({ value: result.name });
+              });
+              muchSelect.loading = false;
+            });
+        };
+
+        // The API is just too fast, slow it down a bit, so we can watch
+        //  it work.
+        window.setTimeout(searchRickAndMortyCharactersByName, 2000);
+      });
+    })();
+  </script>
+</div>

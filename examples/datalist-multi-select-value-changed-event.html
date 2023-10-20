@@ -1,0 +1,36 @@
+<div id="datalist-multi-select-value-changed-event">
+  <h3>Datalist Multi Select - <code>valueChanged</code> Event</h3>
+  <much-select output-style="datalist" multi-select>
+    <select slot="select-input">
+      <option>String Beans</option>
+      <option>Lima Beans</option>
+      <option>White Beans</option>
+      <option>Red Beans</option>
+    </select>
+  </much-select>
+
+  <p>
+    Events:
+  </p>
+  <table id="datalist-multi-select-value-changed-event-log">
+    <thead>
+    <tr>
+      <th>Event</th>
+      <th>Details</th>
+    </tr>
+    </thead>
+    <tbody>
+    </tbody>
+  </table>
+  <script>
+    window.addEventListener("load", () => {
+      document
+        .querySelector("#datalist-multi-select-value-changed-event much-select")
+        .addEventListener(
+          "valueChanged",
+          // eslint-disable-next-line no-undef
+          makeLogEventHandler("datalist-multi-select-value-changed-event-log")
+        );
+    });
+  </script>
+</div>

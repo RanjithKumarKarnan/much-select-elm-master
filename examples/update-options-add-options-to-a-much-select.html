@@ -1,0 +1,32 @@
+<div id="update-options-add-options-to-a-much-select" >
+  <h3>Using <code>updateOptions</code> to replace options</h3>
+  <p>Click the button to add some random options (numbers).</p>
+  <p>
+    You will see that the options get "replaced" not "appended". The exception
+    being that if an option is selected it will stay in the list of options.
+  </p>
+  <button>Roll some new random options</button>
+  <much-select></much-select>
+  <script>
+    function getRandomInt(min, max) {
+      const minCiel = Math.ceil(min);
+      const maxFloor = Math.floor(max);
+      return Math.floor(Math.random() * (maxFloor - minCiel) + minCiel); // The maximum is exclusive and the minimum is inclusive
+    }
+    document
+      .querySelector("#update-options-add-options-to-a-much-select button")
+      .addEventListener("click", () => {
+        const randomOptions = [];
+        // eslint-disable-next-line no-plusplus
+        for (let i = 0; i < 5; i++) {
+          const num = getRandomInt(1000, 5000);
+          randomOptions.push({
+            value: num,
+          });
+        }
+        document
+          .querySelector("#update-options-add-options-to-a-much-select much-select")
+          .updateOptions(randomOptions);
+      });
+  </script>
+</div>

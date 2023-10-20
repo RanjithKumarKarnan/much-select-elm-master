@@ -1,0 +1,44 @@
+<div id="selected-option-with-multi-select-with-async-options">
+  <h3>Async Loading Options with Multi Select (Smaller)</h3>
+  <p>In this example we start with a single selected value, then asynchronously load in more options (after 2 seconds).</p>
+  <p>The description for the selected option gets loaded in with all async options.</p>
+  <much-select multi-select>
+    <select slot="select-input">
+      <option selected value="les Escaldes">les Escaldes</option>
+      <option selected value="Andorra la Vella">Andorra la Vella</option>
+    </select>
+  </much-select>
+
+  <script>
+    (() => {
+      const muchSelect = document.querySelector(
+        "#selected-option-with-multi-select-with-async-options much-select"
+      );
+      const possibleOptions = [
+        {
+          label: "les Escaldes",
+          description: "Andorra, Escaldes-Engordany, 3040051",
+          value: "les Escaldes",
+        },
+        {
+          label: "Andorra la Vella",
+          description: "Andorra, Andorra la Vella, 3041563",
+          value: "Andorra la Vella",
+        },
+        {
+          label: "Umm al Qaywayn",
+          description: "United Arab Emirates, Umm al Qaywayn, 290594",
+          value: "Umm al Qaywayn",
+        },
+      ];
+
+      muchSelect.addEventListener("ready", () => {
+        window.setTimeout(() => {
+          possibleOptions.forEach((option) => {
+            muchSelect.addOption(option);
+          });
+        }, 2000);
+      });
+    })();
+  </script>
+</div>

@@ -1,0 +1,34 @@
+<div id="multi-select-value-cleared">
+  <h3>Multi Select - <code>valueCleared</code> Event</h3>
+  <much-select multi-select="true">
+    <select slot="select-input">
+      <option selected="selected">Pineapple</option>
+      <option selected="selected">Pine cone</option>
+      <option>Pine nut</option>
+    </select>
+  </much-select>
+  <p>
+    Events:
+  </p>
+  <table id="multi-select-value-cleared-event-log">
+    <thead>
+    <tr>
+      <th>Event</th>
+      <th>Details</th>
+    </tr>
+    </thead>
+    <tbody>
+    </tbody>
+  </table>
+  <script>
+    window.addEventListener("load", () => {
+      document
+        .querySelector("#multi-select-value-cleared much-select")
+        .addEventListener(
+          "valueCleared",
+          // eslint-disable-next-line no-undef
+          makeLogEventHandler("multi-select-value-cleared-event-log")
+        );
+    });
+  </script>
+</div>

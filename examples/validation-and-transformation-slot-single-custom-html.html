@@ -1,0 +1,128 @@
+<div id="validation-and-transformation-slot">
+  <h3>Validation and Transformation Slot</h3>
+
+  <much-select allow-custom-options>
+    <script type="application/json" slot="transformation-validation">
+      {
+        "transformers": [
+          {
+            "name": "lowercase"
+          }
+        ],
+        "validators": [
+          {
+            "name": "no-white-space",
+            "level": "error",
+            "message": "Spaces are not allow for custom fruit."
+          },
+          {
+            "name": "minimum-length",
+            "level": "silent",
+            "minimum-length": 3,
+            "message": "The minimum length is 3."
+          }
+        ]
+      }
+    </script>
+    <select slot="select-input">
+      <option>Almond-leaved pear</option>
+      <option>Amelanchier intermedia</option>
+      <option>Amelanchier parviflora</option>
+      <option>Apple</option>
+      <option>Apricot-leaved pear</option>
+      <option>Asian pear</option>
+      <option>Balatá</option>
+      <option>Birchleaf pear</option>
+      <option>Callery pear</option>
+      <option>Calva crabapple</option>
+      <option>Canadian serviceberry</option>
+      <option>Caqui</option>
+      <option>Cerrado pear</option>
+      <option>Chinese crab apple</option>
+      <option>Chinese flowering apple</option>
+      <option>Chinese pearleaf crabapple</option>
+      <option>Chinese quince</option>
+      <option>Chinese serviceberry</option>
+      <option>Chinese white pear</option>
+      <option>Chokeberry</option>
+      <option>Coastal serviceberry</option>
+      <option>Cocky apple</option>
+      <option>Cut-leaf crabapple</option>
+      <option>Cut-leaf crabapple</option>
+      <option>Downy serviceberry</option>
+      <option>Dusky pear</option>
+      <option>Eastern crabapple</option>
+      <option>Eastern mayhaw</option>
+      <option>European crab apple</option>
+      <option>European wild pear</option>
+      <option>Florentine crabapple</option>
+      <option>Hall crabapple</option>
+      <option>Hawthorn</option>
+      <option>Indian wild pear</option>
+      <option>Jagua</option>
+      <option>Japanese crab</option>
+      <option>Juneberry</option>
+      <option>Kaido crab apple</option>
+      <option>Kazak pear</option>
+      <option>Khirni</option>
+      <option>Korean juneberry</option>
+      <option>Lebanese wild apple</option>
+      <option>Loquat</option>
+      <option>Lovi-lovi</option>
+      <option>Low juneberry</option>
+      <option>Low serviceberry</option>
+      <option>Malus sieversii</option>
+      <option>Malus × zumi</option>
+      <option>Manchurian crab apple</option>
+      <option>Manilkara chicle</option>
+      <option>Manilkara elata</option>
+      <option>Manilkara obovata</option>
+      <option>Massaranduba</option>
+      <option>Medlar</option>
+      <option>Mountain serviceberry</option>
+      <option>Nantucket serviceberry</option>
+      <option>Niedzwetzky's apple</option>
+      <option>Nokaidō</option>
+      <option>Oleaster-leafed pear</option>
+      <option>Pacific crabapple</option>
+      <option>Pale serviceberry</option>
+      <option>Pear</option>
+      <option>Pillar apple</option>
+      <option>Plumleaf crab apple</option>
+      <option>Plymouth pear</option>
+      <option>Prairie crabapple</option>
+      <option>Pratt's crabapple</option>
+      <option>Pyrus glabra</option>
+      <option>Pyrus regelii</option>
+      <option>Pyrus xerophila</option>
+      <option>Quince</option>
+      <option>Ramontchi</option>
+      <option>Roundleaf serviceberry</option>
+      <option>Rowan</option>
+      <option>Sapodilla</option>
+      <option>Sargent crabapple</option>
+      <option>Saskatoon</option>
+      <option>Scarlet firethorn</option>
+      <option>Shipova</option>
+      <option>Shrub apple</option>
+      <option>Siberian crab apple</option>
+      <option>Sikkim crabapple</option>
+      <option>Smooth serviceberry</option>
+      <option>Snow pear</option>
+      <option>Snowy mespilus</option>
+      <option>Sorb</option>
+      <option>Southern crabapple</option>
+      <option>Sweet crabapple</option>
+      <option>Syrian pear</option>
+      <option>Taiwan crabapple</option>
+      <option>Toringo crabapple</option>
+      <option>Toyon</option>
+      <option>Ussurian pear</option>
+      <option>Utah serviceberry</option>
+      <option>Wiegand's serviceberry</option>
+      <option>Wild dilly</option>
+      <option>Yunnan crabapple</option>
+    </select>
+  </much-select>
+
+</div>

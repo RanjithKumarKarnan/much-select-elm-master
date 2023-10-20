@@ -1,0 +1,18 @@
+<div id="change-select-attribute-changes-selected-value-in-much-select">
+  <h3>Changing the DOM to add a <code>selected</code> attribute to one of the options</h3>
+  <button id="select-moe">Select Moe with the selected attribute.</button>
+  <much-select>
+    <select slot="select-input">
+      <option id="larry">Larry</option>
+      <option id="moe">Moe</option>
+      <option id="joe">Curly Joe</option>
+    </select>
+  </much-select>
+  <script>
+    document.querySelector("#select-moe").addEventListener("click", () => {
+      document.querySelector("#larry").removeAttribute("selected");
+      document.querySelector("#moe").setAttribute("selected", "");
+      document.querySelector("#joe").removeAttribute("selected");
+    });
+  </script>
+</div>

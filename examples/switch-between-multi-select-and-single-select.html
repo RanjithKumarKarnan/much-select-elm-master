@@ -1,0 +1,28 @@
+<div id="switch-between-multi-select-and-single-select">
+  <h3>Switch between multi select and single select</h3>
+  <p>Adding the <code>multi-select</code> attribute puts the <code>much-select</code> into multi select mode.</p>
+  <much-select multi-select="" selected-value="Safari,Firefox">
+    <select slot="select-input">
+      <option>Firefox</option>
+      <option>Chrome</option>
+      <option>Safari</option>
+      <option>Edge</option>
+    </select>
+  </much-select>
+
+  <button>Click me to toggle between single and multi select</button>
+  <script>
+    document
+      .querySelector("#switch-between-multi-select-and-single-select button")
+      .addEventListener("click", () => {
+        const muchSelect = document.querySelector(
+          "#switch-between-multi-select-and-single-select much-select"
+        );
+        if (muchSelect.hasAttribute("multi-select")) {
+          muchSelect.removeAttribute("multi-select");
+        } else {
+          muchSelect.setAttribute("multi-select", "");
+        }
+      });
+  </script>
+</div>

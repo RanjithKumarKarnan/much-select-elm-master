@@ -1,0 +1,29 @@
+<div id="loading-indicator">
+  <h3>Loading</h3>
+  <p>Show and hide the loading indicator with the <code>loading=""</code> attribute.</p>
+  <much-select loading="loading">
+    <select slot="select-input">
+      <option>Red</option>
+      <option>Yellow</option>
+      <option>Blue</option>
+      <option>Orange</option>
+      <option>Green</option>
+      <option>Purple</option>
+    </select>
+  </much-select>
+  <button>Toggle loading attribute</button>
+  <script>
+    document
+      .querySelector("#loading-indicator button")
+      .addEventListener("click", () => {
+        const muchSelectElement = document.querySelector(
+          "#loading-indicator much-select"
+        );
+        if (muchSelectElement.hasAttribute("loading")) {
+          muchSelectElement.removeAttribute("loading");
+        } else {
+          muchSelectElement.setAttribute("loading", "loading");
+        }
+      });
+  </script>
+</div>

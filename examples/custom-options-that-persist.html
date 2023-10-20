@@ -1,0 +1,46 @@
+<div id="custom-options-that-persist">
+  <h3>Custom Options That Persist</h3>
+  <much-select allow-custom-options="">
+    <select slot="select-input">
+      <option value="Bánh mì">Bánh mì</option>
+      <option value="Cheese steak">Cheese steak</option>
+      <option value="Po' boy">Po' boy</option>
+    </select>
+  </much-select>
+
+  <script>
+    (() => {
+      const muchSelect = document.querySelector(
+        "#custom-options-that-persist much-select"
+      );
+
+      muchSelect.addEventListener("muchSelectReady", () => {
+        // We can't go adding options to the much select until it's good and ready.
+        const localStorageKey = "custom-options-that-persist";
+
+        const customOptionsAsString = window.localStorage.getItem(localStorageKey);
+        if (customOptionsAsString === null) {
+          // This is the first time we are seeing this, save an empty array
+          //  for future custom options.
+          const emptySetOfOptions = [];
+          const emptySetOfOptionString = JSON.stringify(emptySetOfOptions);
+          window.localStorage.setItem(localStorageKey, emptySetOfOptionString);
+        } else {
+          // The table is set. We may have some custom options.
+          const customOptions = JSON.parse(customOptionsAsString);
+          muchSelect.addOptions(customOptions);
+        }
+
+        muchSelect.addEventListener("customValueSelected", (evt) => {
+          const newValue = evt.detail.value;
+          const currentCustomOptionsAsString =
+            window.localStorage.getItem(localStorageKey);
+          const customOptions = JSON.parse(currentCustomOptionsAsString);
+          customOptions.push(newValue);
+          const newCustomOptionsAsString = JSON.stringify(customOptions);
+          window.localStorage.setItem(localStorageKey, newCustomOptionsAsString);
+        });
+      });
+    })();
+  </script>
+</div>

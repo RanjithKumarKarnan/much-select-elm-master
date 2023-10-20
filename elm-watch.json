@@ -1,0 +1,16 @@
+{
+  "targets": {
+    "elm-demo": {
+      "inputs": [
+        "src/Demo.elm"
+      ],
+      "output": "build/elm-demo.js"
+    },
+    "elm-demo-production": {
+      "inputs": [
+        "src/Demo.elm"
+      ],
+      "output": "dist/site/elm-demo.js"
+    }
+  }
+}

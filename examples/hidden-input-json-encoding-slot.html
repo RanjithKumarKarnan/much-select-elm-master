@@ -1,0 +1,20 @@
+<div>
+  <h3>Hidden Input JSON encoding</h3>
+  <p>
+    If you're using the <code>hidden-value-input</code> and the <code>selected-value-encoding</code> attribute, the value in the hidden input slot will also be encoded.
+  </p>
+  <p>
+    You can use your browser's developer tools to see the hidden input and watch its value change as you change the much-select's value.
+  </p>
+  <much-select selected-value-encoding="json">
+    <select slot="select-input">
+      <option>New South Wales</option>
+      <option>Queensland</option>
+      <option>South Australia</option>
+      <option>Tasmania</option>
+      <option>Victoria</option>
+      <option>Western Australia</option>
+    </select>
+    <input slot="hidden-value-input" type="hidden" name="my-special-value">
+  </much-select>
+</div>

@@ -1,0 +1,19 @@
+<div id="add-possible-duplicate-option-to-a-much-select" >
+  <h3>Use <code>addOption</code> to add a value that might be a duplicate</h3>
+  <p>Click the button to add a random option. And then click it again. Eventually you will add all the options in the list. Each time the button is clicked an option is added randomly from a list. You should not get any duplicate items in the list and any selected value should be preserved.</p>
+  <button>Add an Option</button>
+  <much-select></much-select>
+  <script>
+    const options = ["ranch", "farm", "orchard", "vineyard"];
+    document
+      .querySelector("#add-possible-duplicate-option-to-a-much-select button")
+      .addEventListener("click", () => {
+        const randomOption = options[Math.floor(Math.random() * options.length)];
+        document
+          .querySelector(
+            "#add-possible-duplicate-option-to-a-much-select much-select"
+          )
+          .addOption({ value: randomOption });
+      });
+  </script>
+</div>

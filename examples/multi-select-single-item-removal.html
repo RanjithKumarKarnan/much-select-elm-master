@@ -1,0 +1,26 @@
+<div id="multi-select-single-item-removal">
+  <h3>Removable Options</h3>
+  <p>With multi select you can make each selected value individually removable.</p>
+  <button>Toggle the remove selected item buttons</button>
+  <much-select multi-select allow-custom-options multi-select-single-item-removal selected-value="Butterhead,Escarole">
+    <select slot="select-input">
+      <option>Arugula</option>
+      <option>Butterhead</option>
+      <option>Coral</option>
+      <option>Cress</option>
+      <option>Endive</option>
+      <option>Escarole</option>
+      <option>Frisée</option>
+      <option>Mâche</option>
+    </select>
+  </much-select>
+  <script>
+    document
+      .querySelector("#multi-select-single-item-removal button")
+      .addEventListener("click", () => {
+        document
+          .querySelector("#multi-select-single-item-removal much-select")
+          .toggleAttribute("multi-select-single-item-removal");
+      });
+  </script>
+</div>
