@@ -1,0 +1,512 @@
+<!DOCTYPE html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <script src="/example-options-cities.js"></script>
+  <link rel="icon" href="/favicon.ico" type="image/x-icon">
+  <link href="/demo-styles.css" rel="stylesheet">
+  <title>
+   Much Select: Initial Value
+  </title>
+ </head>
+ <body>
+  <input type="radio" class="theme-switch" id="theme-switch-boring" name="theme-switch">
+<input type="radio" class="theme-switch" id="theme-switch-fun" name="theme-switch">
+  <div id="page-wrapper">
+   <header id="header">
+    <div id="site-title">
+     <h1>
+      &lt;much-select&gt;
+     </h1>
+    </div>
+    <div id="page-name">
+     <h2>
+      Initial Value
+     </h2>
+    </div>
+    <div id="sub-title">
+     <h3>
+      Demo and Development Playground
+     </h3>
+    </div>
+   </header>
+   <div id="nav">
+    <nav class="offsite-nav">
+     <ol>
+      <li class="main-nav-item">
+       <a href="https://github.com/DripEmail/much-select-elm">Github</a>
+      </li>
+      <li class="main-nav-item">
+       <a href="https://www.npmjs.com/package/@getdrip/much-select-elm">NPM</a>
+      </li>
+      <li class="main-nav-item">
+       <a href="https://github.com/DripEmail/much-select-elm/wiki/Related-Projects">Related Projects/Inspiration</a>
+      </li>
+      <li class="main-nav-item">
+       <a href="https://en.wikipedia.org/wiki/Doge_(meme)">Doge (meme)</a>
+      </li>
+      <li class="main-nav-item">
+       <a href="https://elm-lang.org/">Elm</a>
+      </li>
+      <li class="main-nav-item">
+       <a href="https://developer.mozilla.org/en-US/docs/Web/Web_Components">Web Components</a>
+      </li>
+      <li class="main-nav-item">
+       <a href="https://modern-web.dev/">Modern Web</a>
+      </li>
+     </ol>
+    </nav>
+    <nav class="site-nav">
+     <ol>
+      <li class="main-nav-item">
+       <a href="/">Home</a>
+      </li>
+      <li class="main-nav-item">
+       <a href="/attributes">Attributes</a>
+      </li>
+      <li class="main-nav-item">
+       <a href="/initial-value">Initial Value</a>
+      </li>
+      <li class="main-nav-item">
+       <a href="/option-api">Option API</a>
+      </li>
+      <li class="main-nav-item">
+       <a href="/events">Events</a>
+      </li>
+      <li class="main-nav-item">
+       <a href="/empty-options">Empty Options</a>
+      </li>
+      <li class="main-nav-item">
+       <a href="/dropdown-options">Dropdown Options</a>
+      </li>
+      <li class="main-nav-item">
+       <a href="/output-style-datalist">Datalist (output style)</a>
+      </li>
+      <li class="main-nav-item">
+       <a href="/custom-options">Custom Options</a>
+      </li>
+      <li class="main-nav-item">
+       <a href="/slots">Slots</a>
+      </li>
+      <li class="main-nav-item">
+       <a href="/multi-select">Multi Select</a>
+      </li>
+      <li class="main-nav-item">
+       <a href="/selected-value-encoding">Selected Value Encoding</a>
+      </li>
+      <li class="main-nav-item">
+       <a href="/sans-css">Default CSS</a>
+      </li>
+      <li class="main-nav-item">
+       <a href="/transform-and-validate">Transform and Validate</a>
+      </li>
+      <li class="main-nav-item">
+       <a href="/styling">Styling</a>
+      </li>
+      <li class="main-nav-item">
+       <a href="/elm-demo">Elm Demo</a>
+      </li>
+     </ol>
+    </nav>
+    <nav>
+     <button id="fun-style">fun</button>
+  <button id="boring-style">boring</button>
+    </nav>
+    <script src="/styles.js"></script>
+   </div>
+   <div class="container">
+    <div class="example">
+     <div id="an-initial-value">
+      <div id="an-initial-value">
+       <h3>
+        An initial value
+       </h3>
+       <p>
+        Set using the <code>selected-value</code> attribute on the <code>&lt;much-select&gt;</code>
+       </p>
+       <much-select selected-value="Blue">
+        <select slot="select-input">
+      
+        <option>
+         Red
+        </option>
+        
+      
+        <option>
+         Yellow
+        </option>
+        
+      
+        <option>
+         Blue
+        </option>
+        
+      
+        <option>
+         Orange
+        </option>
+        
+      
+        <option>
+         Green
+        </option>
+        
+      
+        <option>
+         Purple
+        </option>
+        
+    
+       </select>
+      </much-select>
+     </div>
+    </div>
+   </div>
+   <div class="example">
+    <div id="an-initial-value-with-no-options">
+     <div id="an-initial-value-with-no-options">
+      <h3>
+       An initial Value (No Options)
+      </h3>
+      <p>
+       If there is an initial value but no options it should create one for the initial value
+      </p>
+      <much-select selected-value="Coffee"></much-select>
+     </div>
+    </div>
+   </div>
+   <div class="example">
+    <div id="add-options-not-including-the-selected-value">
+     <div id="add-options-not-including-the-selected-value">
+      <h3>
+       An Initial (Selected) Value (No Options)
+      </h3>
+      <h4>
+       Then Add the Options
+      </h4>
+      <h5>
+       But not the selected value
+      </h5>
+      <p>
+       If there is an initial value but no options initially, then we add options, it should keep the selected value including the additional options in the dropdown.
+      </p>
+      <button>Click me to add options via the DOM</button>
+      <much-select selected-value="Butter"></much-select>
+      <script>
+       document
+      .querySelector("#add-options-not-including-the-selected-value button")
+      .addEventListener("click", () => {
+        document.querySelector(
+          "#add-options-not-including-the-selected-value much-select"
+        ).innerHTML = `<select slot="select-input">
+              <option value="Jam">Jam</option>
+              <option value="Marmalade">Marmalade</option>
+              <option value="Preserves">Preserves</option>
+              <option value="Apple Butter">Apple Butter</option>
+            </select>`;
+      });
+      </script>
+     </div>
+    </div>
+   </div>
+   <div class="example">
+    <div id="add-options-including-the-selected-value">
+     <div>
+      <h3>
+       An initial Value (No Options) - Then Add the Options
+      </h3>
+      <p>
+       If there is an initial value but no options initially, then we add options (async).
+      </p>
+      <p>
+       It should keep the selected value and "merge" the new option with the same value.
+      </p>
+      <button>Click me to add options via the DOM</button>
+      <much-select selected-value="Coffee"></much-select>
+      <script>
+       document
+      .querySelector("#add-options-including-the-selected-value button")
+      .addEventListener("click", () => {
+        document.querySelector(
+          "#add-options-including-the-selected-value much-select"
+        ).innerHTML = `
+        <select slot="select-input">
+          <option value="Coffee">Coffee</option>
+          <option value="Tea">Tea</option>
+          <option value="Water">Water</option>
+          <option value="Soda">Soda</option>
+        </select>
+      `;
+      });
+      </script>
+     </div>
+    </div>
+    <a href="/add-options-including-the-selected-value">open example on its own page</a>
+   </div>
+   <div class="example">
+    <div id="add-options-to-a-multi-select-not-including-the-selected-value">
+     <div id="add-options-to-a-multi-select-not-including-the-selected-value">
+      <h3>
+       2 Initial (Selected) Options
+      </h3>
+      <h4>
+       Then Add More Options
+      </h4>
+      <h5>
+       But not the selected value
+      </h5>
+      <p>
+       For multi select we should support multiple initial values, then we add options (async).
+      </p>
+      <p>
+       It should keep the selected values and add the new options.
+      </p>
+      <button>Click me to add options via the DOM</button>
+      <much-select multi-select="" selected-value="Carrots,Peas" multi-select-single-item-removal="" allow-custom-options="{{}}"></much-select>
+      <script>
+       document
+      .querySelector(
+        "#add-options-to-a-multi-select-not-including-the-selected-value button"
+      )
+      .addEventListener("click", () => {
+        document.querySelector(
+          "#add-options-to-a-multi-select-not-including-the-selected-value much-select"
+        ).innerHTML = `
+        <select slot="select-input">
+          <option>Zucchini</option>
+          <option>Lettuce</option>
+          <option>Cucumbers</option>
+          <option>Pumpkins</option>
+        </select>
+      `;
+      });
+      </script>
+     </div>
+    </div>
+    <a href="/add-options-to-a-multi-select-not-including-the-selected-value">open example on its own page</a>
+   </div>
+   <div class="example">
+    <div id="switch-between-multi-select-and-single-select">
+     <div id="switch-between-multi-select-and-single-select">
+      <h3>
+       Switch between multi select and single select
+      </h3>
+      <p>
+       Adding the <code>multi-select</code> attribute puts the <code>much-select</code> into multi select mode.
+      </p>
+      <much-select multi-select="" selected-value="Safari,Firefox">
+       <select slot="select-input">
+      
+       <option>
+        Firefox
+       </option>
+       
+      
+       <option>
+        Chrome
+       </option>
+       
+      
+       <option>
+        Safari
+       </option>
+       
+      
+       <option>
+        Edge
+       </option>
+       
+    
+      </select>
+     </much-select>
+     <button>Click me to toggle between single and multi select</button>
+     <script>
+      document
+      .querySelector("#switch-between-multi-select-and-single-select button")
+      .addEventListener("click", () => {
+        const muchSelect = document.querySelector(
+          "#switch-between-multi-select-and-single-select much-select"
+        );
+        if (muchSelect.hasAttribute("multi-select")) {
+          muchSelect.removeAttribute("multi-select");
+        } else {
+          muchSelect.setAttribute("multi-select", "");
+        }
+      });
+     </script>
+    </div>
+   </div>
+   <a href="/switch-between-multi-select-and-single-select">open example on its own page</a>
+  </div>
+  <div class="example">
+   <div id="selected-option-with-async-options">
+    <div id="selected-option-with-async-options">
+     <h3>
+      Async Loading Options
+     </h3>
+     <p>
+      In this example we start with a single selected value, then asynchronously load in a bunch more options (after 10 seconds).
+     </p>
+     <p>
+      The description for the selected gets loaded in with all async options.
+     </p>
+     <much-select max-dropdown-items="30">
+      <select slot="select-input">
+      
+      <option selected="" value="les Escaldes">
+       les Escaldes
+      </option>
+      
+    
+     </select>
+    </much-select>
+    <script>
+     (() => {
+      const muchSelect = document.querySelector(
+        "#selected-option-with-async-options much-select"
+      );
+      const possibleOptions = window.exampleOptionsCities;
+
+      muchSelect.addEventListener("ready", () => {
+        window.setTimeout(() => {
+          possibleOptions.forEach((option) => {
+            muchSelect.addOption(option);
+          });
+        }, 10000);
+      });
+    })();
+    </script>
+   </div>
+  </div>
+ </div>
+ <div class="example">
+  <div id="selected-option-with-async-options-small">
+   <div id="selected-option-with-async-options-small">
+    <h3>
+     Async Loading Options (Smaller)
+    </h3>
+    <p>
+     In this example we start with a single selected value, then asynchronously load in a bunch more options (after 10 seconds).
+    </p>
+    <p>
+     The description for the selected gets loaded in with all async options.
+    </p>
+    <p>
+     This smaller version exists because sometimes it's easier to see what's going on if there are only a few options.
+    </p>
+    <much-select max-dropdown-items="30">
+     <select slot="select-input">
+      
+     <option selected="" value="les Escaldes">
+      les Escaldes
+     </option>
+     
+    
+    </select>
+   </much-select>
+   <script>
+    (() => {
+      const muchSelect = document.querySelector(
+        "#selected-option-with-async-options-small much-select"
+      );
+      const possibleOptions = [
+        {
+          label: "les Escaldes",
+          description: "Andorra, Escaldes-Engordany, 3040051",
+          value: "les Escaldes",
+        },
+        {
+          label: "Andorra la Vella",
+          description: "Andorra, Andorra la Vella, 3041563",
+          value: "Andorra la Vella",
+        },
+        {
+          label: "Umm al Qaywayn",
+          description: "United Arab Emirates, Umm al Qaywayn, 290594",
+          value: "Umm al Qaywayn",
+        },
+      ];
+
+      muchSelect.addEventListener("ready", () => {
+        window.setTimeout(() => {
+          possibleOptions.forEach((option) => {
+            muchSelect.addOption(option);
+          });
+        }, 2000);
+      });
+    })();
+   </script>
+  </div>
+ </div>
+</div>
+<div class="example">
+ <div id="selected-option-with-multi-select-with-async-options-small">
+  <div id="selected-option-with-multi-select-with-async-options">
+   <h3>
+    Async Loading Options with Multi Select (Smaller)
+   </h3>
+   <p>
+    In this example we start with a single selected value, then asynchronously load in more options (after 2 seconds).
+   </p>
+   <p>
+    The description for the selected option gets loaded in with all async options.
+   </p>
+   <much-select multi-select="">
+    <select slot="select-input">
+      
+    <option selected="" value="les Escaldes">
+     les Escaldes
+    </option>
+    
+      
+    <option selected="" value="Andorra la Vella">
+     Andorra la Vella
+    </option>
+    
+    
+   </select>
+  </much-select>
+  <script>
+   (() => {
+      const muchSelect = document.querySelector(
+        "#selected-option-with-multi-select-with-async-options much-select"
+      );
+      const possibleOptions = [
+        {
+          label: "les Escaldes",
+          description: "Andorra, Escaldes-Engordany, 3040051",
+          value: "les Escaldes",
+        },
+        {
+          label: "Andorra la Vella",
+          description: "Andorra, Andorra la Vella, 3041563",
+          value: "Andorra la Vella",
+        },
+        {
+          label: "Umm al Qaywayn",
+          description: "United Arab Emirates, Umm al Qaywayn, 290594",
+          value: "Umm al Qaywayn",
+        },
+      ];
+
+      muchSelect.addEventListener("ready", () => {
+        window.setTimeout(() => {
+          possibleOptions.forEach((option) => {
+            muchSelect.addOption(option);
+          });
+        }, 2000);
+      });
+    })();
+  </script>
+ </div>
+</div>
+</div>
+</div>
+<footer>
+<script src="/index.js" type="module"></script>
+</footer>
+</div>
+</body>
+</html>

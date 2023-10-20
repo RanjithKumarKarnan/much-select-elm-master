@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>
+   Much Select: Custom Options
+  </title>
+  <link rel="icon" href="/favicon.ico" type="image/x-icon">
+  <link href="/demo-styles.css" rel="stylesheet">
+  <title></title>
+ </head>
+ <body>
+  <input type="radio" class="theme-switch" id="theme-switch-boring" name="theme-switch">
+<input type="radio" class="theme-switch" id="theme-switch-fun" name="theme-switch">
+  <div id="page-wrapper">
+   <header id="header">
+    <div id="site-title">
+     <h1>
+      &lt;much-select&gt;
+     </h1>
+    </div>
+    <div id="page-name">
+     <h2>
+      Custom Options
+     </h2>
+    </div>
+    <div id="sub-title">
+     <h3>
+      Demo and Development Playground
+     </h3>
+    </div>
+   </header>
+   <div id="nav">
+    <nav class="offsite-nav">
+     <ol>
+      <li class="main-nav-item">
+       <a href="https://github.com/DripEmail/much-select-elm">Github</a>
+      </li>
+      <li class="main-nav-item">
+       <a href="https://www.npmjs.com/package/@getdrip/much-select-elm">NPM</a>
+      </li>
+      <li class="main-nav-item">
+       <a href="https://github.com/DripEmail/much-select-elm/wiki/Related-Projects">Related Projects/Inspiration</a>
+      </li>
+      <li class="main-nav-item">
+       <a href="https://en.wikipedia.org/wiki/Doge_(meme)">Doge (meme)</a>
+      </li>
+      <li class="main-nav-item">
+       <a href="https://elm-lang.org/">Elm</a>
+      </li>
+      <li class="main-nav-item">
+       <a href="https://developer.mozilla.org/en-US/docs/Web/Web_Components">Web Components</a>
+      </li>
+      <li class="main-nav-item">
+       <a href="https://modern-web.dev/">Modern Web</a>
+      </li>
+     </ol>
+    </nav>
+    <nav class="site-nav">
+     <ol>
+      <li class="main-nav-item">
+       <a href="/">Home</a>
+      </li>
+      <li class="main-nav-item">
+       <a href="/attributes">Attributes</a>
+      </li>
+      <li class="main-nav-item">
+       <a href="/initial-value">Initial Value</a>
+      </li>
+      <li class="main-nav-item">
+       <a href="/option-api">Option API</a>
+      </li>
+      <li class="main-nav-item">
+       <a href="/events">Events</a>
+      </li>
+      <li class="main-nav-item">
+       <a href="/empty-options">Empty Options</a>
+      </li>
+      <li class="main-nav-item">
+       <a href="/dropdown-options">Dropdown Options</a>
+      </li>
+      <li class="main-nav-item">
+       <a href="/output-style-datalist">Datalist (output style)</a>
+      </li>
+      <li class="main-nav-item">
+       <a href="/custom-options">Custom Options</a>
+      </li>
+      <li class="main-nav-item">
+       <a href="/slots">Slots</a>
+      </li>
+      <li class="main-nav-item">
+       <a href="/multi-select">Multi Select</a>
+      </li>
+      <li class="main-nav-item">
+       <a href="/selected-value-encoding">Selected Value Encoding</a>
+      </li>
+      <li class="main-nav-item">
+       <a href="/sans-css">Default CSS</a>
+      </li>
+      <li class="main-nav-item">
+       <a href="/transform-and-validate">Transform and Validate</a>
+      </li>
+      <li class="main-nav-item">
+       <a href="/styling">Styling</a>
+      </li>
+      <li class="main-nav-item">
+       <a href="/elm-demo">Elm Demo</a>
+      </li>
+     </ol>
+    </nav>
+    <nav>
+     <button id="fun-style">fun</button>
+  <button id="boring-style">boring</button>
+    </nav>
+    <script src="/styles.js"></script>
+   </div>
+   <div class="container">
+    <div class="example">
+     <div id="add-custom-options">
+      <div>
+       <h3>
+        Add Custom Options
+       </h3>
+       <p>
+        Using the <code>allow-custom-options</code> attribute to allow the user to choose a "new" value (one that is not in the list of options).
+       </p>
+       <much-select allow-custom-options=""></much-select>
+       <p>
+        Events:
+       </p>
+       <table id="single-select-custom-option-event-log">
+        <thead>
+         <tr>
+          <th>
+           Event
+          </th>
+          <th>
+           Details
+          </th>
+         </tr>
+        </thead>
+        <tbody></tbody>
+       </table>
+       <script>
+        window.addEventListener("load", () => {
+      document
+        .querySelector("#add-custom-options much-select")
+        .addEventListener(
+          "customValueSelected",
+          makeLogEventHandler("single-select-custom-option-event-log")
+        );
+    });
+       </script>
+      </div>
+     </div>
+     <a href="/add-custom-options">open example on its own page</a>
+    </div>
+    <div class="example">
+     <div id="add-custom-options-2">
+      <div id="not-empty-single-select-value-changed-example">
+       <h3>
+        Add Custom Options (or select from the existing options)
+       </h3>
+       <p>
+        If we type in an option that matches an existing option is should <em>not</em>
+    show the option to add a custom option.
+       </p>
+       <much-select allow-custom-options="">
+        <select slot="select-input">
+      
+        <option>
+         Flashlight
+        </option>
+        
+      
+        <option>
+         Lantern
+        </option>
+        
+      
+        <option>
+         Candle
+        </option>
+        
+    
+       </select>
+      </much-select>
+      <p>
+       Events:
+      </p>
+      <table id="not-empty-single-select-custom-option-event-log">
+       <thead>
+        <tr>
+         <th>
+          Event
+         </th>
+         <th>
+          Details
+         </th>
+        </tr>
+       </thead>
+       <tbody></tbody>
+      </table>
+      <script>
+       window.addEventListener("load", () => {
+      document
+        .querySelector("#not-empty-single-select-value-changed-example much-select")
+        .addEventListener(
+          "customValueSelected",
+          // eslint-disable-next-line
+          makeLogEventHandler("not-empty-single-select-custom-option-event-log")
+        );
+    });
+      </script>
+     </div>
+    </div>
+   </div>
+   <div class="example">
+    <div id="custom-option-label-text">
+     <div>
+      <h3>
+       Set the custom option text
+      </h3>
+      <p>
+       You can set the value of the <code>allow-custom-options=</code> attribute to text that will be used in the dropdown.
+    The default value will be "Add (your value)...".
+      </p>
+      <much-select allow-custom-options="New Currency: ">
+       <select slot="select-input">
+      
+       <option>
+        Gold Doubloons
+       </option>
+       
+      
+       <option>
+        Schrute Bucks
+       </option>
+       
+      
+       <option>
+        Credits
+       </option>
+       
+    
+      </select>
+     </much-select>
+    </div>
+   </div>
+   <a href="/custom-option-label-text">open example on its own page</a>
+  </div>
+  <div class="example">
+   <div id="custom-option-label-text-2">
+    <div id="better-custom-option-label-text">
+     <h3>
+      Set the custom option text with a placeholder
+     </h3>
+     <p>
+      If you want to put the typed in value somewhere other than the very end, you can use the placeholder <code>{{}}</code>
+     </p>
+     <much-select allow-custom-options="Create currency {{}}...">
+      <select slot="select-input">
+      
+      <option>
+       Itchy and Scrachy Money
+      </option>
+      
+      
+      <option>
+       Merits
+      </option>
+      
+      
+      <option>
+       Diamonds
+      </option>
+      
+    
+     </select>
+    </much-select>
+   </div>
+  </div>
+ </div>
+ <div class="example">
+  <div id="custom-option-label-text-3">
+   <div id="empty-custom-option-label-text">
+    <h3>
+     Empty Custom Options Label
+    </h3>
+    <p>
+     If you <em>just</em> want the value that's being typed in, with no other hints use just <code>allow-custom-options="{{}}"</code>
+    </p>
+    <much-select allow-custom-options="{{}}">
+     <select slot="select-input">
+      
+     <option>
+      Back Rubs
+     </option>
+     
+      
+     <option>
+      Baby Sitting
+     </option>
+     
+      
+     <option>
+      Pies
+     </option>
+     
+    
+    </select>
+   </much-select>
+  </div>
+ </div>
+</div>
+<div class="example">
+ <div id="allow-custom-options-with-minimum-search-string-length">
+  <div id="allow-custom-options-with-search-string-minimum-length">
+   <h3>
+    Custom Options with search string minimum length
+   </h3>
+   <p>
+    Allow custom option (<code>allow-custom-options=""</code>) and have a
+    minimum search string length of 5
+    (<code>search-string-minimum-length="5"</code>.
+    You should be able to add custom options even if they are less than 5
+    characters long.
+   </p>
+   <much-select multi-select="" allow-custom-options="" search-string-minimum-length="5">
+    <select slot="select-input">
+      
+    <option>
+     Caveman
+    </option>
+    
+      
+    <option>
+     Bees
+    </option>
+    
+      
+    <option>
+     Cow
+    </option>
+    
+      
+    <option>
+     Scientist
+    </option>
+    
+      
+    <option>
+     Angel
+    </option>
+    
+      
+    <option>
+     Demon
+    </option>
+    
+      
+    <option>
+     Shark
+    </option>
+    
+      
+    <option>
+     Cowboy
+    </option>
+    
+    
+   </select>
+  </much-select>
+ </div>
+</div>
+</div>
+</div>
+<footer>
+<script src="/index.js" type="module"></script>
+</footer>
+</div>
+</body>
+</html>

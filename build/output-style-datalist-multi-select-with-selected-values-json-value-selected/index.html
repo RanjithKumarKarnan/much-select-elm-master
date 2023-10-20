@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>
+   Much Select: Datalist Multi Select with JSON encoding
+  </title>
+  <link rel="icon" href="/favicon.ico" type="image/x-icon">
+  <link href="/demo-styles.css" rel="stylesheet">
+  <title></title>
+ </head>
+ <body>
+  <input type="radio" class="theme-switch" id="theme-switch-boring" name="theme-switch">
+<input type="radio" class="theme-switch" id="theme-switch-fun" name="theme-switch">
+  <div id="page-wrapper">
+   <header id="header">
+    <div id="site-title">
+     <h1>
+      &lt;much-select&gt;
+     </h1>
+    </div>
+    <div id="page-name">
+     <h2>
+      Datalist Multi Select with JSON encoding
+     </h2>
+    </div>
+    <div id="sub-title">
+     <h3>
+      Demo and Development Playground
+     </h3>
+    </div>
+   </header>
+   <div id="nav">
+    <nav class="offsite-nav">
+     <ol>
+      <li class="main-nav-item">
+       <a href="https://github.com/DripEmail/much-select-elm">Github</a>
+      </li>
+      <li class="main-nav-item">
+       <a href="https://www.npmjs.com/package/@getdrip/much-select-elm">NPM</a>
+      </li>
+      <li class="main-nav-item">
+       <a href="https://github.com/DripEmail/much-select-elm/wiki/Related-Projects">Related Projects/Inspiration</a>
+      </li>
+      <li class="main-nav-item">
+       <a href="https://en.wikipedia.org/wiki/Doge_(meme)">Doge (meme)</a>
+      </li>
+      <li class="main-nav-item">
+       <a href="https://elm-lang.org/">Elm</a>
+      </li>
+      <li class="main-nav-item">
+       <a href="https://developer.mozilla.org/en-US/docs/Web/Web_Components">Web Components</a>
+      </li>
+      <li class="main-nav-item">
+       <a href="https://modern-web.dev/">Modern Web</a>
+      </li>
+     </ol>
+    </nav>
+    <nav class="site-nav">
+     <ol>
+      <li class="main-nav-item">
+       <a href="/">Home</a>
+      </li>
+      <li class="main-nav-item">
+       <a href="/attributes">Attributes</a>
+      </li>
+      <li class="main-nav-item">
+       <a href="/initial-value">Initial Value</a>
+      </li>
+      <li class="main-nav-item">
+       <a href="/option-api">Option API</a>
+      </li>
+      <li class="main-nav-item">
+       <a href="/events">Events</a>
+      </li>
+      <li class="main-nav-item">
+       <a href="/empty-options">Empty Options</a>
+      </li>
+      <li class="main-nav-item">
+       <a href="/dropdown-options">Dropdown Options</a>
+      </li>
+      <li class="main-nav-item">
+       <a href="/output-style-datalist">Datalist (output style)</a>
+      </li>
+      <li class="main-nav-item">
+       <a href="/custom-options">Custom Options</a>
+      </li>
+      <li class="main-nav-item">
+       <a href="/slots">Slots</a>
+      </li>
+      <li class="main-nav-item">
+       <a href="/multi-select">Multi Select</a>
+      </li>
+      <li class="main-nav-item">
+       <a href="/selected-value-encoding">Selected Value Encoding</a>
+      </li>
+      <li class="main-nav-item">
+       <a href="/sans-css">Default CSS</a>
+      </li>
+      <li class="main-nav-item">
+       <a href="/transform-and-validate">Transform and Validate</a>
+      </li>
+      <li class="main-nav-item">
+       <a href="/styling">Styling</a>
+      </li>
+      <li class="main-nav-item">
+       <a href="/elm-demo">Elm Demo</a>
+      </li>
+     </ol>
+    </nav>
+    <nav>
+     <button id="fun-style">fun</button>
+  <button id="boring-style">boring</button>
+    </nav>
+    <script src="/styles.js"></script>
+   </div>
+   <div class="container">
+    <div class="example">
+     <div id="output-style-datalist-multi-select-with-selected-values-json-value-selected">
+      <div id="datalist-multi-select-selected-values-toggle-selected-values">
+       <h3>
+        Preselected values in a Datalist with Multi Select
+       </h3>
+       <p>
+        Use the selected-values attribute, and have a JSON encode <code>selected-value=</code> attribute.
+       </p>
+       <button class="toggle-select" data-toggle-value="The Lone Ranger">Toggle The Lone Ranger</button>
+
+  <button class="toggle-select" data-toggle-value="Vikings">Toggle Vikings</button>
+
+  <button class="toggle-select" data-toggle-value="Lord Business">Toggle Lord Business</button>
+       <much-select output-style="datalist" multi-select="" selected-value-encoding="json" selected-value="%5B%22Pirates%22%2C%22Ultra%20Agents%22%5D">
+        <select slot="select-input">
+      
+        <option>
+         Bionicle
+        </option>
+        
+      
+        <option>
+         Pirates
+        </option>
+        
+      
+        <option>
+         The Lone Ranger
+        </option>
+        
+      
+        <option>
+         Exo-Force
+        </option>
+        
+      
+        <option>
+         Ultra Agents
+        </option>
+        
+      
+        <option>
+         Vikings
+        </option>
+        
+      
+        <option>
+         Elves
+        </option>
+        
+    
+       </select>
+      </much-select>
+      <script>
+       const exampleDiv = document.getElementById(
+      "datalist-multi-select-selected-values-toggle-selected-values"
+    );
+    exampleDiv.querySelectorAll(".toggle-select").forEach((button) => {
+      button.addEventListener("click", (event) => {
+        const muchSelect = exampleDiv.querySelector("much-select");
+
+        const valueToToggle = event.target.dataset.toggleValue;
+
+        muchSelect.getSelectedValues().then((selectedValues) => {
+          let newSelectedValues = selectedValues;
+
+          if (selectedValues.includes(valueToToggle)) {
+            // deselect the value
+            newSelectedValues = selectedValues.filter((v) => v !== valueToToggle);
+          } else {
+            // select the value
+            newSelectedValues = selectedValues.concat([valueToToggle]);
+          }
+
+          const selectedValueEncodedString = encodeURIComponent(
+            JSON.stringify(newSelectedValues)
+          );
+
+          muchSelect.setAttribute("selected-value", selectedValueEncodedString);
+        });
+      });
+    });
+      </script>
+     </div>
+    </div>
+   </div>
+  </div>
+  <footer>
+   <script src="/index.js" type="module"></script>
+  </footer>
+ </div>
+</body>
+</html>

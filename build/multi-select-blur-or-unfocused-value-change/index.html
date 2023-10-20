@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="icon" href="/favicon.ico" type="image/x-icon">
+  <link href="/demo-styles.css" rel="stylesheet">
+  <title>
+   Much Select: Multi Select blurOrUnfocusedValueChanged Event
+  </title>
+ </head>
+ <body>
+  <input type="radio" class="theme-switch" id="theme-switch-boring" name="theme-switch">
+<input type="radio" class="theme-switch" id="theme-switch-fun" name="theme-switch">
+  <div id="page-wrapper">
+   <header id="header">
+    <div id="site-title">
+     <h1>
+      &lt;much-select&gt;
+     </h1>
+    </div>
+    <div id="page-name">
+     <h2>
+      Multi Select blurOrUnfocusedValueChanged Event
+     </h2>
+    </div>
+    <div id="sub-title">
+     <h3>
+      Demo and Development Playground
+     </h3>
+    </div>
+   </header>
+   <div id="nav">
+    <nav class="offsite-nav">
+     <ol>
+      <li class="main-nav-item">
+       <a href="https://github.com/DripEmail/much-select-elm">Github</a>
+      </li>
+      <li class="main-nav-item">
+       <a href="https://www.npmjs.com/package/@getdrip/much-select-elm">NPM</a>
+      </li>
+      <li class="main-nav-item">
+       <a href="https://github.com/DripEmail/much-select-elm/wiki/Related-Projects">Related Projects/Inspiration</a>
+      </li>
+      <li class="main-nav-item">
+       <a href="https://en.wikipedia.org/wiki/Doge_(meme)">Doge (meme)</a>
+      </li>
+      <li class="main-nav-item">
+       <a href="https://elm-lang.org/">Elm</a>
+      </li>
+      <li class="main-nav-item">
+       <a href="https://developer.mozilla.org/en-US/docs/Web/Web_Components">Web Components</a>
+      </li>
+      <li class="main-nav-item">
+       <a href="https://modern-web.dev/">Modern Web</a>
+      </li>
+     </ol>
+    </nav>
+    <nav class="site-nav">
+     <ol>
+      <li class="main-nav-item">
+       <a href="/">Home</a>
+      </li>
+      <li class="main-nav-item">
+       <a href="/attributes">Attributes</a>
+      </li>
+      <li class="main-nav-item">
+       <a href="/initial-value">Initial Value</a>
+      </li>
+      <li class="main-nav-item">
+       <a href="/option-api">Option API</a>
+      </li>
+      <li class="main-nav-item">
+       <a href="/events">Events</a>
+      </li>
+      <li class="main-nav-item">
+       <a href="/empty-options">Empty Options</a>
+      </li>
+      <li class="main-nav-item">
+       <a href="/dropdown-options">Dropdown Options</a>
+      </li>
+      <li class="main-nav-item">
+       <a href="/output-style-datalist">Datalist (output style)</a>
+      </li>
+      <li class="main-nav-item">
+       <a href="/custom-options">Custom Options</a>
+      </li>
+      <li class="main-nav-item">
+       <a href="/slots">Slots</a>
+      </li>
+      <li class="main-nav-item">
+       <a href="/multi-select">Multi Select</a>
+      </li>
+      <li class="main-nav-item">
+       <a href="/selected-value-encoding">Selected Value Encoding</a>
+      </li>
+      <li class="main-nav-item">
+       <a href="/sans-css">Default CSS</a>
+      </li>
+      <li class="main-nav-item">
+       <a href="/transform-and-validate">Transform and Validate</a>
+      </li>
+      <li class="main-nav-item">
+       <a href="/styling">Styling</a>
+      </li>
+      <li class="main-nav-item">
+       <a href="/elm-demo">Elm Demo</a>
+      </li>
+     </ol>
+    </nav>
+    <nav>
+     <button id="fun-style">fun</button>
+  <button id="boring-style">boring</button>
+    </nav>
+    <script src="/styles.js"></script>
+   </div>
+   <div class="container">
+    <div class="example">
+     <div id="multi-select-blur-or-unfocused-value-change">
+      <div>
+       <h3>
+        Multi Select - <code>blurOrUnfocusedValueChanged</code> Event
+       </h3>
+       <much-select multi-select="" allow-custom-options="" multi-select-single-item-removal="">
+        <select slot="select-input">
+      
+        <option value="Garbanzo">
+         Garbanzo Beans
+        </option>
+        
+      
+        <option value="Runner">
+         Runner Beans
+        </option>
+        
+      
+        <option value="Guar">
+         Guar Beans
+        </option>
+        
+      
+        <option value="Jack">
+         Jack Beans
+        </option>
+        
+    
+       </select>
+      </much-select>
+      <p>
+       Events:
+      </p>
+      <table id="multi-select-blur-or-unfocused-value-change-event-log">
+       <thead>
+        <tr>
+         <th>
+          Event
+         </th>
+         <th>
+          Details
+         </th>
+        </tr>
+       </thead>
+       <tbody></tbody>
+      </table>
+      <script>
+       window.addEventListener("load", () => {
+      document
+        .querySelector("#multi-select-blur-or-unfocused-value-change much-select")
+        .addEventListener(
+          "blurOrUnfocusedValueChanged",
+          // eslint-disable-next-line no-undef
+          makeLogEventHandler(
+            "multi-select-blur-or-unfocused-value-change-event-log"
+          )
+        );
+    });
+      </script>
+     </div>
+    </div>
+   </div>
+  </div>
+  <footer>
+   <script src="/index.js" type="module"></script>
+  </footer>
+ </div>
+</body>
+</html>

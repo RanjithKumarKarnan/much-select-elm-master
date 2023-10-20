@@ -1,0 +1,1223 @@
+<!DOCTYPE html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>
+   Much Select: Slots
+  </title>
+  <link rel="icon" href="/favicon.ico" type="image/x-icon">
+  <link href="/demo-styles.css" rel="stylesheet">
+  <title></title>
+ </head>
+ <body>
+  <input type="radio" class="theme-switch" id="theme-switch-boring" name="theme-switch">
+<input type="radio" class="theme-switch" id="theme-switch-fun" name="theme-switch">
+  <div id="page-wrapper">
+   <header id="header">
+    <div id="site-title">
+     <h1>
+      &lt;much-select&gt;
+     </h1>
+    </div>
+    <div id="page-name">
+     <h2>
+      Slots
+     </h2>
+    </div>
+    <div id="sub-title">
+     <h3>
+      Demo and Development Playground
+     </h3>
+    </div>
+   </header>
+   <div id="nav">
+    <nav class="offsite-nav">
+     <ol>
+      <li class="main-nav-item">
+       <a href="https://github.com/DripEmail/much-select-elm">Github</a>
+      </li>
+      <li class="main-nav-item">
+       <a href="https://www.npmjs.com/package/@getdrip/much-select-elm">NPM</a>
+      </li>
+      <li class="main-nav-item">
+       <a href="https://github.com/DripEmail/much-select-elm/wiki/Related-Projects">Related Projects/Inspiration</a>
+      </li>
+      <li class="main-nav-item">
+       <a href="https://en.wikipedia.org/wiki/Doge_(meme)">Doge (meme)</a>
+      </li>
+      <li class="main-nav-item">
+       <a href="https://elm-lang.org/">Elm</a>
+      </li>
+      <li class="main-nav-item">
+       <a href="https://developer.mozilla.org/en-US/docs/Web/Web_Components">Web Components</a>
+      </li>
+      <li class="main-nav-item">
+       <a href="https://modern-web.dev/">Modern Web</a>
+      </li>
+     </ol>
+    </nav>
+    <nav class="site-nav">
+     <ol>
+      <li class="main-nav-item">
+       <a href="/">Home</a>
+      </li>
+      <li class="main-nav-item">
+       <a href="/attributes">Attributes</a>
+      </li>
+      <li class="main-nav-item">
+       <a href="/initial-value">Initial Value</a>
+      </li>
+      <li class="main-nav-item">
+       <a href="/option-api">Option API</a>
+      </li>
+      <li class="main-nav-item">
+       <a href="/events">Events</a>
+      </li>
+      <li class="main-nav-item">
+       <a href="/empty-options">Empty Options</a>
+      </li>
+      <li class="main-nav-item">
+       <a href="/dropdown-options">Dropdown Options</a>
+      </li>
+      <li class="main-nav-item">
+       <a href="/output-style-datalist">Datalist (output style)</a>
+      </li>
+      <li class="main-nav-item">
+       <a href="/custom-options">Custom Options</a>
+      </li>
+      <li class="main-nav-item">
+       <a href="/slots">Slots</a>
+      </li>
+      <li class="main-nav-item">
+       <a href="/multi-select">Multi Select</a>
+      </li>
+      <li class="main-nav-item">
+       <a href="/selected-value-encoding">Selected Value Encoding</a>
+      </li>
+      <li class="main-nav-item">
+       <a href="/sans-css">Default CSS</a>
+      </li>
+      <li class="main-nav-item">
+       <a href="/transform-and-validate">Transform and Validate</a>
+      </li>
+      <li class="main-nav-item">
+       <a href="/styling">Styling</a>
+      </li>
+      <li class="main-nav-item">
+       <a href="/elm-demo">Elm Demo</a>
+      </li>
+     </ol>
+    </nav>
+    <nav>
+     <button id="fun-style">fun</button>
+  <button id="boring-style">boring</button>
+    </nav>
+    <script src="/styles.js"></script>
+   </div>
+   <div class="container">
+    <div class="example">
+     <div id="override-the-clear-button">
+      <div id="override-the-clear-button">
+       <h3>
+        Override The Clear Button
+       </h3>
+       <p>
+        Let's change how the clear button looks.
+       </p>
+       <much-select multi-select="true" selected-value="Blue">
+        <select slot="select-input">
+      
+        <option>
+         Red
+        </option>
+        
+      
+        <option>
+         Yellow
+        </option>
+        
+      
+        <option>
+         Blue
+        </option>
+        
+      
+        <option>
+         Orange
+        </option>
+        
+      
+        <option>
+         Green
+        </option>
+        
+      
+        <option>
+         Purple
+        </option>
+        
+    
+       </select>
+       <div slot="clear-button">
+        ✿
+       </div>
+      </much-select>
+     </div>
+    </div>
+   </div>
+   <div class="example">
+    <div id="override-the-clear-button-with-an-svg">
+     <div>
+      <h3>
+       Override The Clear Button with an SVG
+      </h3>
+      <p>
+       Let's change how the clear button works with an SVG.
+      </p>
+      <much-select multi-select="true" selected-value="Blue,Yellow,Purple,Green,Orange,Red">
+       <select slot="select-input">
+      
+       <option>
+        Red
+       </option>
+       
+      
+       <option>
+        Yellow
+       </option>
+       
+      
+       <option>
+        Blue
+       </option>
+       
+      
+       <option>
+        Orange
+       </option>
+       
+      
+       <option>
+        Green
+       </option>
+       
+      
+       <option>
+        Purple
+       </option>
+       
+    
+      </select>
+      <div slot="clear-button">
+       <svg xmlns="http://www.w3.org/2000/svg" xlink="http://www.w3.org/1999/xlink" width="30" height="30" viewbox="0 0 640 640">
+        <defs>
+         <style>
+          .cls-1 {
+              fill: #226122;
+              filter: url(#filter);
+            }
+
+            .cls-2, .cls-4 {
+              fill: #fff;
+            }
+
+            .cls-3 {
+              fill: #0ec00e;
+              filter: url(#filter-2);
+            }
+
+            .cls-4 {
+              fill-rule: evenodd;
+            }
+         </style>
+         <filter id="filter" x="6" y="6" width="628" height="628" filterunits="userSpaceOnUse">
+          <feFlood result="flood" flood-color="#b43a3a"></feFlood>
+          <feComposite result="composite" operator="in" in2="SourceGraphic"></feComposite>
+          <feBlend result="blend" in2="SourceGraphic"></feBlend>
+         </filter>
+         <filter id="filter-2" x="35" y="39" width="562" height="562" filterunits="userSpaceOnUse">
+          <feFlood result="flood" flood-color="#f55"></feFlood>
+          <feComposite result="composite" operator="in" in2="SourceGraphic"></feComposite>
+          <feBlend result="blend" in2="SourceGraphic"></feBlend>
+         </filter>
+        </defs>
+        <circle class="cls-1" cx="320" cy="320" r="314"></circle>
+        <circle id="Ellipse_1_Kopie" data-name="Ellipse 1 Kopie" class="cls-2" cx="317" cy="320" r="290"></circle>
+        <circle id="Ellipse_1_Kopie_2" data-name="Ellipse 1 Kopie 2" class="cls-3" cx="316" cy="320" r="281"></circle>
+        <path id="Abgerundetes_Rechteck_1" data-name="Abgerundetes Rechteck 1" class="cls-4" d="M217.023,370.289L369.8,217.467c19.147-19.153,46.691-22.654,61.521-7.821s11.329,42.385-7.818,61.538L270.725,424.006c-19.147,19.153-46.691,22.654-61.52,7.82S197.876,389.441,217.023,370.289Z"></path>
+        <path id="Abgerundetes_Rechteck_1_Kopie" data-name="Abgerundetes Rechteck 1 Kopie" class="cls-4" d="M270.912,217.051L423.949,370.088c19.179,19.18,22.685,46.77,7.831,61.624s-42.445,11.348-61.624-7.831L217.119,270.844c-19.18-19.179-22.686-46.769-7.831-61.624S251.732,197.872,270.912,217.051Z"></path>
+       </svg>
+      </div>
+     </much-select>
+    </div>
+   </div>
+  </div>
+  <div class="example">
+   <div id="default-clear-button">
+    <div>
+     <h3>
+      Default Clear Button
+     </h3>
+     <p>
+      Let's see how the default clear button works.
+     </p>
+     <much-select multi-select="true" selected-value="Blue,Yellow,Orange">
+      <select slot="select-input">
+      
+      <option>
+       Red
+      </option>
+      
+      
+      <option>
+       Yellow
+      </option>
+      
+      
+      <option>
+       Blue
+      </option>
+      
+      
+      <option>
+       Orange
+      </option>
+      
+      
+      <option>
+       Green
+      </option>
+      
+      
+      <option>
+       Purple
+      </option>
+      
+    
+     </select>
+    </much-select>
+   </div>
+  </div>
+ </div>
+ <div class="example">
+  <div id="override-loading-indicator">
+   <div id="loading-indicator">
+    <h3>
+     Custom Loading Indicator
+    </h3>
+    <p>
+     Use the <code>loading-indicator</code> slot to provide a custom loading animation.
+    </p>
+    <p>
+     The default loading animation just uses CSS and a single `<code>div</code> tag, but this example uses SVG.
+    </p>
+    <much-select loading="loading">
+     <select slot="select-input">
+      
+     <option>
+      Red
+     </option>
+     
+      
+     <option>
+      Yellow
+     </option>
+     
+      
+     <option>
+      Blue
+     </option>
+     
+      
+     <option>
+      Orange
+     </option>
+     
+      
+     <option>
+      Green
+     </option>
+     
+      
+     <option>
+      Purple
+     </option>
+     
+    
+    </select>
+    <svg slot="loading-indicator" width="25" height="25" viewbox="0 0 105 105" xmlns="http://www.w3.org/2000/svg" fill="#000">
+     <circle cx="12.5" cy="12.5" r="12.5">
+      <animate attributename="fill-opacity" begin="0s" dur="1s" values="1;.2;1" calcmode="linear" repeatcount="indefinite"></animate>
+     </circle>
+     <circle cx="12.5" cy="52.5" r="12.5" fill-opacity=".5">
+      <animate attributename="fill-opacity" begin="100ms" dur="1s" values="1;.2;1" calcmode="linear" repeatcount="indefinite"></animate>
+     </circle>
+     <circle cx="52.5" cy="12.5" r="12.5">
+      <animate attributename="fill-opacity" begin="300ms" dur="1s" values="1;.2;1" calcmode="linear" repeatcount="indefinite"></animate>
+     </circle>
+     <circle cx="52.5" cy="52.5" r="12.5">
+      <animate attributename="fill-opacity" begin="600ms" dur="1s" values="1;.2;1" calcmode="linear" repeatcount="indefinite"></animate>
+     </circle>
+     <circle cx="92.5" cy="12.5" r="12.5">
+      <animate attributename="fill-opacity" begin="800ms" dur="1s" values="1;.2;1" calcmode="linear" repeatcount="indefinite"></animate>
+     </circle>
+     <circle cx="92.5" cy="52.5" r="12.5">
+      <animate attributename="fill-opacity" begin="400ms" dur="1s" values="1;.2;1" calcmode="linear" repeatcount="indefinite"></animate>
+     </circle>
+     <circle cx="12.5" cy="92.5" r="12.5">
+      <animate attributename="fill-opacity" begin="700ms" dur="1s" values="1;.2;1" calcmode="linear" repeatcount="indefinite"></animate>
+     </circle>
+     <circle cx="52.5" cy="92.5" r="12.5">
+      <animate attributename="fill-opacity" begin="500ms" dur="1s" values="1;.2;1" calcmode="linear" repeatcount="indefinite"></animate>
+     </circle>
+     <circle cx="92.5" cy="92.5" r="12.5">
+      <animate attributename="fill-opacity" begin="200ms" dur="1s" values="1;.2;1" calcmode="linear" repeatcount="indefinite"></animate>
+     </circle>
+    </svg>
+   </much-select>
+   <button>Toggle loading attribute</button>
+   <script>
+    document
+      .querySelector("#loading-indicator button")
+      .addEventListener("click", () => {
+        const muchSelectElement = document.querySelector(
+          "#loading-indicator much-select"
+        );
+        if (muchSelectElement.hasAttribute("loading")) {
+          muchSelectElement.removeAttribute("loading");
+        } else {
+          muchSelectElement.setAttribute("loading", "loading");
+        }
+      });
+   </script>
+   <div id="loading-indicator">
+    <h3>
+     Loading
+    </h3>
+    <p>
+     Show and hide the loading indicator with the <code>loading=""</code> attribute.
+    </p>
+    <much-select loading="loading">
+     <select slot="select-input">
+      
+     <option>
+      Red
+     </option>
+     
+      
+     <option>
+      Yellow
+     </option>
+     
+      
+     <option>
+      Blue
+     </option>
+     
+      
+     <option>
+      Orange
+     </option>
+     
+      
+     <option>
+      Green
+     </option>
+     
+      
+     <option>
+      Purple
+     </option>
+     
+    
+    </select>
+   </much-select>
+   <button>Toggle loading attribute</button>
+   <script>
+    document
+      .querySelector("#loading-indicator button")
+      .addEventListener("click", () => {
+        const muchSelectElement = document.querySelector(
+          "#loading-indicator much-select"
+        );
+        if (muchSelectElement.hasAttribute("loading")) {
+          muchSelectElement.removeAttribute("loading");
+        } else {
+          muchSelectElement.setAttribute("loading", "loading");
+        }
+      });
+   </script>
+  </div>
+ </div>
+</div>
+</div>
+<div class="example">
+<div id="override-no-options-slot">
+ <div>
+  <h3>
+   No options
+  </h3>
+  <p>
+   Override what shows up if there are no options
+  </p>
+  <much-select>
+   <div slot="no-options">
+    Nothing to see here...
+   </div>
+  </much-select>
+ </div>
+</div>
+</div>
+<div class="example">
+<div id="hidden-input-slot">
+ <div>
+  <h3>
+   Hidden Input
+  </h3>
+  <p>
+   If you want to use a much select in a traditional HTML form you can use the <code>hidden-value-input</code> slot. If you put a hidden input in that slot, it's value will mirror that of the much-select.
+  </p>
+  <p>
+   You can use your browser's developer tools to see the hidden input and watch its value change as you change the much-select's value.
+  </p>
+  <much-select>
+   <select slot="select-input">
+      
+   <option>
+    Alberta
+   </option>
+   
+      
+   <option>
+    British Columbia
+   </option>
+   
+      
+   <option>
+    Manitoba
+   </option>
+   
+      
+   <option>
+    New Brunswick
+   </option>
+   
+      
+   <option>
+    Newfoundland and Labrador
+   </option>
+   
+      
+   <option>
+    Nova Scotia
+   </option>
+   
+      
+   <option>
+    Ontario
+   </option>
+   
+      
+   <option>
+    Prince Edward Island
+   </option>
+   
+      
+   <option>
+    Quebec
+   </option>
+   
+      
+   <option>
+    Saskatchewan
+   </option>
+   
+    
+  </select>
+  
+    <input slot="hidden-value-input" type="hidden" name="my-special-value">
+ </much-select>
+</div>
+</div>
+</div>
+<div class="example">
+<div id="hidden-input-json-encoding-slot">
+<div>
+ <h3>
+  Hidden Input JSON encoding
+ </h3>
+ <p>
+  If you're using the <code>hidden-value-input</code> and the <code>selected-value-encoding</code> attribute, the value in the hidden input slot will also be encoded.
+ </p>
+ <p>
+  You can use your browser's developer tools to see the hidden input and watch its value change as you change the much-select's value.
+ </p>
+ <much-select selected-value-encoding="json">
+  <select slot="select-input">
+      
+  <option>
+   New South Wales
+  </option>
+  
+      
+  <option>
+   Queensland
+  </option>
+  
+      
+  <option>
+   South Australia
+  </option>
+  
+      
+  <option>
+   Tasmania
+  </option>
+  
+      
+  <option>
+   Victoria
+  </option>
+  
+      
+  <option>
+   Western Australia
+  </option>
+  
+    
+ </select>
+ 
+    <input slot="hidden-value-input" type="hidden" name="my-special-value">
+</much-select>
+</div>
+</div>
+</div>
+<div class="example">
+<div id="override-no-filtered-options-slot">
+<div>
+<h3>
+ No Filtered Options
+</h3>
+<p>
+ You can over ride the message the user sees when they have entered a search string that does not match any of the avalible options.
+</p>
+<much-select>
+ <div slot="no-filtered-options">
+  Nope, you probably shouldn't drink that.
+ </div>
+ <select slot="select-input">
+      
+ <option>
+  Black Tea
+ </option>
+ 
+      
+ <option>
+  Green Tea
+ </option>
+ 
+      
+ <option>
+  Red Tea
+ </option>
+ 
+    
+</select>
+</much-select>
+</div>
+</div>
+</div>
+<div class="example">
+<div id="add-and-remove-button-slots">
+<div id="add-and-remove-button-slots">
+<h3>
+Add and Remove Button Slots
+</h3>
+<p>
+For the datalist output-stype in mulit select mode there are add and remove
+    buttons next to each selected option. Those can be changed with the
+    <code>add-value-button-n</code> and <code>remove-value-button-n</code> slots.
+    <code>n</code> is the index of the selected option. Slots can only be used once
+    so this is kind of an ugly hack. You could either add a ton of slots... or
+    manage then dynamically... or well... there really should be a better solution.
+</p>
+<much-select output-style="datalist" multi-select="">
+<select slot="select-input">
+      
+<option>
+ Monday
+</option>
+
+      
+<option selected="">
+ Tuesday
+</option>
+
+      
+<option>
+ Wednesday
+</option>
+
+      
+<option>
+ Thursday
+</option>
+
+      
+<option selected="">
+ Friday
+</option>
+
+      
+<option>
+ Saturday
+</option>
+
+      
+<option>
+ Sunday
+</option>
+
+    
+</select>
+
+    <span slot="add-value-button-0">➕</span>
+    <span slot="remove-value-button-0">🗑</span>
+    <span slot="add-value-button-1"><button>moar</button></span>
+    <span slot="remove-value-button-1"><button>less</button></span>
+</much-select>
+</div>
+</div>
+</div>
+<div class="example">
+<div id="validation-and-transformation-slot-multi-custom-html">
+<div id="validation-and-transformation-slot-multi-custom">
+<h3>
+Validation and Transformation Slot
+</h3>
+<h4>
+For Multi Select and Custom Options.
+</h4>
+<p>
+Custom options should be transformed and validated.
+</p>
+<p>
+The custom values should be turned to lower case.
+</p>
+<p>
+It should only allow custom options that have no white space and are at least 3 characters long.
+</p>
+<p></p>
+<much-select allow-custom-options="" multi-select="">
+<script type="application/json" slot="transformation-validation">
+{
+        "transformers": [
+          {
+            "name": "lowercase"
+          }
+        ],
+        "validators": [
+          {
+            "name": "no-white-space",
+            "level": "silent",
+            "message": "Spaces are not allow for custom fruit."
+          },
+          {
+            "name": "minimum-length",
+            "level": "silent",
+            "minimum-length": 3,
+            "message": "The minimum length is 3."
+          }
+        ]
+      }
+</script>
+<select slot="select-input">
+      
+<option>
+African custard-apple
+</option>
+
+      
+<option>
+American beautyberry
+</option>
+
+      
+<option>
+American red raspberry
+</option>
+
+      
+<option>
+Annona aurantiaca
+</option>
+
+      
+<option>
+Annona conica
+</option>
+
+      
+<option>
+Annona coriacea
+</option>
+
+      
+<option>
+Annona cornifolia
+</option>
+
+      
+<option>
+Annona jahnii
+</option>
+
+      
+<option>
+Annona longiflora
+</option>
+
+      
+<option>
+Annona nutans
+</option>
+
+      
+<option>
+Annona paludosa
+</option>
+
+      
+<option>
+Annona stenophylla
+</option>
+
+      
+<option>
+Annonilla
+</option>
+
+      
+<option>
+Araticum-cagão
+</option>
+
+      
+<option>
+Aratincum do Para
+</option>
+
+      
+<option>
+Arctic raspberry
+</option>
+
+      
+<option>
+Armenian blackberry
+</option>
+
+      
+<option>
+Atemoya
+</option>
+
+      
+<option>
+Atherton raspberry
+</option>
+
+      
+<option>
+Balloon berry
+</option>
+
+      
+<option>
+Beach strawberry
+</option>
+
+      
+<option>
+Beach sugar apple
+</option>
+
+      
+<option>
+Biribá
+</option>
+
+      
+<option>
+Black mulberry
+</option>
+
+      
+<option>
+Black raspberry
+</option>
+
+      
+<option>
+Blackberry
+</option>
+
+      
+<option>
+Boysenberry
+</option>
+
+      
+<option>
+California blackberry
+</option>
+
+      
+<option>
+Cawesh
+</option>
+
+      
+<option>
+Cherimoya
+</option>
+
+      
+<option>
+Chinese bramble berry
+</option>
+
+      
+<option>
+Cloudberry
+</option>
+
+      
+<option>
+Creeping raspberry
+</option>
+
+      
+<option>
+Cudrang
+</option>
+
+      
+<option>
+Custard apple
+</option>
+
+      
+<option>
+Cutleaf evergreen blackberry
+</option>
+
+      
+<option>
+Delicious raspberry
+</option>
+
+      
+<option>
+Dewberry
+</option>
+
+      
+<option>
+Dwarf red blackberry
+</option>
+
+      
+<option>
+Elephant apple
+</option>
+
+      
+<option>
+Elmleaf blackberry
+</option>
+
+      
+<option>
+Emu berry
+</option>
+
+      
+<option>
+European dewberry
+</option>
+
+      
+<option>
+European red raspberry
+</option>
+
+      
+<option>
+Five-leaved bramble berry
+</option>
+
+      
+<option>
+Garden dewberry
+</option>
+
+      
+<option>
+Golden Himalayan raspberry
+</option>
+
+      
+<option>
+Gummy Bear Fruit
+</option>
+
+      
+<option>
+Hawaiian raspberry
+</option>
+
+      
+<option>
+Ilama
+</option>
+
+      
+<option>
+Japanese bramble berry
+</option>
+
+      
+<option>
+Korean blackberry
+</option>
+
+      
+<option>
+Korean raspberry
+</option>
+
+      
+<option>
+Kousa dogwood fruit
+</option>
+
+      
+<option>
+Loganberry
+</option>
+
+      
+<option>
+Marolo
+</option>
+
+      
+<option>
+Mock strawberry
+</option>
+
+      
+<option>
+Molucca bramble berry
+</option>
+
+      
+<option>
+Mora común
+</option>
+
+      
+<option>
+Mora de Castilla
+</option>
+
+      
+<option>
+Mountain raspberry
+</option>
+
+      
+<option>
+Mountain soursop
+</option>
+
+      
+<option>
+Mysore raspberry
+</option>
+
+      
+<option>
+Nepalese raspberry
+</option>
+
+      
+<option>
+Pennsylvania blackberry
+</option>
+
+      
+<option>
+Pond apple
+</option>
+
+      
+<option>
+Purple-flowered raspberry
+</option>
+
+      
+<option>
+Red mulberry
+</option>
+
+      
+<option>
+Rose hip
+</option>
+
+      
+<option>
+Roseleaf bramble berry
+</option>
+
+      
+<option>
+Salmonberry
+</option>
+
+      
+<option>
+Sawtooth blackberry
+</option>
+
+      
+<option>
+Smooth blackberry
+</option>
+
+      
+<option>
+Snow raspberry
+</option>
+
+      
+<option>
+Soncoya
+</option>
+
+      
+<option>
+Soursop
+</option>
+
+      
+<option>
+Stone bramble berry
+</option>
+
+      
+<option>
+Strawberry
+</option>
+
+      
+<option>
+Sugar-apple
+</option>
+
+      
+<option>
+Tayberry
+</option>
+
+      
+<option>
+Thimbleberry
+</option>
+
+      
+<option>
+White bark raspberry
+</option>
+
+      
+<option>
+White mulberry
+</option>
+
+      
+<option>
+White-stemmed bramble
+</option>
+
+      
+<option>
+Wild cherimoya
+</option>
+
+      
+<option>
+Wild strawberry
+</option>
+
+      
+<option>
+Wineberry
+</option>
+
+      
+<option>
+Youngberry
+</option>
+
+    
+</select>
+</much-select>
+</div>
+</div>
+</div>
+<div class="example">
+<div id="custom-element-options">
+<div>
+<h3>
+Custom Element Options
+</h3>
+<p>
+For more flexibility in the dropdown items you can use the <code>much-select-option</code> custom element.
+</p>
+<much-select>
+<much-select-option option-value="orange" slot="much-select-option-orange">
+<h1>
+Orange
+</h1>
+</much-select-option>
+<much-select-option option-value="Root Beer" slot="much-select-option-root-beer">
+<h2>
+Root Beer
+</h2>
+</much-select-option>
+<much-select-option option-value="Fudgesicles" slot="much-select-option-fudgesicles">
+<h3>
+Fudgesicles
+</h3>
+<p>
+Homemade Fudgesicles - Veggie Desserts
+        What is this? A fudgesicles is a frozen dessert made with chocolate and cream. The chocolate can be either milk or dark, but most commonly you'll find fudgesicles made with milk chocolate. You can find them in nearly any grocery store in the freezer aisle, especially in the summer when they are most popular.
+</p>
+</much-select-option>
+</much-select>
+</div>
+</div>
+<a href="/custom-element-options">open example on its own page</a>
+</div>
+</div>
+<footer>
+<script src="/index.js" type="module"></script>
+</footer>
+</div>
+</body>
+</html>

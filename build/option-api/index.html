@@ -1,0 +1,567 @@
+<!DOCTYPE html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="icon" href="/favicon.ico" type="image/x-icon">
+  <link href="/demo-styles.css" rel="stylesheet">
+  <title>
+   Much Select: Option API
+  </title>
+ </head>
+ <body>
+  <input type="radio" class="theme-switch" id="theme-switch-boring" name="theme-switch">
+<input type="radio" class="theme-switch" id="theme-switch-fun" name="theme-switch">
+  <div id="page-wrapper">
+   <header id="header">
+    <div id="site-title">
+     <h1>
+      &lt;much-select&gt;
+     </h1>
+    </div>
+    <div id="page-name">
+     <h2>
+      Option API
+     </h2>
+    </div>
+    <div id="sub-title">
+     <h3>
+      Demo and Development Playground
+     </h3>
+    </div>
+   </header>
+   <div id="nav">
+    <nav class="offsite-nav">
+     <ol>
+      <li class="main-nav-item">
+       <a href="https://github.com/DripEmail/much-select-elm">Github</a>
+      </li>
+      <li class="main-nav-item">
+       <a href="https://www.npmjs.com/package/@getdrip/much-select-elm">NPM</a>
+      </li>
+      <li class="main-nav-item">
+       <a href="https://github.com/DripEmail/much-select-elm/wiki/Related-Projects">Related Projects/Inspiration</a>
+      </li>
+      <li class="main-nav-item">
+       <a href="https://en.wikipedia.org/wiki/Doge_(meme)">Doge (meme)</a>
+      </li>
+      <li class="main-nav-item">
+       <a href="https://elm-lang.org/">Elm</a>
+      </li>
+      <li class="main-nav-item">
+       <a href="https://developer.mozilla.org/en-US/docs/Web/Web_Components">Web Components</a>
+      </li>
+      <li class="main-nav-item">
+       <a href="https://modern-web.dev/">Modern Web</a>
+      </li>
+     </ol>
+    </nav>
+    <nav class="site-nav">
+     <ol>
+      <li class="main-nav-item">
+       <a href="/">Home</a>
+      </li>
+      <li class="main-nav-item">
+       <a href="/attributes">Attributes</a>
+      </li>
+      <li class="main-nav-item">
+       <a href="/initial-value">Initial Value</a>
+      </li>
+      <li class="main-nav-item">
+       <a href="/option-api">Option API</a>
+      </li>
+      <li class="main-nav-item">
+       <a href="/events">Events</a>
+      </li>
+      <li class="main-nav-item">
+       <a href="/empty-options">Empty Options</a>
+      </li>
+      <li class="main-nav-item">
+       <a href="/dropdown-options">Dropdown Options</a>
+      </li>
+      <li class="main-nav-item">
+       <a href="/output-style-datalist">Datalist (output style)</a>
+      </li>
+      <li class="main-nav-item">
+       <a href="/custom-options">Custom Options</a>
+      </li>
+      <li class="main-nav-item">
+       <a href="/slots">Slots</a>
+      </li>
+      <li class="main-nav-item">
+       <a href="/multi-select">Multi Select</a>
+      </li>
+      <li class="main-nav-item">
+       <a href="/selected-value-encoding">Selected Value Encoding</a>
+      </li>
+      <li class="main-nav-item">
+       <a href="/sans-css">Default CSS</a>
+      </li>
+      <li class="main-nav-item">
+       <a href="/transform-and-validate">Transform and Validate</a>
+      </li>
+      <li class="main-nav-item">
+       <a href="/styling">Styling</a>
+      </li>
+      <li class="main-nav-item">
+       <a href="/elm-demo">Elm Demo</a>
+      </li>
+     </ol>
+    </nav>
+    <nav>
+     <button id="fun-style">fun</button>
+  <button id="boring-style">boring</button>
+    </nav>
+    <script src="/styles.js"></script>
+   </div>
+   <div class="container">
+    <div class="example">
+     <div id="update-options-add-options-to-an-empty-much-select">
+      <div id="update-options-add-options-to-an-empty-much-select">
+       <h3>
+        <code>updateOptions</code>
+       </h3>
+       <p>
+        Here we have <code>much-select</code> with no options, click the button to add some options.
+       </p>
+       <button>Update the Options</button>
+       <much-select></much-select>
+       <script>
+        document
+      .querySelector("#update-options-add-options-to-an-empty-much-select button")
+      .addEventListener("click", () => {
+        document
+          .querySelector(
+            "#update-options-add-options-to-an-empty-much-select much-select"
+          )
+          .updateOptions([
+            { value: "Bears", label: "Bears", description: "Chicago" },
+            { value: "Lions", label: "Lions", description: "Detroit" },
+            { value: "Packers", label: "Packers", description: "Green Bay" },
+            { value: "Vikings", label: "Vikings", description: "Minnesota" },
+          ]);
+      });
+       </script>
+      </div>
+     </div>
+    </div>
+    <div class="example">
+     <div id="update-options-add-options-to-a-much-select">
+      <div id="update-options-add-options-to-a-much-select">
+       <h3>
+        Using <code>updateOptions</code> to replace options
+       </h3>
+       <p>
+        Click the button to add some random options (numbers).
+       </p>
+       <p>
+        You will see that the options get "replaced" not "appended". The exception
+    being that if an option is selected it will stay in the list of options.
+       </p>
+       <button>Roll some new random options</button>
+       <much-select></much-select>
+       <script>
+        function getRandomInt(min, max) {
+      const minCiel = Math.ceil(min);
+      const maxFloor = Math.floor(max);
+      return Math.floor(Math.random() * (maxFloor - minCiel) + minCiel); // The maximum is exclusive and the minimum is inclusive
+    }
+    document
+      .querySelector("#update-options-add-options-to-a-much-select button")
+      .addEventListener("click", () => {
+        const randomOptions = [];
+        // eslint-disable-next-line no-plusplus
+        for (let i = 0; i < 5; i++) {
+          const num = getRandomInt(1000, 5000);
+          randomOptions.push({
+            value: num,
+          });
+        }
+        document
+          .querySelector("#update-options-add-options-to-a-much-select much-select")
+          .updateOptions(randomOptions);
+      });
+       </script>
+      </div>
+     </div>
+    </div>
+    <div class="example">
+     <div id="add-option-to-a-much-select">
+      <div id="add-option-to-a-much-select">
+       <h3>
+        Use <code>addOption</code> to add a random value
+       </h3>
+       <p>
+        Click the button to add a random option. And then click it again.
+       </p>
+       <button>Add an Option</button>
+       <much-select></much-select>
+       <script>
+        function getRandomInt(min, max) {
+      const minCeil = Math.ceil(min);
+      const maxFloor = Math.floor(max);
+      return Math.floor(Math.random() * (maxFloor - minCeil) + maxFloor); // The maximum is exclusive and the minimum is inclusive
+    }
+    document
+      .querySelector("#add-option-to-a-much-select button")
+      .addEventListener("click", () => {
+        document
+          .querySelector("#add-option-to-a-much-select much-select")
+          .addOption({ value: getRandomInt(1000, 5000) });
+      });
+       </script>
+      </div>
+     </div>
+    </div>
+    <div class="example">
+     <div id="add-possible-duplicate-option-to-a-much-select">
+      <div id="add-possible-duplicate-option-to-a-much-select">
+       <h3>
+        Use <code>addOption</code> to add a value that might be a duplicate
+       </h3>
+       <p>
+        Click the button to add a random option. And then click it again. Eventually you will add all the options in the list. Each time the button is clicked an option is added randomly from a list. You should not get any duplicate items in the list and any selected value should be preserved.
+       </p>
+       <button>Add an Option</button>
+       <much-select></much-select>
+       <script>
+        const options = ["ranch", "farm", "orchard", "vineyard"];
+    document
+      .querySelector("#add-possible-duplicate-option-to-a-much-select button")
+      .addEventListener("click", () => {
+        const randomOption = options[Math.floor(Math.random() * options.length)];
+        document
+          .querySelector(
+            "#add-possible-duplicate-option-to-a-much-select much-select"
+          )
+          .addOption({ value: randomOption });
+      });
+       </script>
+      </div>
+     </div>
+    </div>
+    <div class="example">
+     <div id="remove-an-option-from-a-much-select">
+      <div id="remove-an-option-from-a-much-select">
+       <h3>
+        Use <code>removeOption</code> to remove different options
+       </h3>
+       <p>
+        Clicking on a button should remove it from the list of options.
+       </p>
+       <button id="remove-cake">No More Cake</button>
+  <button id="remove-pie">No More Pie</button>
+  <button id="remove-pudding">No More Pudding</button>
+       <much-select>
+        <select slot="select-input">
+      
+        <option>
+         Ice Cream
+        </option>
+        
+      
+        <option>
+         Cake
+        </option>
+        
+      
+        <option>
+         Pie
+        </option>
+        
+      
+        <option>
+         Candy
+        </option>
+        
+      
+        <option>
+         Pudding
+        </option>
+        
+    
+       </select>
+      </much-select>
+      <script>
+       document.querySelector("#remove-cake").addEventListener("click", () => {
+      document
+        .querySelector("#remove-an-option-from-a-much-select much-select")
+        .removeOption({ value: "Cake" });
+    });
+
+    document.querySelector("#remove-pie").addEventListener("click", () => {
+      document
+        .querySelector("#remove-an-option-from-a-much-select much-select")
+        .removeOption({ value: "Pie" });
+    });
+
+    document.querySelector("#remove-pudding").addEventListener("click", () => {
+      document
+        .querySelector("#remove-an-option-from-a-much-select much-select")
+        .removeOption({ value: "Pudding" });
+    });
+      </script>
+     </div>
+    </div>
+   </div>
+   <div class="example">
+    <div id="select-and-deselect-option-from-a-much-select">
+     <div id="select-and-deselect-option-from-a-much-select">
+      <h3>
+       Use <code>selectOption</code> and <code>deselectOption</code> to change the value
+      </h3>
+      <p>
+       Clicking on a button should remove it from the list of options.
+      </p>
+      <button id="select-rock">Select Rock</button>
+  <button id="deselect-rock">Deselect Rock</button>
+  <button id="select-folk">Select Folk</button>
+  <button id="deselect-folk">Deselect Folk</button>
+      <much-select>
+       <select slot="select-input">
+      
+       <option>
+        Metal
+       </option>
+       
+      
+       <option>
+        Rock
+       </option>
+       
+      
+       <option>
+        Rap
+       </option>
+       
+      
+       <option>
+        Country
+       </option>
+       
+      
+       <option>
+        Folk
+       </option>
+       
+    
+      </select>
+     </much-select>
+     <script>
+      document.querySelector("#select-rock").addEventListener("click", () => {
+      document
+        .querySelector("#select-and-deselect-option-from-a-much-select much-select")
+        .selectOption("Rock");
+    });
+    document.querySelector("#deselect-rock").addEventListener("click", () => {
+      document
+        .querySelector("#select-and-deselect-option-from-a-much-select much-select")
+        .deselectOption("Rock");
+    });
+    document.querySelector("#select-folk").addEventListener("click", () => {
+      document
+        .querySelector("#select-and-deselect-option-from-a-much-select much-select")
+        .selectOption("Folk");
+    });
+    document.querySelector("#deselect-folk").addEventListener("click", () => {
+      document
+        .querySelector("#select-and-deselect-option-from-a-much-select much-select")
+        .deselectOption("Folk");
+    });
+     </script>
+    </div>
+   </div>
+  </div>
+  <div class="example">
+   <div id="select-multiple-options-in-a-multi-much-select">
+    <div id="select-multiple-options-in-a-multi-much-select">
+     <h3>
+      Use <code>selectOption</code> to select multiple values to multi select.
+     </h3>
+     <p>
+      Clicking on a button should add them to the selected options.
+     </p>
+     <button id="select-basketball">Basketball</button>
+  <button id="select-baseball">Baseball</button>
+  <button id="select-football">Football</button>
+     <much-select multi-select="">
+      <select slot="select-input">
+      
+      <option>
+       Basketball
+      </option>
+      
+      
+      <option>
+       Baseball
+      </option>
+      
+      
+      <option>
+       Football
+      </option>
+      
+      
+      <option>
+       Hockey
+      </option>
+      
+      
+      <option>
+       Soccer
+      </option>
+      
+    
+     </select>
+    </much-select>
+    <script>
+     document.querySelector("#select-basketball").addEventListener("click", () => {
+      document
+        .querySelector(
+          "#select-multiple-options-in-a-multi-much-select much-select"
+        )
+        .selectOption("Basketball");
+    });
+
+    document.querySelector("#select-baseball").addEventListener("click", () => {
+      document
+        .querySelector(
+          "#select-multiple-options-in-a-multi-much-select much-select"
+        )
+        .selectOption("Baseball");
+    });
+
+    document.querySelector("#select-football").addEventListener("click", () => {
+      document
+        .querySelector(
+          "#select-multiple-options-in-a-multi-much-select much-select"
+        )
+        .selectOption("Football");
+    });
+    </script>
+   </div>
+  </div>
+ </div>
+ <div class="example">
+  <div id="change-select-attribute-changes-selected-value-in-much-select">
+   <div id="change-select-attribute-changes-selected-value-in-much-select">
+    <h3>
+     Changing the DOM to add a <code>selected</code> attribute to one of the options
+    </h3>
+    <button id="select-moe">Select Moe with the selected attribute.</button>
+    <much-select>
+     <select slot="select-input">
+      
+     <option id="larry">
+      Larry
+     </option>
+     
+      
+     <option id="moe">
+      Moe
+     </option>
+     
+      
+     <option id="joe">
+      Curly Joe
+     </option>
+     
+    
+    </select>
+   </much-select>
+   <script>
+    document.querySelector("#select-moe").addEventListener("click", () => {
+      document.querySelector("#larry").removeAttribute("selected");
+      document.querySelector("#moe").setAttribute("selected", "");
+      document.querySelector("#joe").removeAttribute("selected");
+    });
+   </script>
+  </div>
+ </div>
+</div>
+<div class="example">
+ <div id="not-just-english-options">
+  <div id="not-just-english">
+   <p>
+    Here we have options that contain characters that are outside of the standard english alphabet (i.e. <a href="https://en.wikipedia.org/wiki/Diacritic">diacritics</a>).
+    For the sake of filtering options we match on the the "basic" english letter (filtering is also case insesitive)
+   </p>
+   <p>
+    To see this in action try filtering on "ra".
+   </p>
+   <much-select>
+    <select slot="select-input">
+      
+    <option>
+     hvid
+    </option>
+    
+      
+    <option>
+     gul
+    </option>
+    
+      
+    <option>
+     orange
+    </option>
+    
+      
+    <option>
+     pink
+    </option>
+    
+      
+    <option>
+     rød
+    </option>
+    
+      
+    <option>
+     brun
+    </option>
+    
+      
+    <option>
+     grøn
+    </option>
+    
+      
+    <option>
+     blå
+    </option>
+    
+      
+    <option>
+     lilla
+    </option>
+    
+      
+    <option>
+     grå
+    </option>
+    
+      
+    <option>
+     sølvfarvet
+    </option>
+    
+      
+    <option>
+     guldfarvet
+    </option>
+    
+    
+   </select>
+  </much-select>
+ </div>
+</div>
+</div>
+</div>
+<footer>
+<script src="/index.js" type="module"></script>
+</footer>
+</div>
+</body>
+</html>

@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="icon" href="/favicon.ico" type="image/x-icon">
+  <link href="/demo-styles.css" rel="stylesheet">
+  <title>
+   Much Select: Empty Options
+  </title>
+ </head>
+ <body>
+  <input type="radio" class="theme-switch" id="theme-switch-boring" name="theme-switch">
+<input type="radio" class="theme-switch" id="theme-switch-fun" name="theme-switch">
+  <div id="page-wrapper">
+   <header id="header">
+    <div id="site-title">
+     <h1>
+      &lt;much-select&gt;
+     </h1>
+    </div>
+    <div id="page-name">
+     <h2>
+      Empty Options
+     </h2>
+    </div>
+    <div id="sub-title">
+     <h3>
+      Demo and Development Playground
+     </h3>
+    </div>
+   </header>
+   <div id="nav">
+    <nav class="offsite-nav">
+     <ol>
+      <li class="main-nav-item">
+       <a href="https://github.com/DripEmail/much-select-elm">Github</a>
+      </li>
+      <li class="main-nav-item">
+       <a href="https://www.npmjs.com/package/@getdrip/much-select-elm">NPM</a>
+      </li>
+      <li class="main-nav-item">
+       <a href="https://github.com/DripEmail/much-select-elm/wiki/Related-Projects">Related Projects/Inspiration</a>
+      </li>
+      <li class="main-nav-item">
+       <a href="https://en.wikipedia.org/wiki/Doge_(meme)">Doge (meme)</a>
+      </li>
+      <li class="main-nav-item">
+       <a href="https://elm-lang.org/">Elm</a>
+      </li>
+      <li class="main-nav-item">
+       <a href="https://developer.mozilla.org/en-US/docs/Web/Web_Components">Web Components</a>
+      </li>
+      <li class="main-nav-item">
+       <a href="https://modern-web.dev/">Modern Web</a>
+      </li>
+     </ol>
+    </nav>
+    <nav class="site-nav">
+     <ol>
+      <li class="main-nav-item">
+       <a href="/">Home</a>
+      </li>
+      <li class="main-nav-item">
+       <a href="/attributes">Attributes</a>
+      </li>
+      <li class="main-nav-item">
+       <a href="/initial-value">Initial Value</a>
+      </li>
+      <li class="main-nav-item">
+       <a href="/option-api">Option API</a>
+      </li>
+      <li class="main-nav-item">
+       <a href="/events">Events</a>
+      </li>
+      <li class="main-nav-item">
+       <a href="/empty-options">Empty Options</a>
+      </li>
+      <li class="main-nav-item">
+       <a href="/dropdown-options">Dropdown Options</a>
+      </li>
+      <li class="main-nav-item">
+       <a href="/output-style-datalist">Datalist (output style)</a>
+      </li>
+      <li class="main-nav-item">
+       <a href="/custom-options">Custom Options</a>
+      </li>
+      <li class="main-nav-item">
+       <a href="/slots">Slots</a>
+      </li>
+      <li class="main-nav-item">
+       <a href="/multi-select">Multi Select</a>
+      </li>
+      <li class="main-nav-item">
+       <a href="/selected-value-encoding">Selected Value Encoding</a>
+      </li>
+      <li class="main-nav-item">
+       <a href="/sans-css">Default CSS</a>
+      </li>
+      <li class="main-nav-item">
+       <a href="/transform-and-validate">Transform and Validate</a>
+      </li>
+      <li class="main-nav-item">
+       <a href="/styling">Styling</a>
+      </li>
+      <li class="main-nav-item">
+       <a href="/elm-demo">Elm Demo</a>
+      </li>
+     </ol>
+    </nav>
+    <nav>
+     <button id="fun-style">fun</button>
+  <button id="boring-style">boring</button>
+    </nav>
+    <script src="/styles.js"></script>
+   </div>
+   <div class="container">
+    <div class="example">
+     <div id="no-value-no-options">
+      <div id="no-value-no-options">
+       <h3>
+        No Options
+       </h3>
+       <p>
+        A <code>much-select</code> and nothing more.
+       </p>
+       <much-select></much-select>
+      </div>
+     </div>
+    </div>
+    <div class="example">
+     <div id="empty-selected-value-no-options">
+      <div id="no-value-no-options">
+       <h3>
+        No Options - Empty Selected Value
+       </h3>
+       <p>
+        No <code>select-input</code>, just a <code>selected-value=""</code>
+       </p>
+       <much-select selected-value=""></much-select>
+      </div>
+     </div>
+    </div>
+    <div class="example">
+     <div id="empty-selected-value-empty-select-input">
+      <div id="empty-selected-value-empty-select-input">
+       <h3>
+        Empty Selected Value - Empty Selected Input
+       </h3>
+       <p>
+        There is a <code>select-input</code> but it has no options in it and <code>selected-value=""</code>
+       </p>
+       <much-select selected-value="">
+        <select slot="select-input"></select>
+       </much-select>
+      </div>
+     </div>
+    </div>
+    <div class="example">
+     <div id="one-empty-option-with-a-label">
+      <div id="one-empty-option-with-a-label">
+       <h3>
+        One Empty Option
+       </h3>
+       <p>
+        It has a label but an empty value.
+       </p>
+       <much-select>
+        <select slot="select-input">
+      
+        <option value="">
+         NOTHING
+        </option>
+        
+    
+       </select>
+      </much-select>
+     </div>
+    </div>
+   </div>
+   <div class="example">
+    <div id="empty-option-with-label-and-other-options">
+     <div id="an-empty-option-with-a-label-and-some-other-stuff">
+      <h3>
+       An Empty Option with a Label and other options
+      </h3>
+      <much-select>
+       <select slot="select-input">
+      
+       <option value="">
+        [SELECT SPICE LEVEL]
+       </option>
+       
+      
+       <option value="1">
+        🌶
+       </option>
+       
+      
+       <option value="2">
+        🌶🌶
+       </option>
+       
+      
+       <option value="3">
+        🌶🌶🌶
+       </option>
+       
+      
+       <option value="4">
+        🌶🌶🌶🌶
+       </option>
+       
+      
+       <option value="5">
+        🌶🌶🌶🌶🌶
+       </option>
+       
+    
+      </select>
+     </much-select>
+    </div>
+   </div>
+  </div>
+  <div class="example">
+   <div id="empty-option-with-label-and-other-options-2">
+    <div id="an-empty-option-with-no-label-and-some-other-options">
+     <h3>
+      An Empty Option with a Label and other options
+     </h3>
+     <p>
+      <strong>TODO this is working quite right. Could just be a styling issue.</strong>
+     </p>
+     <much-select>
+      <select slot="select-input">
+      
+      <option style="height: 40px;"></option>
+      ,
+      
+      <option value="car">
+       Car
+      </option>
+      ,
+      
+      <option value="truck">
+       Truck
+      </option>
+      ,
+      
+      <option value="van" disabled="true">
+       Van
+      </option>
+      ,
+      
+      <option value="plane">
+       Plane
+      </option>
+      ,
+      
+      <option value="boat">
+       boat
+      </option>
+      ,
+      
+      <option value="train">
+       Train
+      </option>
+      ,
+      
+      <option value="tank">
+       Tank
+      </option>
+      ,
+      
+      <option value="teleporter">
+       Teleporter
+      </option>
+      ,
+      
+      <option value="back_of_a_gorilla">
+       Back of a Gorilla
+      </option>
+      ,
+    
+     </select>
+    </much-select>
+   </div>
+  </div>
+ </div>
+</div>
+<footer>
+ <script src="/index.js" type="module"></script>
+</footer>
+</div>
+</body>
+</html>

@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="icon" href="/favicon.ico" type="image/x-icon">
+  <title>
+   Much Select
+  </title>
+ </head>
+ <body>
+  <a href="/">Back Home</a>
+  <p>
+   There's some minimalistic styles in the web components itself. On this we can see how those are looking/working.
+  </p>
+  <div class="container">
+   <div class="example">
+    <div id="simple-example">
+     <div id="simple-example">
+      <h3>
+       Simple Example
+      </h3>
+      <p>
+       Just selecting a single value from a list. If this is all you need to do you should probably just use a
+      <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/select"><code>select</code> element</a>.
+      </p>
+      <much-select>
+       <select slot="select-input">
+      
+       <option>
+        Bricks
+       </option>
+       
+      
+       <option>
+        Sticks
+       </option>
+       
+      
+       <option>
+        Straw
+       </option>
+       
+    
+      </select>
+     </much-select>
+    </div>
+   </div>
+   <a href="/simple-example">open example on its own page</a>
+  </div>
+  <div class="example">
+   <div id="multi-select">
+    <div id="simple-multi-select-example">
+     <h3>
+      Multi Select
+     </h3>
+     <p>
+      Choose some programming languages, no need to just pick 1.
+     </p>
+     <much-select multi-select="">
+      <select slot="select-input">
+      
+      <option>
+       Ada
+      </option>
+      
+      
+      <option>
+       ALGOL 68
+      </option>
+      
+      
+      <option>
+       C
+      </option>
+      
+      
+      <option>
+       C++
+      </option>
+      
+      
+      <option>
+       Objective-C
+      </option>
+      
+      
+      <option>
+       C#
+      </option>
+      
+      
+      <option>
+       Java
+      </option>
+      
+      
+      <option>
+       Go
+      </option>
+      
+    
+     </select>
+    </much-select>
+   </div>
+  </div>
+  <a href="/multi-select-example">open example on its own page</a>
+ </div>
+ <div class="example">
+  <div id="option-groups">
+   <div id="option-groups">
+    <h3>
+     Option Groups
+    </h3>
+    <p>
+     You can give your options a little more organization by grouping them.
+    </p>
+    <much-select>
+     <select slot="select-input">
+      
+     <optgroup label="Primary">
+      
+        
+      <option>
+       Red
+      </option>
+      
+        
+      <option>
+       Yellow
+      </option>
+      
+        
+      <option>
+       Blue
+      </option>
+      
+      
+     </optgroup>
+     
+      
+     <optgroup label="Secondary">
+      
+        
+      <option>
+       Orange
+      </option>
+      
+        
+      <option>
+       Green
+      </option>
+      
+        
+      <option>
+       Purple
+      </option>
+      
+      
+     </optgroup>
+     
+    
+    </select>
+   </much-select>
+  </div>
+ </div>
+</div>
+<div class="example">
+ <div id="options-with-descriptions">
+  <div id="option-descriptions">
+   <h3>
+    Options with Descriptions
+   </h3>
+   <p>
+    Sometimes just a human friendly label for an option isn't enough, and you'd like to add a little extra "color".
+   </p>
+   <p>
+    You can filter your results by typing, <code>&lt;much-select&gt;</code> will also use the descriptions when trying to find the option you want.
+   </p>
+   <much-select>
+    <select slot="select-input">
+      
+    <option data-description="scarlet, vermilion, ruby, ruby red, ruby-colored, cherry">
+     Red
+    </option>
+    
+      
+    <option data-description="yellowish, yellowy, lemon, lemony, amber, gold, golden; blond, light brown, fair, flaxen">
+     Yellow
+    </option>
+    
+      
+    <option data-description=" sky blue, azure, cobalt (blue), sapphire, cerulean, navy (blue), saxe (blue), Oxford blue, Cambridge blue, ultramarine">
+     Blue
+    </option>
+    
+      
+    <option data-description="A town in France">
+     Orange
+    </option>
+    
+      
+    <option data-description="greenish, viridescent; olive green, pea green, emerald green, lime green, bottle green">
+     Green
+    </option>
+    
+      
+    <option data-description="violet">
+     Purple
+    </option>
+    
+    
+   </select>
+  </much-select>
+ </div>
+</div>
+</div>
+</div>
+<footer>
+<script src="/index.js" type="module"></script>
+</footer>
+</body>
+</html>
