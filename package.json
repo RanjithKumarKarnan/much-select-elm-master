@@ -1,0 +1,67 @@
+{
+  "name": "@getdrip/much-select-elm",
+  "version": "0.18.0",
+  "description": "A fancy selector web component written (mostly) in elm.",
+  "type": "module",
+  "module": "dist/much-select.js",
+  "repository": "github:DripEmail/much-select-elm",
+  "engines": {
+    "node": ">=12.14",
+    "npm": ">=7.13.0"
+  },
+  "source": "public/index.html",
+  "targets": {
+    "site": {
+      "source": "./public/index.html",
+      "distDir": "./build/site/public"
+    },
+    "library": {
+      "distDir": "./dist",
+      "source": "./src/much-select.js",
+      "outputFormat": "esmodule",
+      "isLibrary": true,
+      "optimize": false
+    }
+  },
+  "scripts": {
+    "start": "run-pty run-pty.json",
+    "test": "elm-test",
+    "web-test-runner": "web-test-runner tests/**/*.test.html --node-resolve",
+    "web-test-runner-with-coverage": "web-test-runner tests/**/*.test.html --coverage --node-resolve",
+    "build": "./scripts/build.sh",
+    "build-site": "./scripts/build-site.sh",
+    "build-and-test": "npm run build; npm run test; npm run web-test-runner",
+    "serve": "scripts/serve-site.sh",
+    "deploy-site": "npm run build && npm run build-site && firebase deploy",
+    "lint": "eslint",
+    "format": "elm-format",
+    "review": "elm-review"
+  },
+  "author": "Jachin Rupe <jachin.rupe@drip.com>",
+  "license": "MIT",
+  "devDependencies": {
+    "@esm-bundle/chai": "^4.3.4-fix.0",
+    "@open-wc/testing": "^3.2.0",
+    "@web/test-runner": "^0.17.1",
+    "@web/test-runner-commands": "^0.8.0",
+    "@web/test-runner-mocha": "^0.8.1",
+    "chai-dom": "^1.11.0",
+    "cypress": "^13.3.0",
+    "elm-esm": "^1.1.4",
+    "elm-review": "^2.10.3",
+    "elm-test": "0.19.1-revision12",
+    "elm-tooling": "^1.15.0",
+    "elm-watch": "^1.1.2",
+    "esbuild": "^0.19.4",
+    "eslint": "^8.51.0",
+    "eslint-config-airbnb-base": "^15.0.0",
+    "eslint-config-prettier": "^9.0.0",
+    "eslint-plugin-cypress": "^2.15.1",
+    "eslint-plugin-html": "^7.1.0",
+    "eslint-plugin-import": "^2.28.1",
+    "eslint-plugin-prettier": "^5.0.1",
+    "prettier": "^3.0.3",
+    "run-pty": "^4.1.0",
+    "terser": "^5.21.0"
+  }
+}

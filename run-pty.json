@@ -1,0 +1,96 @@
+[
+  {
+    "title": "Build much-select for development",
+    "command": [
+      "watchexec",
+      "-w",
+      "src",
+      "--",
+      "scripts/build-dev.sh"
+    ],
+    "status": {
+      "Detected problems": ["🚨", "E"],
+      "Success!": ["✅", "+"]
+    }
+  },
+  {
+    "title": "Build elm demo code",
+    "command": [
+      "npx",
+      "elm-watch",
+      "hot",
+      "elm-demo"
+    ],
+    "defaultStatus": ["⏳", "S"],
+    "status": {
+      "⏳": ["⏳", "W"],
+      "🚨": ["🚨", "E"],
+      "✅": ["✅", "+"]
+    }
+  },
+  {
+    "title": "Build HTML for demo/sandbox site",
+    "command": [
+      "watchexec",
+      "-w",
+      "site",
+      "-w",
+      "src",
+      "-w",
+      "templates",
+      "-w",
+      "examples",
+      "-w",
+      "soupault.toml",
+      "--",
+      "soupault"
+    ]
+  },
+  {
+    "title": "Run web server http://localhost:1234",
+    "command": [
+      "python3",
+      "-m",
+      "http.server",
+      "1234",
+      "--directory",
+      "./build/"
+    ]
+  },
+  {
+    "title": "Elm tests",
+    "command": [
+      "watchexec",
+      "-w",
+      "src",
+      "-w",
+      "tests",
+      "--debounce",
+      "2000",
+      "--",
+      "npm test"
+    ],
+    "defaultStatus": ["⏳", "S"],
+    "status": {
+      "Compiling": ["⏳", "W"],
+      "TEST RUN FAILED": ["🚨", "E"],
+      "failed with exit code 1": ["🚨", "E"],
+      "TEST RUN PASSED": ["✅", "+"]
+    }
+  },
+  {
+    "title": "Build much-select for production",
+    "command": [
+      "watchexec",
+      "-w",
+      "src",
+      "--",
+      "scripts/build.sh"
+    ],
+    "status": {
+      "Detected problems": ["🚨", "E"],
+      "Unable to build": ["🚨", "E"],
+      "Success!": ["✅", "+"]
+    }
+  }
+]

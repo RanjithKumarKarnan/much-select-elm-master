@@ -1,0 +1,672 @@
+/*
+Boring colors https://flatuicolors.com/palette/gb
+Fun colors https://flatuicolors.com/palette/se
+*/
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;300;400;600&display=swap');
+/* @import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@500&display=swap'); */
+
+
+body {
+    /*
+    This seems to prevent the dramatic flash as the theme is getting setup as a page loads.
+    */
+    transition-duration: 0.5s;
+    margin: 0;
+    padding: 0;
+}
+
+:root {
+    /* Boring colors */
+    --protoss-pylon: #00a8ff;
+    --periwinkle: #9c88ff;
+    --rise-n-shine: #fbc531;
+    --download-progress: #4cd137;
+    --sea-brook: #487eb0;
+    --vanadyl-blue: #EEEDED;
+    --matt-purple: #A7D397;
+    --nanohanacha-gold: #e1b12c;
+    --skirret-green: #A7D397;
+    --naval: #40739e;
+    --nasturcian-flower: #e84118;
+    --lynx-white: #f5f6fa;
+    --blueberry-soda: #7f8fa6;
+    --mazarine-blue: #273c75;
+    --blue-nights: #353b48;
+    --harley-davidson-orange: #c23616;
+    --hint-of-pensive: #D0D4CA;
+    --chain-gang-grey: #718093;
+    --pico-void: #192a56;
+    --electromagnetic: #2f3640;
+
+    /* Fun colors */
+    --highligher-pink: #ef5777;
+    --dark-periwinkle: #575fcf;
+    --megaman: #4bcffa;
+    --fresh-turquoise: #34e7e4;
+    --minty-green: #0be881;
+    --sizeling-red: #f53b57;
+    --free-speech-blue: #3c40c6;
+    --spirio-disco-ball: #0fbcf9;
+    --jade-dust: #00d8d6;
+    --green-teal: #05c46b;
+    --narenjin-orange: #ffc048;
+    --yriel-yellow: #ffdd59;
+    --sunset-orange: #ff5e57;
+    --hint-of-elusive-blue: #d2dae2;
+    --good-night: #485460;
+    --chrome-yellow: #ffa801;
+    --vibrant-yellow: #ffd32a;
+    --red-orange: #ff3f34;
+    --london-square: #808e9b;
+    --black-pearl: #1e272e;
+    --much-select-height: 36px;
+}
+
+@media (prefers-color-scheme: light) {
+    body {
+        background-color: var(--lynx-white);
+    }
+}
+
+@media (prefers-color-scheme: dark) {
+    body {
+        background-color: var(--electromagnetic);
+    }
+}
+
+#theme-switch-boring:checked ~ #page-wrapper {
+    --header-font: 'Poppins', sans-serif;
+    --body-font: 'Poppins', sans-serif;
+    --form-font: 'Poppins', sans-serif;
+    --value-font-size: 20px;
+}
+
+
+#theme-switch-fun:checked ~ #page-wrapper {
+    --header-font: "Comic Sans MS";
+    --body-font: 'DM Sans', sans-serif;
+    --form-font: 'DM Sans', sans-serif;
+    --value-font-size: 25px;
+}
+
+@media (prefers-color-scheme: light) {
+    #theme-switch-boring:checked ~ #page-wrapper {
+        --background-color: var(--lynx-white);
+        --text-color: var(--electromagnetic);
+        --link-text-color: var(--mazarine-blue);
+        --nav-link-text-color: var(--pico-void);
+        --nav-link-text-hover-background-color: var(--vanadyl-blue);
+
+        --site-nav-background-color: var(--hint-of-pensive);
+        --offsite-nav-background-color: var(--matt-purple);
+
+        --example-background-color: var(--hint-of-pensive);
+        --example-border-color: var(--blueberry-soda);
+        --example-border-shadow-color: var(--mazarine-blue);
+
+        /* Much Select Value */
+        --much-select-background-color: var(--lynx-white);
+        --much-select-value-casing-background-image: linear-gradient(to bottom, #fefefe, #f2f2f2);
+        --much-select-border-color: var(--matt-purple);
+        --much-select-error-border-color: var(--nasturcian-flower);
+
+        --much-select-clear-button-border-color: var(--matt-purple);
+
+        /* Much Select Dropdown */
+        --much-select-dropdown-option-background-color: var(--hint-of-pensive);
+        --much-select-dropdown-option-highlighted-background-color: var(--matt-purple);
+        --much-select-dropdown-option-active-background-color: var(--protoss-pylon);
+        --much-select-dropdown-option-selected-background-color: var(--chain-gang-grey);
+        --much-select-dropdown-optgroup-background-color: var(--skirret-green);
+        --much-select-dropdown-footer-color: var(--chain-gang-grey);
+        --much-select-dropdown-footer-background-color: var(--hint-of-pensive);
+    }
+
+    #theme-switch-fun:checked ~ #page-wrapper {
+        --background-color: var(--hint-of-elusive-blue);
+        --text-color: var(--black-pearl);
+        --link-text-color: var(--free-speech-blue);
+        --nav-link-text-color: var(--free-speech-blue);
+
+        --site-nav-background-color: var(--megaman);
+        --offsite-nav-background-color: var(--fresh-turquoise);
+
+        --example-background-color: var(--yriel-yellow);
+        --example-border-color: var(--red-orange);
+        --example-border-shadow-color: var(--sunset-orange);
+
+        /* Much Select Value */
+        --much-select-background-color: var(--hint-of-elusive-blue);
+        --much-select-value-casing-background-image: linear-gradient(to bottom, #fefefe, #f2f2f2);
+        --much-select-disabled-background-color: var(--london-square);
+        --much-select-error-background-color: var(--yriel-yellow);
+        --much-select-border-color: var(--jade-dust);
+        --much-select-hover-border-color: var(--spirio-disco-ball);
+        --much-select-error-border-color: var(--nasturcian-flower);
+        --much-select-disabled-border-color: var(--hint-of-elusive-blue);
+
+        --much-select-clear-button-border-color: var(--spirio-disco-ball);
+
+        /* Much Select Dropdown */
+        --much-select-dropdown-option-color: var(--black-pearl);
+        --much-select-dropdown-option-color-inverse: var(--good-night);
+        --much-select-dropdown-option-background-color: var(--hint-of-elusive-blue);
+        --much-select-dropdown-option-highlighted-background-color: var(--spirio-disco-ball);
+        --much-select-dropdown-option-active-background-color: var(--minty-green);
+        --much-select-dropdown-option-selected-background-color: var(--fresh-turquoise);
+        --much-select-dropdown-optgroup-background-color: var(--green-teal);
+        --much-select-dropdown-footer-color: var(--yriel-yellow);
+        --much-select-dropdown-footer-background-color: var(--red-orange);
+    }
+}
+
+@media (prefers-color-scheme: dark) {
+    #theme-switch-boring:checked ~ #page-wrapper {
+        --background-color: var(--electromagnetic);
+        --text-color: var(--hint-of-pensive);
+        --link-text-color: var(--periwinkle);
+        --nav-link-text-color: var(--rise-n-shine);
+        --nav-link-text-hover-background-color: var(--sea-brook);
+        --site-nav-background-color: var(--matt-purple);
+        --offsite-nav-background-color: var(--vanadyl-blue);
+
+        --example-background-color: var(--pico-void);
+        --example-border-color: var(--blueberry-soda);
+        --example-border-shadow-color: var(--chain-gang-grey);
+
+        --much-select-background-color: var(--electromagnetic);
+        --much-select-value-casing-background-image: linear-gradient(to bottom, var(--electromagnetic), var(--pico-void));
+        --much-select-border-color: var(--matt-purple);
+        --much-select-error-border-color: var(--harley-davidson-orange);
+
+        --much-select-clear-button-border-color: var(--electromagnetic);
+
+        /* Much Select Dropdown */
+        --much-select-dropdown-option-color: var(--good-night);
+        --much-select-dropdown-option-color-inverse: var(--megaman);
+        --much-select-dropdown-option-background-color: var(--hint-of-elusive-blue);
+        --much-select-dropdown-option-highlighted-background-color: var(--free-speech-blue);
+        --much-select-dropdown-option-active-background-color: var(--minty-green);
+        --much-select-dropdown-option-selected-background-color: var(--black-pearl);
+        --much-select-dropdown-optgroup-background-color: var(--blue-nights);
+        --much-select-dropdown-footer-color: var(--hint-of-pensive);
+        --much-select-dropdown-footer-background-color: var(--chain-gang-grey);
+    }
+
+    #theme-switch-fun:checked ~ #page-wrapper {
+        --background-color: var(--good-night);
+        --text-color: var(--vibrant-yellow);
+        --link-text-color: var(--minty-green);
+        --nav-link-text-color: var(--green-teal);
+        --site-nav-background-color: var(--dark-periwinkle);
+        --offsite-nav-background-color: var(--free-speech-blue);
+
+        --example-background-color: var(--black-pearl);
+        --example-border-color: var(--sizeling-red);
+        --example-border-shadow-color: var(--highligher-pink);
+
+        --much-select-background-color: var(--good-night);
+        --much-select-value-casing-background-image: linear-gradient(to bottom, var(--good-night), var(--black-pearl));
+        --much-select-border-color: var(--jade-dust);
+        --much-select-error-border-color: var(--sunset-orange);
+
+        --much-select-clear-button-border-color: var(--jade-dust);
+
+        /* Much Select Dropdown */
+        --much-select-dropdown-option-color: var(--yriel-yellow);
+        --much-select-dropdown-option-color-inverse: var(--vibrant-yellow);
+        --much-select-dropdown-option-background-color: var(--good-night);
+        --much-select-dropdown-option-highlighted-background-color: var(--black-pearl);
+        --much-select-dropdown-option-active-background-color: var(--london-square);
+        --much-select-dropdown-option-selected-background-color: var(--black-pearl);
+        --much-select-dropdown-optgroup-background-color: var(--london-square);
+        --much-select-dropdown-footer-color: var(--minty-green);
+        --much-select-dropdown-footer-background-color: var(--dark-periwinkle);
+    }
+}
+
+/* Theme switcher */
+.theme-switch { /* Hides the radio buttons */
+    position: absolute !important;
+    height: 1px;
+    width: 1px;
+    overflow: hidden;
+    clip: rect(1px, 1px, 1px, 1px);
+}
+
+#page-wrapper {
+    position: relative;
+    background-color: var(--background-color);
+    color: var(--text-color);
+    font-family: var(--body-font);
+}
+
+@media (prefers-color-scheme: light) {
+    #page-wrapper:after {
+        content: '';
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        height: 10em;
+        background: linear-gradient(to bottom, var(--background-color), var(--lynx-white));
+    }
+}
+
+@media (prefers-color-scheme: dark) {
+    #page-wrapper:after {
+        content: '';
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        height: 10em;
+        background: linear-gradient(to bottom, var(--background-color), var(--electromagnetic));
+    }
+}
+
+
+:any-link {
+    color: var(--link-text-color);
+}
+
+#header {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-evenly;
+    align-items: end;
+}
+
+#header #site-title {
+    flex: 0 1 300px;
+    white-space: nowrap;
+}
+
+#header #page-name {
+    flex: 0 1 300px;
+}
+
+#header #sub-title {
+    flex: 0 1 300px;
+}
+
+h1 {
+    font-family: var(--header-font);
+}
+
+h2 {
+    font-family: var(--header-font);
+}
+
+h3 {
+    font-family: var(--header-font);
+}
+
+.container {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: flex-start;
+    align-items: start;
+}
+
+.container > .example {
+    height: auto;
+    margin: 1rem;
+    padding: 1rem;
+    border: 1px solid var(--example-border-color);
+    box-shadow: 2px 2px 5px 0 var(--example-border-shadow-color);
+    border-radius: 12px;
+    max-width: 400px;
+    background-color: var(--example-background-color);
+    flex: 0 1 400px;
+}
+.container .example a{
+    text-decoration: none;
+}
+.container .example a:hover{
+    text-decoration: underline;
+}
+nav {
+    margin: 0.25em;
+    border-radius: 12px;
+    font-family: var(--header-font);
+}
+
+nav a:any-link {
+    color: var(--nav-link-text-color);
+}
+
+nav.site-nav {
+    padding: 0.25em;
+    background-color: var(--site-nav-background-color);
+    overflow: auto;
+    white-space: nowrap;
+}
+nav.site-nav ol li{
+    display: inline-block;
+}
+
+
+nav.offsite-nav {
+    padding: 0.25em;
+    background-color: var(--offsite-nav-background-color);
+}
+
+nav ol {
+    margin: 0.25em;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+nav.offsite-nav ol {
+    place-content: end;
+}
+nav.offsite-nav ol li a,
+nav.site-nav ol li a{
+    text-decoration: none;
+}
+
+nav ol > li {
+    margin: 0.5em;
+    list-style-type: none;
+    white-space: nowrap;
+}
+
+nav ol > li > a {
+    padding: 1em;
+}
+
+nav ol > li > a:hover {
+    background-color: var(--nav-link-text-hover-background-color);
+}
+
+
+
+
+much-select:not(:defined) {
+    visibility: hidden;
+}
+
+much-select {
+    display: inline-block;
+    margin: 10px 0;
+    max-width: 300px;
+}
+
+button {
+    font-family: var(--form-font);
+}
+
+
+much-select::part(wrapper) {
+    font-family: var(--form-font);
+    margin-top: auto;
+    margin-bottom: auto;
+    position: relative;
+}
+
+
+much-select::part(input-wrapper) {
+    display: flex;
+}
+
+much-select::part(value-casing) {
+    display: flex;
+    flex-flow: column;
+    min-height: var(--much-select-height);
+}
+
+much-select::part(value-casing output-style-custom-html) {
+    background-color: var(--much-select-background-color);
+    box-shadow: 1px 1px 1px 0 lightgray inset;
+    padding: 0.1em 2em 0.1em 10px;
+    flex-flow: row;
+    cursor: pointer;
+    border: 1px solid var(--much-select-border-color);
+}
+
+much-select::part(value-casing output-style-custom-html error) {
+    border: 1px solid var(--much-select-error-border-color);
+}
+
+much-select::part(value-casing output-style-custom-html multi) {
+    flex-flow: row wrap;
+}
+
+much-select::part(value-casing output-style-datalist) {
+    flex-flow: column;
+    cursor: pointer;
+}
+
+much-select::part(input-value) {
+    min-height: var(--much-select-height);
+}
+
+
+much-select::part(value-casing output-style-datalist error) {
+     border: none;
+}
+
+much-select::part(value-casing output-style-custom-html):hover {
+    outline: none;
+    border-color: var(--much-select-hover-border-color);
+}
+
+
+much-select::part(value-casing output-style-custom-html):focus {
+    outline: none;
+    border-color: var(--example-border-color);
+}
+
+
+much-select::part(value-casing output-style-custom-html disabled) {
+    border: 1px solid var(--much-select-disabled-border-color);
+    cursor: pointer;
+}
+
+much-select::part(value-casing output-style-custom-html single) {
+    background-image: var(--much-select-value-casing-background-image);
+    background-repeat: repeat-x;
+}
+
+much-select::part(value-casing output-style-custom-html multi) {
+    background-image: var(--much-select-value-casing-background-image);
+    background-repeat: repeat-x;
+}
+
+much-select::part(value-casing single disabled) {
+    background-image: none;
+    background-color: var(--much-select-disabled-background-color);
+}
+
+much-select::part(input-filter) {
+    /*
+    TODO, seems like the height and font-size should not be hardcoded.
+    */
+    height: 36px;
+    font-size: var(--value-font-size);
+    color: var(--text-color);
+    /* The min-width let's the input shrink down as far as it needs to.
+    The with width lets it grow as much as it can.
+    */
+    min-width: 10px;
+    /* Let's give the input a bit more room than the selected values.
+    */
+    flex-grow: 3;
+    flex-shrink: 0;
+    flex-basis: 10%;
+
+    /* We don't want a border because the value-casing will supply the border for
+      this input.
+    */
+    
+
+    /*
+    We do not want an outline on the input (filter) because we want everything
+    inside of the #value-casing to (kinda) act like a text input.
+    */
+    outline: none;
+    background: none;
+    margin: 0;
+
+    /* Keep input filter's text from running over the dropdown indicator. */
+    padding: 0 0.8em 0 10px;
+    border-right: 2px dotted #D0D4CA;
+}
+
+much-select::part(input-filter):hover, much-select::part(input-filter):focus {
+    /*
+        We do not want an outline on the input (filter) because we want everything
+        inside of the #value-casing to (kinda) act like a text input.
+    */
+    outline: none;
+    background: var(--much-select-background-color);
+}
+
+much-select::part(input-filter):hover, much-select::part(input-filter):focus {
+    /*
+        Removing the default background color on the disabled input.
+        We might want to do some additional styling for "disabled"
+        much-selects but that should probably happen on the value-casing
+        div.
+        */
+    background: none;
+}
+
+much-select::part(input-filter):hover, much-select::part(input-filter):focus {
+    /*
+        Removing the default background color on the disabled input.
+        We might want to do some additional styling for "disabled"
+        much-selects but that should probably happen on the value-casing
+        div.
+        */
+    background: none;
+}
+
+much-select::part(value) {
+    padding: 3px;
+    font-size: 20px;
+    color: white;
+    background-image: linear-gradient(to bottom, #4f6a8f, #88a2bc);
+    background-repeat: repeat-x;
+    margin: 2px 2px;
+    border-radius: 5px;
+    border: 3px solid #d99477;
+    min-width: 10px;
+    flex-grow: 0;
+    flex-shrink: 1;
+    flex-basis: auto;
+}
+
+much-select::part(selected-value) {
+    font-size: 14px;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    padding: 3px 10px;
+    margin-right: 3px;
+    margin-bottom: 3px;
+    margin-top: 5px;
+}
+
+much-select::part(value highlighted-value) {
+    background-image: linear-gradient(to bottom, #d99477, #efb680);
+    background-repeat: repeat-x;
+}
+
+much-select::part(dropdown-indicator) {
+    position: absolute;
+    right: 12px;
+    top: 10px;
+    cursor: pointer;
+    display: block;
+    transition: transform 0.50s;
+}
+
+much-select::part(dropdown-indicator up) {
+    transform: rotate(270deg);
+}
+
+much-select::part(dropdown-indicator down) {
+    transform: rotate(90deg);
+}
+
+much-select::part(clear-button-wrapper) {
+    display: block;
+    position: absolute;
+    right: 0.2em;
+    top: 0.2em;
+    cursor: pointer;
+    box-sizing: content-box;
+    padding: 0.3em 0.5em;
+    border-width: 1px;
+    border-style: solid;
+    border-color: transparent;
+}
+
+much-select::part(clear-button-wrapper):hover {
+    border-color: var(--much-select-clear-button-border-color);
+}
+
+much-select::part(dropdown) {
+    margin-top: 5px;
+    border-radius: 8px;
+    font-size: 20px;
+    max-height: 300px;
+    font-family: var(--form-font);
+}
+
+much-select::part(dropdown-optgroup) {
+    background-color: var(--much-select-dropdown-optgroup-background-color);
+    font-size: 0.85rem;
+    font-weight: 300;
+    font-family: var(--form-font);
+    padding: 10px;
+}
+
+much-select::part(dropdown-option) {
+     background-color: #f1f1f1;
+    color: var(--much-select-dropdown-option-color);
+    font-family: var(--form-font);
+    padding: 5px;
+    cursor: pointer;
+    height: 40px;
+}
+
+much-select::part(dropdown-option selected) {
+    background-color: var(--much-select-dropdown-option-selected-background-color);
+    color: var(--much-select-dropdown-option-color-inverse);
+    padding: 5px;
+    cursor: pointer;
+}
+
+much-select::part(dropdown-option highlighted) {
+    background-color: var(--much-select-dropdown-option-highlighted-background-color);
+    color: var(--much-select-dropdown-option-color-inverse);
+}
+
+much-select::part(dropdown-option active) {
+    background-color: var(--much-select-dropdown-option-active-background-color);
+    color: var(--much-select-dropdown-option-color-inverse);
+    padding: 5px;
+    cursor: pointer;
+}
+
+much-select::part(dropdown-option disabled) {
+    background-color: LightGray;
+    cursor: default;
+}
+
+much-select::part(dropdown-option-description) {
+    font-size: 0.85rem;
+    padding: 3px;
+}
+
+much-select::part(dropdown-footer) {
+    font-size: 50%;
+    text-align: center;
+    color: var(--much-select-dropdown-footer-color);
+    background-color: var(--much-select-dropdown-footer-background-color);
+    padding: 5px;
+
+}
