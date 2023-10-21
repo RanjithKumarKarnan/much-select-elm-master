@@ -37,6 +37,11 @@ body {
     --chain-gang-grey: #718093;
     --pico-void: #192a56;
     --electromagnetic: #2f3640;
+    --border-right:#D0D4CA;
+    --white:#f1f1f1;
+    --red:#FF0000;
+    --border-left:#718093;
+    --black:#000000;
 
     /* Fun colors */
     --highligher-pink: #ef5777;
@@ -511,7 +516,7 @@ much-select::part(input-filter) {
 
     /* Keep input filter's text from running over the dropdown indicator. */
     padding: 0 0.8em 0 10px;
-    border-right: 2px dotted #D0D4CA;
+    border-right: 2px dotted var(--border-right);
 }
 
 much-select::part(input-filter):hover, much-select::part(input-filter):focus {
@@ -625,7 +630,7 @@ much-select::part(dropdown-optgroup) {
 }
 
 much-select::part(dropdown-option) {
-     background-color: #f1f1f1;
+     background-color: var(--white);
     color: var(--much-select-dropdown-option-color);
     font-family: var(--form-font);
     padding: 5px;
