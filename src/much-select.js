@@ -1739,7 +1739,7 @@ class MuchSelect extends HTMLElement {
       }
 
       #value-casing.output-style-custom-html.multi .value {
-        border: 2px solid black;
+        border: 2px solid var(--black);
         border-radius:40px;
         padding:3px 10px;
         flex-grow: 0;
@@ -1768,8 +1768,8 @@ class MuchSelect extends HTMLElement {
         max-height: 300px;
         overflow-y: auto;
         cursor: default;
-        background-color: white;
-        border: 1px solid black;
+        background-color: var(--white);
+        border: 1px solid var(--black);
       }
 
       #dropdown.showing {
@@ -1792,8 +1792,8 @@ class MuchSelect extends HTMLElement {
       }
 
       .option.highlighted {
-        background-color: black;
-        color: white;
+        background-color: var(--black);
+        color: var(--white);
       }
 
       .option.disabled {
@@ -1830,7 +1830,7 @@ class MuchSelect extends HTMLElement {
         100% { transform: rotate(360deg); }
       }
       #wrapper .error-message ul li{
-        color:red;
+        color:var(--red);
         list-style:none;
         padding:0px;
       }
@@ -1842,7 +1842,7 @@ class MuchSelect extends HTMLElement {
         padding-left: 5px;
         margin-left:6px;
         padding-bottom:3px;
-        border-left: 1px dotted #718093;
+        border-left: 1px dotted var(--border-left);
       }
       #search-keyboard-events #search-keyboard-events-log {
         width:100px;
